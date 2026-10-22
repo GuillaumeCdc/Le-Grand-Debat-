@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Le Grand Débat · le jeu de la Ve République</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230b2a6f'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23fff'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23d6202f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bleu:#0b2a6f;--rouge:#d6202f;--blanc:#ffffff;
+  --bg:#f6f2ea;--hd:rgba(246,242,234,.92);--surf:#ffffff;--surf2:#efe9dc;
+  --ink:#0c1a3a;--ink2:#4b5879;--line:rgba(12,26,58,.13);
+  --btn2:#ffffff;--btn2ink:#0c1a3a;
+  --shadow:0 12px 32px rgba(8,22,60,.14);--shadow2:0 4px 14px rgba(8,22,60,.12);
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#050f2b;--hd:rgba(5,15,43,.92);--surf:#0d1c44;--surf2:#13275a;
+    --ink:#f3f5fb;--ink2:#a9b6d6;--line:rgba(255,255,255,.15);
+    --btn2:#13275a;--btn2ink:#f3f5fb;
+    --shadow:0 14px 36px rgba(0,0,0,.55);--shadow2:0 4px 16px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#050f2b;--hd:rgba(5,15,43,.92);--surf:#0d1c44;--surf2:#13275a;
+  --ink:#f3f5fb;--ink2:#a9b6d6;--line:rgba(255,255,255,.15);
+  --btn2:#13275a;--btn2ink:#f3f5fb;
+  --shadow:0 14px 36px rgba(0,0,0,.55);--shadow2:0 4px 16px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;
+  min-height:100vh;-webkit-font-smoothing:antialiased;
+  background-image:
+    radial-gradient(900px 420px at 85% -80px,rgba(214,32,47,.10),transparent 60%),
+    radial-gradient(900px 480px at 5% -120px,rgba(11,42,111,.16),transparent 60%);
+  background-repeat:no-repeat;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:60}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #6aa0ff;outline-offset:2px}
+em{font-style:italic}
+h1,h2,h3{font-family:var(--serif);line-height:1.1;letter-spacing:-.01em}
+
+/* ===== en-tête ===== */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--hd);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.flagbar{display:flex;height:4px}
+.flagbar i{flex:1}
+.flagbar i:nth-child(1){background:#0b2a6f}
+.flagbar i:nth-child(2){background:#fff}
+.flagbar i:nth-child(3){background:#d6202f}
+.hdr-in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{font-family:var(--serif);font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:9px;cursor:pointer}
+.brand .cocarde{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#d6202f 0 28%,#fff 28% 60%,#0b2a6f 60%);box-shadow:0 0 0 1.5px var(--line)}
+.hdr-sp{flex:1}
+.pill{font-size:.78rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--surf2);color:var(--ink2)}
+.iconbtn{font-size:.85rem;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surf2);color:var(--ink)}
+.iconbtn:hover{filter:brightness(.97)}
+
+/* ===== mise en page ===== */
+#app{max-width:1120px;margin:0 auto;padding:18px 16px 56px}
+.scr{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kicker{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--rouge)}
+.lead{font-size:1.08rem;color:var(--ink2);max-width:60ch}
+.muted{color:var(--ink2)}
+.stack>*+*{margin-top:14px}
+.center{text-align:center}
+.mt{margin-top:22px}
+
+/* ===== boutons ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;background:var(--btn2);color:var(--btn2ink);box-shadow:var(--shadow2);border:1px solid var(--line);transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn.primary{background:linear-gradient(180deg,#e12a39,#c4182a);color:#fff;border-color:transparent;box-shadow:0 8px 22px rgba(214,32,47,.38)}
+.btn.big{padding:15px 28px;font-size:1.05rem}
+.btn.ghost{background:transparent;box-shadow:none}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* ===== accueil ===== */
+.hero{display:grid;gap:28px;align-items:center;padding:12px 0 6px}
+@media(min-width:900px){.hero{grid-template-columns:1.1fr .9fr}}
+.hero h1{font-size:clamp(2.6rem,8vw,4.8rem);font-weight:900}
+.hero h1 em{color:var(--rouge);font-style:italic}
+.hero h1::after{content:"";display:block;height:9px;width:150px;margin-top:16px;border-radius:99px;background:linear-gradient(90deg,#0b2a6f 0 33.3%,#fff 33.3% 66.6%,#d6202f 66.6%);box-shadow:0 0 0 1.5px var(--line)}
+.fan{position:relative;height:330px;max-width:420px;margin:0 auto;width:100%}
+.fan .pc{position:absolute;width:210px;left:50%;top:10px;margin-left:-105px;transform-origin:50% 120%;animation:fanin .9s cubic-bezier(.2,.8,.2,1) both}
+.fan .pc:nth-child(1){transform:rotate(-13deg) translateX(-62px)}
+.fan .pc:nth-child(2){transform:rotate(0) translateY(-10px);z-index:2;animation-delay:.1s}
+.fan .pc:nth-child(3){transform:rotate(13deg) translateX(62px);animation-delay:.2s}
+@keyframes fanin{from{opacity:0;transform:translateY(40px) rotate(0)}}
+.steps{display:grid;gap:12px;margin-top:30px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.step{background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:16px 16px 18px;box-shadow:var(--shadow2)}
+.step b{font-family:var(--serif);font-size:2rem;color:var(--rouge);display:block;line-height:1}
+.step h3{font-size:1.1rem;margin:6px 0 4px}
+.step p{font-size:.92rem;color:var(--ink2)}
+.fine{font-size:.82rem;color:var(--ink2);margin-top:18px}
+
+/* ===== formulaires ===== */
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow2)}
+.panel h2{font-size:1.5rem;margin-bottom:4px}
+.lbl{display:block;font-weight:700;font-size:.9rem;margin:18px 0 8px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:9px 16px;border-radius:12px;background:var(--surf2);font-weight:700;border:2px solid transparent;color:var(--ink)}
+.seg button.on{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+:root[data-theme="dark"] .seg button.on{background:#e8eefc;color:#06133a;border-color:#e8eefc}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button.on{background:#e8eefc;color:#06133a;border-color:#e8eefc}}
+.names{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.field{display:flex;align-items:center;gap:10px;background:var(--surf2);border-radius:14px;padding:6px 12px}
+.field span{font-weight:800;color:var(--rouge);font-family:var(--serif)}
+.field input{flex:1;min-width:0;border:0;background:transparent;font:inherit;color:var(--ink);padding:8px 0;outline:none}
+.hint{font-size:.85rem;color:var(--ink2);margin-top:6px}
+
+/* ===== cartes ===== */
+.pc{--c1:#2147a6;--c2:#0b2467;position:relative;display:flex;flex-direction:column;text-align:left;border-radius:20px;overflow:hidden;background:var(--surf);color:var(--ink);box-shadow:var(--shadow);border:1px solid var(--line)}
+.pc-top{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;padding:11px 14px;display:flex;align-items:center;gap:10px}
+.pc-top .emb{width:38px;height:38px;flex:none;filter:drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+.pc-party{flex:1;font-weight:800;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;line-height:1.2}
+.era{font-size:.66rem;font-weight:800;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.22);letter-spacing:.04em;white-space:nowrap}
+.pc-body{padding:14px 16px 14px;display:flex;flex-direction:column;gap:5px}
+.mono{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:1.25rem;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 0 0 3px var(--surf),0 0 0 5px var(--c1);margin-bottom:6px}
+.pc h3{font-size:1.4rem}
+.role{font-size:.85rem;color:var(--ink2);font-weight:600}
+.tag{font-style:italic;font-family:var(--serif);color:var(--ink2);font-size:.95rem}
+.sig{margin-top:8px;font-size:.88rem;background:var(--surf2);border-left:4px solid var(--c1);border-radius:8px;padding:8px 10px}
+.sig b{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c1);margin-bottom:2px}
+:root[data-theme="dark"] .sig b{color:#fff;opacity:.75}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sig b{color:#fff;opacity:.75}}
+.pc::after{content:"";display:block;height:7px;margin-top:auto;background:linear-gradient(90deg,#0b2a6f 0 33.4%,#fff 33.4% 66.7%,#d6202f 66.7%)}
+.pc.mini .pc-body{padding:12px 14px}
+.pc.mini h3{font-size:1.15rem}
+.pc.mini .sig{display:none}
+.pc.click{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.pc.click:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(8,22,60,.22)}
+
+/* ===== duels ===== */
+.dhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.dhead h2{font-size:clamp(1.8rem,5vw,2.8rem)}
+.pips{display:flex;gap:5px;margin:8px 0 18px}
+.pips i{flex:1;height:7px;border-radius:99px;background:var(--surf2)}
+.pips i.d{background:linear-gradient(90deg,#0b2a6f,#d6202f)}
+.pips i.n{background:var(--rouge);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.45}}
+.duel{display:grid;gap:10px;position:relative;grid-template-columns:1fr}
+@media(min-width:780px){.duel{grid-template-columns:1fr 64px 1fr;gap:0;align-items:stretch}}
+.duel .pc{width:100%;padding:0;border:2px solid var(--line);transition:transform .25s,opacity .25s,box-shadow .25s}
+.duel .pc.big-click{cursor:pointer}
+.duel .pc.big-click:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(8,22,60,.25)}
+.duel .pc .pc-body{flex:1}
+.vs{display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-style:italic;font-size:1.4rem;color:#fff;background:var(--rouge);width:48px;height:48px;border-radius:50%;margin:-4px auto;position:relative;z-index:3;box-shadow:0 6px 16px rgba(214,32,47,.45)}
+@media(min-width:780px){.vs{align-self:center;margin:0 auto}}
+.duel .pc.won{transform:scale(1.02);border-color:var(--rouge);box-shadow:0 0 0 4px rgba(214,32,47,.25),var(--shadow)}
+.duel .pc.lost{opacity:.35;transform:scale(.97)}
+.choose{font-size:.8rem;color:var(--ink2);text-align:center;margin-top:12px}
+
+/* ===== carte finale ===== */
+.reveal{display:grid;gap:22px;align-items:start}
+@media(min-width:860px){.reveal{grid-template-columns:minmax(320px,430px) 1fr}}
+.pc.big{max-width:440px;width:100%;margin:0 auto;animation:flip .9s cubic-bezier(.2,.8,.2,1) both;position:relative}
+.pc.big h3{font-size:2rem}
+.pc.big .mono{width:72px;height:72px;font-size:1.7rem}
+.pc.big::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.25) 48%,transparent 66%);transform:translateX(-120%);animation:sheen 2.4s .7s ease-out forwards;pointer-events:none;z-index:2}
+@keyframes flip{from{opacity:0;transform:perspective(900px) rotateY(90deg) scale(.9)}to{opacity:1;transform:none}}
+@keyframes sheen{to{transform:translateX(120%)}}
+.ideas{display:grid;gap:8px;margin-top:8px}
+.idea{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+.idea .ic{font-size:1.3rem;line-height:1.3}
+.idea b{display:block;font-size:.95rem}
+.idea span{font-size:.85rem;color:var(--ink2)}
+
+/* ===== passer le téléphone ===== */
+.pass{min-height:62vh;display:grid;place-items:center;text-align:center}
+.pass .box{max-width:520px}
+.pass .bubble{width:92px;height:92px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-size:2.4rem;background:linear-gradient(135deg,#0b2a6f,#d6202f);box-shadow:0 12px 30px rgba(11,42,111,.4);animation:float 2.8s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.pass h2{font-size:clamp(2rem,6vw,3rem);margin-bottom:10px}
+.pass h2 em{color:var(--rouge)}
+
+/* ===== sujet ===== */
+.theme-hero{background:linear-gradient(135deg,#0b2a6f,#08184a 60%,#6d0f1b);color:#fff;border-radius:26px;padding:26px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.theme-hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%)}
+.theme-hero .ico{font-size:2.6rem}
+.theme-hero h2{font-size:clamp(1.6rem,4.6vw,2.5rem);margin:8px 0 10px}
+.theme-hero p{color:rgba(255,255,255,.86);max-width:75ch}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font-size:.78rem;font-weight:700;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);color:#fff}
+.chip.d{background:var(--surf2);border-color:var(--line);color:var(--ink)}
+
+/* ===== débat ===== */
+.board{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-top:14px}
+.dc{--c1:#2147a6;--c2:#0b2467;position:relative;background:var(--surf);border:2px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow2);transition:transform .2s,box-shadow .2s,border-color .2s}
+.dc-top{display:flex;align-items:center;gap:10px;padding:9px 12px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+.dc-top .emb{width:30px;height:30px;flex:none}
+.dc-top b{font-family:var(--serif);font-size:1.05rem;line-height:1.1}
+.dc-top small{display:block;opacity:.85;font-size:.72rem;font-weight:600}
+.dc-who{margin-left:auto;font-weight:800;font-size:.72rem;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:99px;white-space:nowrap;max-width:45%;overflow:hidden;text-overflow:ellipsis}
+.dc-body{padding:12px 14px 14px}
+.dc-body h4{font-family:var(--serif);font-size:1.08rem;line-height:1.2;margin-bottom:5px}
+.dc-body p{font-size:.88rem;color:var(--ink2)}
+.joker{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#f3c64a;color:#4a3300;border-radius:99px;padding:2px 9px;margin-bottom:6px}
+.dc.speaking{transform:scale(1.015);border-color:var(--rouge);box-shadow:0 0 0 4px rgba(214,32,47,.22),var(--shadow)}
+.dc.target{border-color:#4a7be0;box-shadow:0 0 0 4px rgba(74,123,224,.22),var(--shadow2)}
+.dc .tg{display:block;text-align:right;margin-top:8px;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.dc.speaking .tg{color:var(--rouge)}
+.dc.target .tg{color:#4a7be0}
+.dock{position:sticky;bottom:0;z-index:40;margin:18px -16px -56px;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));background:var(--hd);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(8,22,60,.12)}
+.dock-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ring{position:relative;width:96px;height:96px;flex:none;cursor:pointer}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bg{stroke:var(--surf2)}
+.ring .fg{stroke:var(--bleu);stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .3s}
+:root[data-theme="dark"] .ring .fg{stroke:#8db0ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ring .fg{stroke:#8db0ff}}
+.dock.run .ring .fg{stroke:var(--rouge)}
+.dock.done .ring .fg{stroke:var(--rouge)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--serif);font-weight:800;font-size:1.55rem;line-height:1}
+.ring .num small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);font-weight:700;margin-top:3px}
+.dock.done .ring .num{color:var(--rouge);animation:pulse .8s 3}
+.dock-txt{flex:1;min-width:210px}
+.dock-txt .st{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rouge)}
+.dock-txt .who{font-family:var(--serif);font-size:1.3rem;font-weight:800;line-height:1.15}
+.dock-txt .h{font-size:.85rem;color:var(--ink2)}
+.dock .row{gap:8px}
+.dock .btn{padding:10px 16px}
+
+/* ===== vote / résultats ===== */
+.vlist{display:grid;gap:10px;margin-top:14px}
+.vopt{--c1:#2147a6;--c2:#0b2467;display:flex;align-items:center;gap:12px;text-align:left;width:100%;background:var(--surf);border:2px solid var(--line);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow2);transition:transform .15s,border-color .15s}
+.vopt:hover{transform:translateY(-2px)}
+.vopt.on{border-color:var(--rouge);box-shadow:0 0 0 4px rgba(214,32,47,.2)}
+.vopt .mono{margin:0;width:46px;height:46px;font-size:1.05rem;flex:none}
+.vopt b{font-family:var(--serif);font-size:1.12rem;display:block}
+.vopt span{font-size:.85rem;color:var(--ink2)}
+.vopt .ck{margin-left:auto;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.9rem;color:#fff}
+.vopt.on .ck{background:var(--rouge);border-color:var(--rouge)}
+.podium{display:grid;gap:12px;margin-top:16px}
+.prow{--c1:#2147a6;--c2:#0b2467;position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:var(--surf);border:2px solid var(--line);border-radius:18px;padding:12px 16px;box-shadow:var(--shadow2);overflow:hidden}
+.prow.win{border-color:#e0a81f;background:linear-gradient(135deg,var(--surf),rgba(240,196,60,.16))}
+.prow .rank{font-family:var(--serif);font-weight:900;font-size:1.9rem;width:42px;text-align:center;color:var(--ink2)}
+.prow.win .rank{color:#d49a0b}
+.prow .nm{font-family:var(--serif);font-weight:800;font-size:1.2rem;line-height:1.15}
+.prow .cn{font-size:.85rem;color:var(--ink2)}
+.bar{height:9px;border-radius:99px;background:var(--surf2);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--c1),var(--c2));transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{transform:scaleX(0)}}
+.prow .sc{font-family:var(--serif);font-weight:900;font-size:1.8rem;text-align:right;line-height:1}
+.prow .sc small{display:block;font-family:var(--sans);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.crown{position:absolute;right:8px;top:-2px;font-size:1.3rem}
+.fact{margin-top:20px;background:var(--surf2);border-left:5px solid var(--rouge);border-radius:12px;padding:14px 16px;font-size:.95rem}
+.fact b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rouge);margin-bottom:3px}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:80}
+.confetti i{position:absolute;top:-20px;width:9px;height:15px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+/* ===== galerie ===== */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.filters button{padding:7px 13px;border-radius:99px;background:var(--surf2);font-weight:700;font-size:.82rem;border:2px solid transparent;color:var(--ink)}
+.filters button.on{background:var(--bleu);color:#fff}
+:root[data-theme="dark"] .filters button.on{background:#e8eefc;color:#06133a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .filters button.on{background:#e8eefc;color:#06133a}}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin-top:14px}
+.grid .pc.mini .sig{display:block}
+
+/* ===== modale ===== */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(3,10,30,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 16px calc(16px + env(safe-area-inset-bottom,0px));animation:fade .2s both}
+@keyframes fade{from{opacity:0}}
+.sheet{background:var(--surf);color:var(--ink);border-radius:24px;max-width:640px;width:100%;max-height:100%;overflow:auto;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.5);border:1px solid var(--line);animation:rise .3s both}
+.sheet h2{font-size:1.6rem;margin-bottom:8px}
+.sheet ol,.sheet ul{padding-left:20px;display:grid;gap:8px;margin:10px 0}
+.sheet .x{float:right;margin:-6px -6px 0 8px}
+.dline{display:flex;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.dline .ic{font-size:1.4rem}
+.dline b{display:block;font-family:var(--serif);font-size:1.02rem}
+.dline p{font-size:.88rem;color:var(--ink2)}
+.dline .tn{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--rouge)}
+@media(max-width:520px){
+  .dock-in{gap:12px}
+  .ring{width:84px;height:84px}
+  .dock-txt{min-width:0;flex-basis:calc(100% - 100px)}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+.bio{font-size:.86rem;color:var(--ink2);margin-top:2px}
+.duel .pc .bio{font-size:.9rem}
+
+#app{overflow-x:clip}
+@media(max-width:520px){
+  .fan .pc:nth-child(1){transform:rotate(-12deg) translateX(-34px)}
+  .fan .pc:nth-child(3){transform:rotate(12deg) translateX(34px)}
+}
+
+.brand{white-space:nowrap;flex:none}
+#hdr-right{flex-wrap:nowrap;margin-left:auto}
+.pill{white-space:nowrap}
+.mono{margin-top:4px}
+@media(max-width:420px){.brand{font-size:1.02rem}.brand .cocarde{width:22px;height:22px}.hdr-in{gap:8px;padding:9px 12px}.pill{font-size:.72rem;padding:4px 9px}.iconbtn{padding:6px 10px}}
+
+.axes{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.axes span{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--surf2);color:var(--ink2)}
+.crown{right:auto;left:14px;top:-9px;font-size:1.25rem}
+
+/* ===== mode en ligne ===== */
+.codebig{font-family:var(--serif);font-weight:900;font-size:clamp(3rem,16vw,5.4rem);letter-spacing:.14em;line-height:1;margin:6px 0 8px;background:linear-gradient(90deg,#0b2a6f,#d6202f);-webkit-background-clip:text;background-clip:text;color:transparent;padding-left:.14em}
+:root[data-theme="dark"] .codebig{background:linear-gradient(90deg,#8db0ff,#ff6070);-webkit-background-clip:text;background-clip:text}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .codebig{background:linear-gradient(90deg,#8db0ff,#ff6070);-webkit-background-clip:text;background-clip:text}}
+.dot{margin-left:auto;width:12px;height:12px;border-radius:50%;background:var(--surf2);border:2px solid var(--line)}
+.dot.on{background:#2fb35a;border-color:#2fb35a;box-shadow:0 0 0 4px rgba(47,179,90,.2)}
+.or{display:flex;align-items:center;gap:12px;color:var(--ink2);font-size:.85rem;font-weight:700}
+.or i{flex:1;height:1px;background:var(--line)}
+.err{color:var(--rouge);font-weight:700;font-size:.92rem}
+.codefield{width:150px}
+.codefield input{text-transform:uppercase;letter-spacing:.35em;font-weight:800;text-align:center;font-family:var(--serif);font-size:1.3rem}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:#0c1a3a;color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:95;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#conn{position:fixed;left:0;right:0;top:calc(66px + env(safe-area-inset-top,0px));z-index:70;background:#b4161f;color:#fff;text-align:center;font-weight:700;font-size:.85rem;padding:7px 12px;display:none}
+#conn.on{display:block}
+.dc.mine{box-shadow:0 0 0 3px #f3c64a,var(--shadow2)}
+.dc.mine.speaking{box-shadow:0 0 0 4px rgba(214,32,47,.3),0 0 0 7px #f3c64a,var(--shadow)}
+
+/* ===== V2 : galerie, dossiers, chronologie ===== */
+.tabs{display:flex;gap:8px;margin:14px 0 6px}
+.tabs button{flex:1;padding:11px 14px;border-radius:14px;background:var(--surf2);font-weight:800;border:2px solid transparent;color:var(--ink)}
+.tabs button.on{background:var(--bleu);color:#fff}
+:root[data-theme="dark"] .tabs button.on{background:#e8eefc;color:#06133a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tabs button.on{background:#e8eefc;color:#06133a}}
+.gh{font-size:1.2rem;margin:22px 0 4px}
+.dgrid{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.dossier{display:flex;gap:14px;align-items:flex-start;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow2);cursor:pointer;transition:transform .15s}
+.dossier:hover{transform:translateY(-2px)}
+.dossier .dico{font-size:2rem;line-height:1}
+.dossier b{display:block;font-family:var(--serif);font-size:1.1rem;line-height:1.2}
+.dossier small{display:block;color:var(--ink2);font-size:.86rem;margin:2px 0 6px}
+.dossier em{font-style:normal;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--rouge)}
+.tl{list-style:none;padding:0 0 0 6px;margin:6px 0;border-left:3px solid var(--line);display:grid;gap:10px}
+.sheet ol.tl{padding-left:6px}
+.tl li{position:relative;padding-left:16px;display:grid;gap:1px}
+.tl li::before{content:"";position:absolute;left:-10px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--rouge);box-shadow:0 0 0 3px var(--surf)}
+.tl b{font-family:var(--serif);font-size:.95rem;color:var(--rouge)}
+.tl span{font-size:.9rem;color:var(--ink)}
+.camps2{display:grid;gap:10px;grid-template-columns:1fr;margin-top:12px}
+@media(min-width:640px){.camps2{grid-template-columns:1fr 1fr}}
+.camps2>div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 14px}
+.sheet .camps2>div,.camps .camps2>div{background:var(--surf2);border:1px solid var(--line)}
+.camps2 h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:6px}
+.camps2 ul{padding-left:18px;display:grid;gap:6px;font-size:.88rem}
+.theme-hero .camps2 ul{color:rgba(255,255,255,.9)}
+.camps{margin:10px 0 0;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.camps summary{cursor:pointer;font-weight:800;font-size:.9rem}
+
+/* ===== V2 : choix du sujet ===== */
+.tp-group{margin-top:10px}
+.tp-group h4{font-family:var(--serif);font-size:1.05rem;margin:12px 0 6px}
+.tp-grid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.tp{position:relative;display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--surf2);border:2px solid transparent;border-radius:14px;padding:10px 12px;color:var(--ink);transition:transform .15s}
+.tp:hover{transform:translateY(-1px)}
+.tp.on{border-color:var(--rouge);background:linear-gradient(135deg,var(--surf2),rgba(214,32,47,.12))}
+.tp-ico{font-size:1.5rem;line-height:1.2}
+.tp-t b{display:block;font-size:.95rem;line-height:1.2}
+.tp-t small{display:block;font-size:.8rem;color:var(--ink2);margin:1px 0 3px}
+.tp-t em{font-style:normal;font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+.tp-n{position:absolute;right:8px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--rouge);color:#fff;font-weight:800;font-size:.8rem;display:grid;place-items:center}
+
+/* ===== V2 : débat façon plateau télé ===== */
+.timebank{margin-top:12px;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow2)}
+.tb-h{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:.82rem;color:var(--ink2);margin-bottom:8px}
+.tb-h b{color:var(--ink);font-size:.95rem}
+.chips2{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.chip2{--c1:#2147a6;--c2:#0b2467;display:flex;gap:9px;align-items:center;background:var(--surf2);border:2px solid transparent;border-radius:14px;padding:7px 10px;transition:transform .15s,border-color .2s,opacity .2s}
+.chip2[role="button"]{cursor:pointer}
+.chip2[role="button"]:hover{transform:translateY(-1px)}
+.chip2 .mono{margin:0;width:38px;height:38px;font-size:.9rem;flex:none}
+.chip2 .ct{min-width:0;flex:1}
+.chip2 b{display:block;font-size:.85rem;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip2 .ct>span{font-family:var(--serif);font-weight:800;font-size:1.15rem;line-height:1.1;display:block}
+.bar2{height:5px;border-radius:9px;background:rgba(127,127,127,.22);margin-top:4px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--c1),var(--c2));transition:width .3s linear}
+.chip2.mine{box-shadow:0 0 0 2px #f3c64a}
+.chip2.live{border-color:var(--rouge);background:linear-gradient(135deg,var(--surf2),rgba(214,32,47,.14))}
+.chip2.live.run{animation:glow 1.4s infinite}
+@keyframes glow{50%{box-shadow:0 0 0 5px rgba(214,32,47,.22)}}
+.chip2.zero{opacity:.5}
+.chip2.zero .ct>span{text-decoration:line-through}
+.relance{margin-top:12px;background:linear-gradient(135deg,#0b2a6f,#12318a);color:#fff;border-radius:16px;padding:12px 16px;font-size:1rem;animation:rise .35s both}
+.relance b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#ffb3ba;margin-bottom:3px}
+.alldone{margin-top:12px;background:#fff3cd;color:#5c4400;border-radius:14px;padding:11px 14px;font-weight:700;font-size:.9rem}
+.alldone[hidden]{display:none}
+.ring{cursor:default}
+.dock.idle .ring .fg{stroke:var(--surf2)}
+.pc2{font-size:.8rem;color:var(--ink2);margin-top:7px;line-height:1.35}
+.pc2 span{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:1px 7px;margin-right:6px;color:#fff}
+.pcy{background:#2fb35a}.pcn{background:#d6202f}
+.dock .row .btn{padding:10px 14px}
+@media(max-width:520px){.dock .row{width:100%}.dock .row .btn{flex:1;padding:10px 8px;font-size:.88rem}}
+
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="flagbar"><i></i><i></i><i></i></div>
+  <div class="hdr-in">
+    <div class="brand" data-act="brand" role="button" tabindex="0"><span class="cocarde"></span>Le Grand Débat</div>
+    <div class="hdr-sp"></div>
+    <div id="hdr-right" class="row" style="gap:8px"></div>
+  </div>
+</header>
+<div id="conn">Connexion perdue… reconnexion en cours</div>
+<main id="app"></main>
+<div id="modal"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const ONLINE_OK = true;
+/* ============ DONNÉES : thèmes, partis, personnalités ============ */
+const THEMES = {
+  nuc: { ico: "⚛️", nom: "Nucléaire & énergie",
+    q: "L’atome doit-il rester la colonne vertébrale énergétique et militaire de la France ?",
+    ctx: "La France tire plus des deux tiers de son électricité du nucléaire, héritage du plan Messmer de 1974. Elle dispose aussi, depuis 1960, d’une force de dissuasion indépendante. Aujourd’hui, le débat oppose relance (EPR2), prolongation du parc existant et sortie progressive.",
+    axes: ["Indépendance énergétique", "Coût et délais des chantiers", "Déchets et sûreté", "Climat", "Dissuasion et souveraineté"],
+    fait: "Le programme Messmer, lancé en mars 1974 après le premier choc pétrolier, a conduit à construire l’essentiel du parc nucléaire actuel en moins de vingt-cinq ans." },
+  alg: { ico: "🌍", nom: "Algérie & mémoire",
+    q: "Comment la France doit-elle regarder son passé algérien et organiser sa relation avec Alger ?",
+    ctx: "La guerre d’Algérie (1954-1962) s’est achevée par les accords d’Évian. L’accord franco-algérien du 27 décembre 1968 fixe un régime particulier de circulation, de séjour et d’emploi des Algériens en France. En octobre 2025, l’Assemblée a adopté, à une voix près, une résolution non contraignante du RN demandant sa dénonciation ; le gouvernement parle plutôt de le renégocier.",
+    axes: ["Mémoire et reconnaissance", "Titres de séjour et immigration", "Diplomatie et intérêts économiques", "Sécurité et coopération antiterroriste", "Droit international"],
+    fait: "Il a fallu attendre la loi de 1999 pour que l’expression « guerre d’Algérie » soit officiellement reconnue : jusque-là, les textes parlaient d’« opérations de maintien de l’ordre »." },
+  imm: { ico: "🛂", nom: "Immigration & nationalité",
+    q: "Immigration et nationalité : faut-il durcir les règles ou mieux intégrer ?",
+    ctx: "Depuis les années 1970, une dizaine de lois ont modifié l’entrée, le séjour et la nationalité (Pasqua, Chevènement, Sarkozy, Darmanin…). Le droit du sol, inscrit dans le Code civil, est au cœur des propositions de plusieurs candidats de 2027, certains voulant le supprimer par référendum.",
+    axes: ["Droit du sol et nationalité", "Quotas et contrôle des frontières", "Intégration ou assimilation", "Métiers en tension et économie", "Constitution et droit européen"],
+    fait: "En 1993, la réforme Méhaignerie a soumis la nationalité des enfants nés en France de parents étrangers à une démarche volontaire ; cette condition a été supprimée en 1998." },
+  ret: { ico: "👴", nom: "Retraites & travail",
+    q: "Retraites : faut-il travailler plus longtemps pour sauver le système ?",
+    ctx: "De la retraite à 60 ans (1982) à l’âge légal de 64 ans (réforme de 2023, aujourd’hui suspendue), l’âge de départ n’a cessé d’être débattu. Les candidats de 2027 s’opposent entre abrogation, maintien, report à 65 ans ou suppression de l’âge légal.",
+    axes: ["Équilibre financier", "Pénibilité et carrières longues", "Justice entre générations", "Répartition ou capitalisation", "Emploi des seniors"],
+    fait: "L’âge légal est passé de 60 ans (1982) à 62 ans (2010) puis 64 ans (2023) ; la durée de cotisation exigée, elle, est montée de 37,5 ans à 43 ans." },
+  eur: { ico: "🇪🇺", nom: "Europe & souveraineté",
+    q: "Europe : faut-il plus de fédéralisme ou plus de souveraineté nationale ?",
+    ctx: "De la « chaise vide » gaulliste (1965) au traité de Maastricht (1992, environ 51 % de oui) et au rejet du traité constitutionnel (2005, 54,7 % de non), la place de la France dans l’Europe est un clivage permanent, qui ne suit pas toujours la ligne droite-gauche.",
+    axes: ["Souveraineté et primauté du droit européen", "Budget et solidarité", "Défense européenne", "Monnaie unique", "Élargissement"],
+    fait: "Le référendum de Maastricht (20 septembre 1992) a été remporté de justesse, avec environ 51 % de oui." },
+  sec: { ico: "⚖️", nom: "Sécurité & justice",
+    q: "Sécurité et justice : où placer le curseur entre fermeté et libertés ?",
+    ctx: "Peine de mort abolie en 1981, police de proximité, peines planchers, état d’urgence, lutte contre le narcotrafic… La droite et la gauche ont tour à tour fait de la sécurité une priorité, avec des visions différentes de la prévention, de la sanction et du rôle du juge.",
+    axes: ["Prévention et éducation", "Sanction et prison", "Rôle de la police", "Libertés individuelles", "Récidive et réinsertion"],
+    fait: "La peine de mort a été abolie par la loi du 9 octobre 1981 ; la dernière exécution datait de septembre 1977." },
+  eco: { ico: "💶", nom: "Économie & fiscalité",
+    q: "Économie : comment financer l’État et partager l’effort ?",
+    ctx: "Nationalisations (1981), rigueur (1983), privatisations, 35 heures (2000), suppression de l’ISF (2018), taxe Zucman… Les débats sur la fiscalité, le déficit et le rôle de l’État traversent toute la Ve République. Le budget 2027 est actuellement discuté au Parlement.",
+    axes: ["Justice fiscale", "Compétitivité et investissement", "Dette et déficit", "Services publics", "Pouvoir d’achat"],
+    fait: "Supprimé en 1986, l’impôt sur la fortune a été rétabli à la fin des années 1980 sous le nom d’ISF, avant d’être remplacé en 2018 par l’impôt sur la fortune immobilière." },
+  def: { ico: "🛡️", nom: "Défense & diplomatie",
+    q: "Défense et diplomatie : indépendance nationale, OTAN ou Europe de la défense ?",
+    ctx: "De Gaulle quitte le commandement intégré de l’OTAN en 1966, Sarkozy y revient en 2009. Chirac refuse la guerre en Irak en 2003. Aujourd’hui, avec la guerre en Ukraine, le débat porte sur l’aide à Kiev, l’armée européenne et la « dissuasion avancée » proposée par Emmanuel Macron en mars 2026.",
+    axes: ["Indépendance nationale", "Rôle de l’OTAN", "Défense européenne", "Ukraine et Russie", "Budget des armées"],
+    fait: "La France est sortie du commandement militaire intégré de l’OTAN en 1966 et y est revenue en 2009, sans jamais quitter l’Alliance atlantique." },
+  soc: { ico: "🕊️", nom: "Laïcité & société",
+    q: "Laïcité et société : où placer la frontière entre liberté et règle commune ?",
+    ctx: "Loi de 1905, loi de 2004 sur les signes religieux à l’école, interdiction de la dissimulation du visage (2010), loi contre les séparatismes (2021)… mais aussi IVG (1975), PACS (1999) et mariage pour tous (2013) : la société française s’est transformée par la loi, souvent dans la controverse.",
+    axes: ["Neutralité de l’État", "Liberté de conscience", "Égalité femmes-hommes", "Nouveaux droits", "École"],
+    fait: "La loi Veil sur l’IVG, adoptée en janvier 1975, a été votée grâce aux voix de la gauche et d’une partie seulement de la majorité de droite de l’époque." },
+  ins: { ico: "🏛️", nom: "Institutions & démocratie",
+    q: "Institutions : faut-il changer la Ve République ?",
+    ctx: "Conçue en 1958 pour un exécutif fort, la Ve République a connu l’élection du président au suffrage universel (1962), le quinquennat (2000), des cohabitations et l’usage répété du 49.3. Certains veulent une VIe République, d’autres plus de proportionnelle ou de référendums.",
+    axes: ["Pouvoirs du président et du Parlement", "Article 49.3", "Proportionnelle", "Référendum d’initiative citoyenne", "Contre-pouvoirs"],
+    fait: "Le référendum de 1962 sur l’élection du président au suffrage universel direct a été approuvé par environ 62 % des votants." }
+};
+
+/* Couleurs et emblèmes stylisés (dessins originaux, pas les logos officiels) */
+const PARTIES = {
+  gaul: { nom: "Famille gaulliste", c1: "#2147a6", c2: "#0b2467", em: "lorraine" },
+  lr:   { nom: "Les Républicains", c1: "#1b5bc4", c2: "#0a2f7a", em: "lr" },
+  udf:  { nom: "Centre · UDF", c1: "#f08a24", c2: "#b4500c", em: "sun" },
+  ps:   { nom: "Parti socialiste", c1: "#e8457e", c2: "#a8174f", em: "rose" },
+  pcf:  { nom: "Parti communiste", c1: "#d4222b", c2: "#8a0f16", em: "star" },
+  lfi:  { nom: "La France insoumise", c1: "#d62f4c", c2: "#8f1230", em: "phi" },
+  rn:   { nom: "Rassemblement national", c1: "#1a3a8a", c2: "#09194a", em: "flame" },
+  fn:   { nom: "Front national", c1: "#27408f", c2: "#0c1a4d", em: "flame" },
+  ren:  { nom: "Renaissance", c1: "#4a7be0", c2: "#1f3f9c", em: "arrow" },
+  hor:  { nom: "Horizons", c1: "#1c93c9", c2: "#0b5a85", em: "horizon" },
+  eco:  { nom: "Les Écologistes", c1: "#33a853", c2: "#176b32", em: "leaf" },
+  pp:   { nom: "Place publique", c1: "#7a49c4", c2: "#47248a", em: "pp" },
+  rec:  { nom: "Reconquête", c1: "#16295a", c2: "#070f2c", em: "shield" },
+  fh:   { nom: "La France humaniste", c1: "#139287", c2: "#0a5a53", em: "laurel" }
+};
+
+/* era : "a" = aujourd’hui, "h" = histoire. s = positions documentées par thème : [idée à défendre, explication] */
+const CANDS = [
+/* ================= HISTOIRE ================= */
+{ id: "degaulle", nom: "Charles de Gaulle", role: "Président de la République", an: "1959-1969", era: "h", pt: "gaul", pl: "UNR · gaullisme", tag: "Le Général",
+  bio: "Fondateur de la Ve République. Il veut une France indépendante, qui parle d’égal à égal avec les blocs.",
+  s: {
+    nuc: ["Doter la France de la force de frappe", "Il lance la dissuasion nucléaire indépendante : premier essai en 1960 (Gerboise bleue), puis forces aériennes et sous-marines. Pour lui, un pays qui confie sa défense à un autre n’est plus tout à fait souverain."],
+    alg: ["Mettre fin à la guerre d’Algérie", "Il négocie les accords d’Évian (mars 1962), approuvés par référendum le 8 avril 1962 par plus de 90 % de oui. Il choisit l’indépendance de l’Algérie, contre une partie de son propre camp (putsch d’Alger, OAS)."],
+    eur: ["L’Europe des États, pas la supranationalité", "Il défend la coopération entre nations (plan Fouchet), signe le traité de l’Élysée avec l’Allemagne (1963), oppose son veto à l’entrée du Royaume-Uni et pratique la « chaise vide » en 1965 pour défendre le vote à l’unanimité."],
+    def: ["Sortir du commandement intégré de l’OTAN", "En 1966, il retire la France du commandement militaire intégré de l’Alliance atlantique, sans quitter l’Alliance, et fait partir les bases américaines. Il dénonce aussi la guerre du Vietnam dans son discours de Phnom Penh."],
+    ins: ["Élire le président au suffrage universel", "Par référendum en octobre 1962, il fait adopter l’élection du président au suffrage universel direct, contre la plupart des partis : un chef de l’État arbitre, légitimé directement par le peuple."],
+    eco: ["La participation des salariés", "Il défend la « participation » des salariés aux résultats de l’entreprise (ordonnance de 1967), comme troisième voie entre capitalisme et communisme."]
+  } },
+{ id: "pompidou", nom: "Georges Pompidou", role: "Président de la République", an: "1969-1974", era: "h", pt: "gaul", pl: "UDR · gaullisme", tag: "L’industriel",
+  bio: "Ancien Premier ministre du Général, il modernise la France des Trente Glorieuses : industrie, autoroutes, nucléaire.",
+  s: {
+    nuc: ["Passer au nucléaire civil à grande échelle", "Il abandonne la filière française graphite-gaz au profit des réacteurs à eau pressurisée. Après le choc pétrolier de 1973, son gouvernement lance en mars 1974 le plan Messmer, grand programme de centrales."],
+    eur: ["Élargir l’Europe au Royaume-Uni", "Il lève le veto gaulliste : l’adhésion britannique est approuvée par référendum en avril 1972 (environ 68 % de oui), et la CEE passe de six à neuf membres en 1973."],
+    eco: ["Industrialiser la France", "Il mène une politique volontariste de grands projets : Concorde, autoroutes, aéroport de Roissy, essor de l’industrie. Il veut une France puissance industrielle de premier rang."],
+    imm: ["Les circulaires Marcellin-Fontanet", "En 1972, des circulaires subordonnent la carte de séjour à un contrat de travail et à un logement décent, ce qui rend irrégulière la situation de nombreux travailleurs étrangers déjà installés."]
+  } },
+{ id: "giscard", nom: "Valéry Giscard d’Estaing", role: "Président de la République", an: "1974-1981", era: "h", pt: "udf", pl: "Républicains indépendants · UDF", tag: "Le modernisateur",
+  bio: "Jeune, libéral, européen : il veut « changer la France » en douceur et moderniser la société.",
+  s: {
+    soc: ["Majorité à 18 ans, IVG, divorce", "Sous sa présidence : majorité civile à 18 ans (1974), loi Veil sur l’IVG (1975), divorce par consentement mutuel (1975). Il vise une « société libérale avancée »."],
+    nuc: ["Accélérer le programme nucléaire", "Il poursuit et amplifie le plan Messmer, après les chocs pétroliers de 1973 et 1979, pour réduire la dépendance de la France au pétrole importé."],
+    imm: ["Suspendre l’immigration de travail", "En juillet 1974, il suspend l’immigration de travailleurs, puis organise le regroupement familial (1976) et tente d’encourager le retour des immigrés (aide au retour, 1977)."],
+    eur: ["Relancer l’Europe avec l’Allemagne", "Avec Helmut Schmidt, il crée le Conseil européen (1974) et le Système monétaire européen (1979) ; le Parlement européen est élu pour la première fois au suffrage universel direct en 1979."],
+    ins: ["Ouvrir la saisine du Conseil constitutionnel", "En 1974, il permet à 60 députés ou 60 sénateurs de saisir le Conseil constitutionnel : l’opposition peut désormais contester une loi."],
+    eco: ["La rigueur contre l’inflation (plan Barre)", "En 1976, il nomme Raymond Barre à Matignon, qui lance un plan de lutte contre l’inflation : rigueur budgétaire, blocage temporaire des prix, soutien à la concurrence."]
+  } },
+{ id: "mitterrand", nom: "François Mitterrand", role: "Président de la République", an: "1981-1995", era: "h", pt: "ps", pl: "Parti socialiste", tag: "Le Sphinx",
+  bio: "Le plus long mandat de la Ve République (14 ans). Opposant au « coup d’État permanent », devenu maître des institutions.",
+  s: {
+    sec: ["Abolir la peine de mort", "Avec Robert Badinter, il fait voter l’abolition (loi du 9 octobre 1981), alors qu’une majorité de Français y était encore favorable."],
+    ret: ["La retraite à 60 ans", "L’ordonnance de mars 1982 fixe l’âge de la retraite à 60 ans pour une carrière complète (37,5 ans de cotisation). C’était l’une des « 110 propositions » de 1981."],
+    eco: ["Nationaliser, puis tourner vers la rigueur", "En 1981-82, nationalisations de grands groupes industriels et de banques. Face à la crise du franc, il opère en 1983 le « tournant de la rigueur » et choisit de rester dans le système monétaire européen."],
+    def: ["Soutenir les Euromissiles face à l’URSS", "Le 20 janvier 1983, devant le Bundestag, il soutient le déploiement des missiles américains en Allemagne face aux SS-20 soviétiques, en dénonçant le pacifisme qui laisserait l’Est s’armer seul."],
+    eur: ["Maastricht et la monnaie unique", "Il porte avec Helmut Kohl le traité de Maastricht et l’euro, ratifiés par référendum : environ 51 % de oui en septembre 1992."],
+    imm: ["Régulariser et intégrer", "En 1981-82, l’État régularise environ 130 000 sans-papiers. Il promet aussi le droit de vote des étrangers aux élections locales (proposition 80 de 1981), sans jamais le faire aboutir."],
+    ins: ["Gouverner avec les institutions… et cohabiter", "Il avait dénoncé le « coup d’État permanent » (1964) ; élu, il gouverne avec les institutions de la Ve et pratique deux cohabitations (1986 et 1993)."],
+    nuc: ["Abandonner Plogoff, garder la dissuasion", "En 1981, il renonce au projet de centrale de Plogoff (Finistère) face à l’opposition locale, mais maintient le programme électronucléaire engagé et la dissuasion nucléaire."]
+  } },
+{ id: "chirac", nom: "Jacques Chirac", role: "Président de la République", an: "1995-2007", era: "h", pt: "gaul", pl: "RPR · UMP", tag: "Le bon vivant",
+  bio: "Douze ans à l’Élysée, de la « fracture sociale » au refus de la guerre en Irak.",
+  s: {
+    def: ["Dire non à la guerre en Irak", "En février-mars 2003, la France, portée à l’ONU par Dominique de Villepin, refuse de soutenir l’intervention américaine en Irak sans mandat du Conseil de sécurité."],
+    alg: ["Revenir sur la « colonisation positive »", "En 2005, une loi évoquait le « rôle positif » de la présence française outre-mer. Après la polémique, Chirac fait supprimer ce passage en janvier 2006. En 2003, il avait proposé à Alger un traité d’amitié, jamais signé."],
+    soc: ["Interdire les signes religieux ostensibles à l’école", "Après la commission Stasi, la loi du 15 mars 2004 interdit les signes manifestant ostensiblement une appartenance religieuse dans les écoles, collèges et lycées publics."],
+    ins: ["Le quinquennat", "Avec Lionel Jospin, il fait adopter par référendum (24 septembre 2000) le passage du septennat au quinquennat, avec une faible participation (environ 30 %)."],
+    eur: ["Soumettre la Constitution européenne aux Français", "Il organise le référendum de mai 2005 sur le traité constitutionnel européen : le « non » l’emporte avec 54,7 %."],
+    nuc: ["Dernière série d’essais, puis arrêt définitif", "En 1995-96, il reprend une série d’essais nucléaires à Mururoa, puis annonce l’arrêt définitif et signe le traité d’interdiction complète des essais."],
+    eco: ["Privatiser et supprimer l’impôt sur la fortune", "Premier ministre de cohabitation (1986-1988), il lance une vaste vague de privatisations et supprime l’impôt sur les grandes fortunes."],
+    ret: ["La réforme Fillon de 2003", "Son gouvernement aligne la durée de cotisation des fonctionnaires sur celle du privé (40 ans) et prévoit son allongement progressif avec l’espérance de vie."]
+  } },
+{ id: "sarkozy", nom: "Nicolas Sarkozy", role: "Président de la République", an: "2007-2012", era: "h", pt: "lr", pl: "UMP · Les Républicains", tag: "L’hyperprésident",
+  bio: "Hyperactif et volontariste : la « rupture » et le slogan « travailler plus pour gagner plus ».",
+  s: {
+    ret: ["La retraite à 62 ans", "En 2010, malgré d’importantes manifestations, il fait voter le report de l’âge légal de 60 à 62 ans (et de 65 à 67 ans pour le taux plein)."],
+    soc: ["Interdire la dissimulation du visage", "La loi d’octobre 2010 interdit de se couvrir le visage dans l’espace public (burqa, niqab). La Cour européenne des droits de l’homme l’a validée en 2014."],
+    def: ["Réintégrer le commandement de l’OTAN", "En 2009, il ramène la France dans le commandement militaire intégré, que de Gaulle avait quitté en 1966, en conservant l’indépendance de la dissuasion nucléaire."],
+    eco: ["Travailler plus pour gagner plus", "La loi TEPA (août 2007) défiscalise les heures supplémentaires et plafonne les impôts avec un bouclier fiscal à 50 %."],
+    alg: ["Reconnaître l’injustice coloniale, refuser la repentance", "À Constantine (décembre 2007), il juge le système colonial injuste, mais il refuse les excuses officielles et la « repentance »."],
+    eur: ["Le traité de Lisbonne par la voie parlementaire", "Après le « non » de 2005, il fait ratifier le traité de Lisbonne par le Parlement réuni en Congrès (février 2008), sans nouveau référendum."],
+    sec: ["Les peines planchers", "La loi d’août 2007 instaure des peines minimales pour les récidivistes. Elles seront supprimées en 2014."],
+    imm: ["L’immigration choisie", "La loi de juillet 2006, portée par Nicolas Sarkozy alors ministre de l’Intérieur, durcit le regroupement familial et crée la carte « compétences et talents »."],
+    ins: ["La réforme constitutionnelle de 2008", "Elle permet au président de s’exprimer devant le Parlement à Versailles, limite à deux les mandats présidentiels consécutifs et crée la question prioritaire de constitutionnalité."]
+  } },
+{ id: "hollande", nom: "François Hollande", role: "Président de la République", an: "2012-2017", era: "h", pt: "ps", pl: "Parti socialiste", tag: "Le président normal",
+  bio: "Mariage pour tous, accord de Paris sur le climat… mais un quinquennat marqué par les attentats de 2015.",
+  s: {
+    soc: ["Ouvrir le mariage aux couples de même sexe", "La loi Taubira du 17 mai 2013 ouvre le mariage et l’adoption aux couples de même sexe, après un débat très vif dans la société."],
+    nuc: ["Ramener le nucléaire à 50 % de l’électricité", "Engagement de 2012, repris dans la loi de transition énergétique de 2015 : plafonner la part du nucléaire à 50 % (objectif repoussé ensuite) et fermer Fessenheim, arrêtée en 2020."],
+    alg: ["Reconnaître la répression du 17 octobre 1961", "En 2012, il reconnaît la sanglante répression d’octobre 1961 à Paris contre des Algériens et, à Alger en décembre 2012, évoque un système colonial « injuste et brutal »."],
+    eco: ["Taxer à 75 % les très hauts revenus", "Promise en 2012, la contribution exceptionnelle de 75 % sur la part des revenus d’activité au-delà d’un million d’euros s’applique en 2013-2014, avant d’être abandonnée."],
+    ret: ["La retraite à 60 ans pour les carrières longues", "En 2012, un décret permet de partir à 60 ans à ceux qui ont commencé à travailler très tôt. Mais la durée de cotisation s’allonge peu à peu (réforme de 2014)."],
+    sec: ["La déchéance de nationalité pour terroristes", "Après les attentats du 13 novembre 2015, il propose d’inscrire l’état d’urgence dans la Constitution et la déchéance de nationalité pour les binationaux condamnés pour terrorisme. Le projet est abandonné en mars 2016."],
+    eur: ["Renégocier le pacte budgétaire européen", "Candidat, il promet de renégocier le traité budgétaire. Il obtient en juin 2012 un « pacte pour la croissance et l’emploi » de 120 milliards d’euros."],
+    def: ["Intervenir au Mali (opération Serval)", "En janvier 2013, il lance l’opération Serval pour stopper l’avancée de groupes djihadistes vers Bamako."]
+  } },
+{ id: "rocard", nom: "Michel Rocard", role: "Premier ministre", an: "1988-1991", era: "h", pt: "ps", pl: "Parti socialiste", tag: "La deuxième gauche",
+  bio: "Réformiste et pragmatique, il incarne une gauche de compromis, attachée à la négociation.",
+  s: {
+    eco: ["Créer le RMI et la CSG", "En 1988, il fait voter le revenu minimum d’insertion, dernier filet de sécurité pour les plus précaires. En 1990, la CSG élargit le financement de la protection sociale à l’ensemble des revenus."],
+    ret: ["Le Livre blanc sur les retraites", "En 1991, il publie un Livre blanc qui alerte sur le financement des retraites et ouvre le débat sur l’allongement de la durée de cotisation."],
+    imm: ["Prendre « sa part » de la misère du monde", "En 1989, il affirme que la France ne peut pas accueillir toute la misère du monde, mais qu’elle doit en prendre fidèlement sa part."],
+    ins: ["Les accords de Matignon sur la Nouvelle-Calédonie", "En 1988, après les violences en Nouvelle-Calédonie, il fait dialoguer indépendantistes et loyalistes : les accords de Matignon prévoient un référendum d’autodétermination dix ans plus tard."]
+  } },
+{ id: "jospin", nom: "Lionel Jospin", role: "Premier ministre", an: "1997-2002", era: "h", pt: "ps", pl: "Parti socialiste", tag: "La gauche plurielle",
+  bio: "Premier ministre de cohabitation sous Jacques Chirac, éliminé dès le premier tour de la présidentielle de 2002.",
+  s: {
+    eco: ["Les 35 heures", "Les lois Aubry (1998 et 2000) abaissent la durée légale du travail de 39 à 35 heures par semaine, avec l’objectif de créer des emplois."],
+    soc: ["Le PACS", "La loi de novembre 1999 crée le pacte civil de solidarité, ouvert aux couples de même sexe comme de sexe différent, après un débat parlementaire houleux."],
+    nuc: ["Arrêter Superphénix", "En 1997, son gouvernement décide l’arrêt définitif du surgénérateur Superphénix de Creys-Malville, conformément à l’accord de gouvernement avec les Verts."],
+    imm: ["Régulariser et réformer le droit des étrangers", "En 1997-98, environ 80 000 sans-papiers sont régularisés ; la loi Chevènement de 1998 refonde le droit d’entrée et de séjour des étrangers."],
+    sec: ["Faire de la sécurité une priorité de gauche", "Au colloque de Villepinte (octobre 1997), son gouvernement place la sécurité au rang de priorité : police de proximité, contrats locaux de sécurité."],
+    alg: ["Reconnaître la « guerre d’Algérie »", "La loi de 1999, adoptée sous son gouvernement, remplace enfin l’expression « opérations de maintien de l’ordre en Afrique du Nord » par « guerre d’Algérie »."],
+    ins: ["Le quinquennat et l’inversion du calendrier", "Avec Jacques Chirac, il fait adopter le quinquennat (2000), puis place les législatives juste après la présidentielle (2001) pour donner une majorité au président élu."],
+    eur: ["Entrer dans l’euro, avec un volet emploi", "En 1997, au sommet d’Amsterdam, il obtient que le pacte de stabilité soit complété par une résolution sur la croissance et l’emploi. La France entre dans l’euro en 1999."]
+  } },
+{ id: "veil", nom: "Simone Veil", role: "Ministre de la Santé", an: "1974-1979", era: "h", pt: "udf", pl: "Centre · UDF", tag: "La loi Veil",
+  bio: "Rescapée d’Auschwitz, ministre de la Santé de Giscard, première présidente du Parlement européen élu.",
+  s: {
+    soc: ["La légalisation de l’IVG", "Le 26 novembre 1974, elle défend devant l’Assemblée le projet de loi sur l’interruption volontaire de grossesse, adopté en janvier 1975 (loi du 17 janvier 1975) grâce aux voix de la gauche et d’une partie de la droite."],
+    eur: ["Présider le premier Parlement européen élu", "Elle devient en 1979 la première présidente du Parlement européen élu au suffrage universel direct, fonction qu’elle exerce jusqu’en 1982."]
+  } },
+{ id: "badinter", nom: "Robert Badinter", role: "Garde des Sceaux", an: "1981-1986", era: "h", pt: "ps", pl: "Parti socialiste", tag: "L’abolitionniste",
+  bio: "Avocat, ministre de la Justice de Mitterrand, puis président du Conseil constitutionnel (1986-1995).",
+  s: {
+    sec: ["Abolir la peine de mort", "Le 17 septembre 1981, il plaide devant l’Assemblée pour l’abolition : la justice d’un État de droit ne doit pas donner la mort. La loi est promulguée le 9 octobre 1981."],
+    soc: ["Dépénaliser l’homosexualité", "En 1982, il fait voter la fin de la discrimination pénale en alignant l’âge de la majorité sexuelle, quelle que soit l’orientation."],
+    ins: ["Un Conseil constitutionnel gardien des libertés", "Président de 1986 à 1995, il fait de l’institution un véritable juge des droits fondamentaux, capable de censurer la loi."]
+  } },
+{ id: "debre", nom: "Michel Debré", role: "Premier ministre", an: "1959-1962", era: "h", pt: "gaul", pl: "UNR · gaullisme", tag: "Le père de la Constitution",
+  bio: "Premier chef de gouvernement de la Ve République, il en a rédigé la Constitution avec le général de Gaulle.",
+  s: {
+    ins: ["Écrire la Constitution de 1958", "Garde des Sceaux, il pilote la rédaction de la Constitution de la Ve République : un exécutif fort et un parlementarisme « rationalisé »."],
+    soc: ["La loi Debré sur l’école privée", "En 1959, elle permet à l’État de passer des contrats avec les établissements privés, qui doivent en échange respecter les programmes et accueillir tous les élèves."],
+    alg: ["Défendre l’Algérie française, mais servir le Général", "Partisan de l’Algérie française, il reste pourtant Premier ministre pendant l’autodétermination (1959) et les négociations, jusqu’à avril 1962."]
+  } },
+{ id: "marchais", nom: "Georges Marchais", role: "Secrétaire général du PCF", an: "1972-1994", era: "h", pt: "pcf", pl: "Parti communiste", tag: "Le tribun",
+  bio: "Chef du PCF pendant plus de vingt ans, candidat à la présidentielle de 1981.",
+  s: {
+    ret: ["La retraite à 60 ans", "Le Programme commun de la gauche (1972), dont le PCF est signataire, inscrit la retraite à 60 ans. Marchais en fait un axe central de sa campagne."],
+    nuc: ["Le nucléaire civil et militaire", "Le PCF défend la dissuasion et le programme nucléaire d’EDF, présentés comme des atouts d’indépendance et d’emploi."],
+    eco: ["Nationaliser les grands groupes", "Le PCF veut nationaliser les grands groupes industriels et bancaires (Programme commun, 1972), une mesure en partie appliquée en 1981-82."],
+    eur: ["Produire français", "Le PCF de Marchais critique une Europe supranationale jugée au service du patronat et défend un « produisons français » dans les années 1980."],
+    imm: ["Arrêter l’immigration nouvelle", "En 1980-81, le PCF réclame l’arrêt de l’immigration de travail pour protéger l’emploi et le logement, une position qui contraste avec celle de la gauche actuelle."]
+  } },
+{ id: "jmlepen", nom: "Jean-Marie Le Pen", role: "Président du Front national", an: "1972-2011", era: "h", pt: "fn", pl: "Front national", tag: "Le Menhir",
+  bio: "Fondateur du Front national, qualifié au second tour de la présidentielle de 2002.",
+  s: {
+    imm: ["La préférence nationale", "Dans les années 1980, le FN fait de la « préférence nationale » son idée centrale : priorité aux Français pour l’emploi, le logement et certaines aides."],
+    sec: ["Rétablir la peine de mort", "Il réclame le rétablissement de la peine de mort, abolie en 1981, et un durcissement général de la politique pénale."],
+    alg: ["Défendre l’Algérie française", "Député en 1956, il part en 1957 comme lieutenant en Algérie. Il restera un défenseur de l’Algérie française."],
+    eur: ["Dire non à Maastricht", "Le FN appelle à voter « non » au référendum de 1992 sur le traité de Maastricht et prône une Europe des nations."],
+    ins: ["Le scrutin proportionnel", "Le FN réclame le scrutin proportionnel. En 1986, grâce à la proportionnelle instaurée par François Mitterrand, il envoie 35 députés à l’Assemblée."]
+  } },
+{ id: "balladur", nom: "Édouard Balladur", role: "Premier ministre", an: "1993-1995", era: "h", pt: "gaul", pl: "RPR", tag: "Le Premier ministre de la cohabitation",
+  bio: "Ministre de l’Économie (1986-1988), puis Premier ministre de cohabitation sous François Mitterrand.",
+  s: {
+    ret: ["La réforme des retraites du privé", "En 1993, il porte de 37,5 à 40 ans la durée de cotisation du régime général et calcule la pension sur les 25 meilleures années."],
+    eco: ["Privatiser", "Sous ses gouvernements (1986-1988, 1993-1995), de grandes entreprises publiques sont privatisées, dont BNP, Rhône-Poulenc et Elf."],
+    imm: ["Réformer le Code de la nationalité", "La loi de 1993 soumet la nationalité des enfants nés en France de parents étrangers à une démarche volontaire, condition supprimée en 1998."]
+  } },
+{ id: "seguin", nom: "Philippe Séguin", role: "Président de l’Assemblée nationale", an: "1993-1997", era: "h", pt: "gaul", pl: "RPR", tag: "Le gaulliste social",
+  bio: "Grand orateur, gaulliste social et souverainiste, l’un des principaux opposants à Maastricht.",
+  s: {
+    eur: ["Dire non à Maastricht", "Le 5 mai 1992, il prononce à l’Assemblée un grand discours contre le traité de Maastricht, au nom de la souveraineté populaire, et fait campagne pour le « non »."],
+    ins: ["La session parlementaire unique", "Président de l’Assemblée, il porte la révision de 1995 qui instaure une session ordinaire unique, pour renforcer le travail du Parlement."]
+  } },
+{ id: "pasqua", nom: "Charles Pasqua", role: "Ministre de l’Intérieur", an: "1986-1988 · 1993-1995", era: "h", pt: "gaul", pl: "RPR", tag: "Le Corse de la Ve",
+  bio: "Gaulliste de combat, deux fois ministre de l’Intérieur, associé à une politique ferme sur l’immigration.",
+  s: {
+    imm: ["« Immigration zéro »", "Il fait voter les lois Pasqua de 1986 et 1993, qui durcissent les conditions d’entrée et de séjour des étrangers, au nom d’une « immigration zéro »."],
+    sec: ["« Terroriser les terroristes »", "Face aux attentats de 1986, il durcit la législation antiterroriste (loi du 9 septembre 1986) et affiche sa volonté de « terroriser les terroristes »."],
+    eur: ["Non à Maastricht, pour l’Europe des patries", "En 1992, il fait campagne avec Philippe Séguin contre le traité de Maastricht, au nom de la souveraineté nationale."]
+  } },
+{ id: "chevenement", nom: "Jean-Pierre Chevènement", role: "Ministre de la Défense", an: "1988-1991", era: "h", pt: "ps", pl: "PS puis MDC", tag: "Le républicain",
+  bio: "Ministre de l’Éducation, de la Défense puis de l’Intérieur, candidat souverainiste en 2002.",
+  s: {
+    def: ["Dire non à la guerre du Golfe", "Ministre de la Défense, il démissionne en janvier 1991 pour protester contre l’engagement français dans la guerre du Golfe."],
+    eur: ["Non à Maastricht, pour la souveraineté", "En 1992, il fait campagne pour le « non » au traité de Maastricht, au nom de la souveraineté nationale."],
+    soc: ["80 % d’une classe d’âge au niveau du bac", "Ministre de l’Éducation (1984-1986), il fixe l’objectif de conduire 80 % d’une classe d’âge au niveau du baccalauréat et crée le bac professionnel."],
+    imm: ["La loi Chevènement sur le séjour des étrangers", "La loi de 1998 refonde le droit d’entrée et de séjour des étrangers : elle crée l’asile territorial et un titre de séjour pour les liens personnels et familiaux."]
+  } },
+{ id: "mauroy", nom: "Pierre Mauroy", role: "Premier ministre", an: "1981-1984", era: "h", pt: "ps", pl: "Parti socialiste", tag: "La gauche de rupture",
+  bio: "Maire de Lille, premier Premier ministre de François Mitterrand en 1981.",
+  s: {
+    eco: ["Cinq semaines de congés et 39 heures", "Dès 1982, les congés payés passent à cinq semaines et la durée légale du travail de 40 à 39 heures, sans baisse de salaire."],
+    ret: ["La retraite à 60 ans", "Premier ministre, il met en œuvre dès 1982 la retraite à 60 ans à taux plein, pour 37,5 années de cotisation."],
+    ins: ["La décentralisation", "Avec Gaston Defferre, les lois de 1982-1983 transfèrent de larges compétences de l’État aux communes, départements et régions, et suppriment la tutelle a priori du préfet."]
+  } },
+
+/* ================= AUJOURD’HUI ================= */
+{ id: "macron", nom: "Emmanuel Macron", role: "Président de la République", an: "depuis 2017", era: "a", pt: "ren", pl: "Renaissance", tag: "Le « en même temps »",
+  bio: "Réélu en 2022, il ne peut pas se représenter en 2027. Réformes libérales, Europe, souveraineté.",
+  s: {
+    ret: ["La retraite à 64 ans", "La réforme de 2023 relève progressivement l’âge légal de 62 à 64 ans. Adoptée avec l’article 49.3 après des mois de mobilisation, elle est aujourd’hui suspendue."],
+    nuc: ["Relancer le nucléaire : six EPR2", "À Belfort, en février 2022, il annonce six nouveaux réacteurs EPR2 (huit en option), la prolongation des centrales existantes et l’arrêt des fermetures prévues."],
+    def: ["La dissuasion « avancée » européenne", "Le 2 mars 2026 à l’Île Longue, il propose d’associer des partenaires européens à la dissuasion française, tout en gardant la décision exclusivement française, et annonce une hausse du nombre de têtes sans en donner le chiffre."],
+    alg: ["« Un crime contre l’humanité »", "En 2017, à Alger, il qualifie la colonisation de crime contre l’humanité. Il reconnaît ensuite la responsabilité de l’État dans la mort de Maurice Audin (2018) et commande le rapport Stora (2021) sur la mémoire de la guerre d’Algérie."],
+    eur: ["Une Europe souveraine", "Dans ses discours de la Sorbonne (2017, puis 2024), il plaide pour une Europe puissante, avec une défense plus intégrée, une préférence européenne et un budget propre à la zone euro."],
+    eco: ["Supprimer l’ISF, instaurer la flat tax", "En 2018, l’ISF est remplacé par l’impôt sur la fortune immobilière et un prélèvement forfaitaire de 30 % sur les revenus du capital, pour encourager l’investissement."],
+    imm: ["La loi immigration de 2024", "Promulguée en janvier 2024 : conditions de séjour et d’accès aux prestations durcies, régularisation possible dans les métiers en tension. Plusieurs articles sont censurés par le Conseil constitutionnel."],
+    soc: ["La loi contre les séparatismes", "La loi d’août 2021 « confortant le respect des principes de la République » renforce le contrôle des associations et lutte contre les discours de haine en ligne."],
+    ins: ["Dissoudre pour trancher", "Après les européennes de 2024, il dissout l’Assemblée nationale (9 juin 2024). Les législatives donnent une assemblée sans majorité."]
+  } },
+{ id: "lecornu", nom: "Sébastien Lecornu", role: "Premier ministre", an: "depuis 2025", era: "a", pt: "ren", pl: "Renaissance", tag: "Le Premier ministre du compromis",
+  bio: "Ancien ministre des Armées (2022-2025), issu de la droite, nommé à Matignon en septembre 2025.",
+  s: {
+    alg: ["Renégocier l’accord de 1968", "Il juge l’accord franco-algérien de 1968 « d’une autre époque » et appelle à le renégocier, tout en rappelant que la politique étrangère relève du président."],
+    def: ["Moderniser les armées", "Ministre des Armées de 2022 à 2025, il porte la loi de programmation militaire 2024-2030, dotée de 413 milliards d’euros."],
+    ret: ["Suspendre la réforme des retraites", "En octobre 2025, il annonce la suspension de la réforme de 2023 pour obtenir la non-censure des socialistes, le temps de nouvelles discussions."],
+    ins: ["Gouverner sans le 49.3", "Nommé en septembre 2025, il s’engage à renoncer à l’article 49.3 et à chercher des compromis, texte par texte, avec les groupes de l’Assemblée."],
+    eco: ["Justice fiscale, sans taxer le patrimoine professionnel", "Prêt à discuter de justice fiscale, il demande de faire attention au patrimoine professionnel, qui permet de créer des emplois, et annonce un budget 2027 sans hausse d’impôts par rapport à 2026."]
+  } },
+{ id: "mlepen", nom: "Marine Le Pen", role: "Présidente du groupe RN à l’Assemblée", an: "candidate 2027", era: "a", pt: "rn", pl: "Rassemblement national", tag: "La candidate de la quatrième fois",
+  bio: "Candidate pour la quatrième fois à l’élection présidentielle. Souveraineté, immigration, pouvoir d’achat.",
+  s: {
+    imm: ["Supprimer le droit du sol, priorité nationale", "Elle propose, par référendum, la fin de l’acquisition automatique de la nationalité par la naissance en France, ainsi que la « priorité nationale » pour l’emploi, le logement et certaines aides."],
+    nuc: ["Un parc nucléaire massivement développé", "Le RN veut relancer la filière nucléaire (de nouveaux EPR), arrêter les projets éoliens et revenir sur le marché européen de l’électricité."],
+    ret: ["Revenir sur le report à 64 ans", "Le RN veut abroger la réforme de 2023 et revenir à un âge de départ de 62 ans."],
+    alg: ["Dénoncer l’accord franco-algérien de 1968", "Le RN a fait adopter en octobre 2025, à une voix près, une résolution non contraignante demandant la dénonciation de l’accord de 1968, qui fixe un régime particulier de séjour pour les Algériens."],
+    eur: ["La primauté du droit national", "Elle veut remettre en cause la primauté du droit européen sur le droit national et réduire la contribution française au budget de l’Union."],
+    def: ["Une défense nationale, pas d’armée européenne", "Le RN refuse une armée européenne. Marine Le Pen a aussi déclaré en 2026 qu’elle arrêterait, si elle était élue, le financement de l’aide à l’Ukraine."],
+    eco: ["Un impôt sur la fortune financière, pas la taxe Zucman", "Le RN s’oppose à la taxe Zucman, qu’il juge dangereuse pour les entreprises, et défend à la place un impôt sur la fortune financière, qui épargnerait le patrimoine productif."],
+    ins: ["La proportionnelle et le RIC", "Marine Le Pen défend de longue date le scrutin proportionnel aux législatives et le référendum d’initiative citoyenne."],
+    soc: ["Interdire le voile islamique dans l’espace public", "Elle propose d’interdire par la loi le port du voile islamique dans l’espace public, mesure que ses adversaires jugent contraire à la liberté de conscience."]
+  } },
+{ id: "bardella", nom: "Jordan Bardella", role: "Président du RN", an: "depuis 2022", era: "a", pt: "rn", pl: "Rassemblement national", tag: "Le plus jeune président de parti",
+  bio: "Eurodéputé, président du Rassemblement national depuis 2022, héritier désigné de Marine Le Pen.",
+  s: {
+    imm: ["Un référendum sur l’immigration", "Il veut soumettre aux Français, par référendum, des mesures comme la fin du droit du sol et des quotas annuels d’immigration."],
+    ret: ["Abroger la réforme et revenir à 62 ans", "Jordan Bardella et le RN prônent l’abrogation pure et simple de la réforme de 2023 et le retour de l’âge légal à 62 ans."],
+    nuc: ["Un parc nucléaire massivement développé", "Il défend la relance de la filière nucléaire et l’arrêt des projets éoliens et solaires, selon la ligne du RN."],
+    eco: ["Baisser la TVA sur l’énergie", "Le programme du RN de 2024, qu’il portait, prévoyait de baisser à 5,5 % la TVA sur l’énergie pour soutenir le pouvoir d’achat."]
+  } },
+{ id: "melenchon", nom: "Jean-Luc Mélenchon", role: "Fondateur de La France insoumise", an: "candidat 2027", era: "a", pt: "lfi", pl: "La France insoumise", tag: "Le tribun insoumis",
+  bio: "Candidat en 2012, 2017, 2022 et 2027. Ancien ministre (2000-2002) et sénateur.",
+  s: {
+    ins: ["Une VIe République", "LFI veut une assemblée constituante, la suppression du 49.3 et de tous les mécanismes qui permettent à l’exécutif de passer outre le Parlement, et le référendum d’initiative citoyenne."],
+    nuc: ["Sortir du nucléaire", "LFI propose un mix électrique 100 % renouvelable à long terme, l’abandon des projets d’EPR et une sobriété énergétique forte."],
+    ret: ["La retraite à 60 ans", "Abrogation de la réforme de 2023 et retour à la retraite à 60 ans."],
+    eco: ["Rétablir l’ISF et la taxe Zucman", "LFI veut rétablir l’ISF supprimé en 2018 et instaurer la taxe Zucman, un impôt plancher de 2 % sur les patrimoines de plus de 100 millions d’euros."],
+    def: ["Le non-alignement de la France", "Il défend la sortie du commandement intégré de l’OTAN et le non-alignement, et refuse une armée européenne."],
+    imm: ["Garantir le droit du sol, régulariser", "LFI veut maintenir le droit du sol, régulariser les sans-papiers installés en France et ouvrir le droit de vote des étrangers aux élections locales."],
+    alg: ["Refuser la dénonciation de l’accord de 1968", "La gauche vote contre la résolution du RN : elle rappelle que l’accord prolonge les accords d’Évian et qu’une dénonciation unilatérale compliquerait encore la relation avec Alger."],
+    eur: ["Désobéir aux traités européens", "LFI propose de renégocier les traités européens (plan A) et, en cas de refus, de ne plus appliquer les règles qui bloquent sa politique (plan B)."]
+  } },
+{ id: "glucksmann", nom: "Raphaël Glucksmann", role: "Eurodéputé", an: "candidat 2027", era: "a", pt: "pp", pl: "Place publique · PS", tag: "Le candidat de la gauche sociale-démocrate",
+  bio: "Essayiste et eurodéputé, désigné candidat de la gauche sociale-démocrate le 11 octobre 2026 avec 66 % des voix à la primaire.",
+  s: {
+    eur: ["Un saut européen", "Il se veut le plus pro-européen des candidats : plus d’intégration, un grand emprunt européen pour financer défense et transition."],
+    def: ["Soutenir massivement l’Ukraine", "Il veut augmenter fortement l’aide militaire à l’Ukraine, qu’il présente comme la première ligne de défense de l’Europe, et renforcer l’autonomie de la défense européenne."],
+    ret: ["Abroger la réforme de 2023", "Il s’engage à abroger la réforme de 2023 et à mieux tenir compte de la pénibilité, sans fixer un nouvel âge légal unique. Certains pourraient partir à 60 ans."],
+    eco: ["La taxe Zucman", "Il soutient la taxe Zucman : un impôt plancher de 2 % sur les patrimoines de plus de 100 millions d’euros, y compris le patrimoine professionnel."]
+  } },
+{ id: "retailleau", nom: "Bruno Retailleau", role: "Président des Républicains", an: "candidat 2027", era: "a", pt: "lr", pl: "Les Républicains", tag: "Le candidat de l’ordre",
+  bio: "Ancien ministre de l’Intérieur (2024-2025), sénateur de Vendée, candidat de la droite.",
+  s: {
+    imm: ["Supprimer le droit du sol, revenir à l’assimilation", "Il propose de supprimer le droit du sol, de revenir à l’assimilation et de soumettre par référendum la politique migratoire (regroupement familial, accès à la nationalité)."],
+    alg: ["Un rapport de force avec Alger", "Ministre de l’Intérieur, il durcit le ton envers l’Algérie. LR a voté la résolution du RN de 2025 demandant de dénoncer l’accord de 1968."],
+    nuc: ["Six EPR2 et réacteurs à neutrons rapides", "Il veut prolonger le parc existant, construire six EPR2, relancer les réacteurs à neutrons rapides et abolir la PPE3 qui soutient les renouvelables."],
+    ret: ["Décaler l’âge « après 64 ans »", "Il défend un départ « après 64 ans », mesure « fondamentale » à ses yeux, sans âge légal figé pour toujours."],
+    eco: ["Une règle d’or budgétaire", "Il veut inscrire une règle d’or dans la Constitution, soumise à référendum dès 2027, pour contraindre le déficit public."],
+    ins: ["Élargir le champ du référendum", "Il veut réviser la Constitution pour permettre un référendum sur l’immigration, aujourd’hui exclue du champ de l’article 11."]
+  } },
+{ id: "philippe", nom: "Édouard Philippe", role: "Maire du Havre, président d’Horizons", an: "candidat 2027", era: "a", pt: "hor", pl: "Horizons", tag: "Le gestionnaire",
+  bio: "Premier ministre de 2017 à 2020, maire du Havre, candidat à la présidentielle de 2027.",
+  s: {
+    ret: ["65 ans et 45 ans de cotisation", "Il propose un âge de départ à 65 ans et une durée de cotisation de 45 ans, avec des adaptations pour les métiers pénibles."],
+    imm: ["Pas de référendum sur l’immigration", "Il conteste la méthode de Bruno Retailleau et refuse de modifier la Constitution pour étendre le référendum à l’immigration."],
+    alg: ["Refonder la relation avec l’Algérie", "Dès juin 2023, il appelle à refonder les relations avec Alger et à dénoncer l’accord de 1968 ; ses députés Horizons ont voté la résolution du RN en 2025."],
+    def: ["L’OTAN et une défense européenne renforcée", "Il soutient l’aide à l’Ukraine et le renforcement de la défense européenne dans le cadre de l’OTAN, pas contre elle."],
+    eco: ["Baisser l’impôt sur les sociétés", "Premier ministre, il fait voter la trajectoire de baisse de l’impôt sur les sociétés de 33 % à 25 % d’ici 2022, pour renforcer la compétitivité des entreprises."]
+  } },
+{ id: "attal", nom: "Gabriel Attal", role: "Chef de file de Renaissance", an: "candidat 2027", era: "a", pt: "ren", pl: "Renaissance", tag: "Le plus jeune Premier ministre",
+  bio: "Plus jeune Premier ministre de la Ve République (2024), à la tête du parti du président, candidat.",
+  s: {
+    ret: ["Supprimer l’âge légal de départ", "Il propose de reprendre le calendrier de 2023 puis de supprimer l’âge légal, qu’il juge être un « totem » devenu inutile, et de « faire cotiser l’IA » pour financer la protection sociale."],
+    soc: ["Interdire l’abaya à l’école", "Ministre de l’Éducation nationale, il interdit à la rentrée 2023 le port de l’abaya et du qamis à l’école publique, au nom de la laïcité."],
+    eco: ["Refuser la taxe Zucman", "Le groupe qu’il a présidé à l’Assemblée a voté contre la taxe Zucman, jugée dangereuse pour les entreprises et l’investissement."],
+    def: ["Soutenir l’Ukraine", "Il défend le soutien à l’Ukraine, à la fois pour des raisons de sécurité européenne et d’intérêt pour la France."]
+  } },
+{ id: "tondelier", nom: "Marine Tondelier", role: "Secrétaire nationale des Écologistes", an: "candidate 2027", era: "a", pt: "eco", pl: "Les Écologistes", tag: "L’écologiste pugnace",
+  bio: "Élue d’Hénin-Beaumont, secrétaire nationale des Écologistes depuis 2022, candidate à la présidentielle.",
+  s: {
+    nuc: ["Le cap du 100 % renouvelable", "Elle juge le nucléaire trop cher et trop lent pour atteindre la neutralité carbone, même si les Écologistes ne demandent plus la fermeture anticipée des centrales actuelles."],
+    eco: ["Réformer l’abonnement électrique", "Elle propose de réformer la part « abonnement » de la facture d’électricité pour « payer plus quand on consomme plus »."],
+    def: ["Soutenir l’Ukraine", "Elle défend le maintien de l’aide à l’Ukraine face à la Russie."],
+    ins: ["La proportionnelle", "Les Écologistes défendent depuis longtemps l’élection des députés à la proportionnelle, pour mieux représenter les courants politiques."]
+  } },
+{ id: "roussel", nom: "Fabien Roussel", role: "Secrétaire national du PCF", an: "candidat 2027", era: "a", pt: "pcf", pl: "Parti communiste", tag: "Le communiste du Nord",
+  bio: "Député du Nord, secrétaire national du Parti communiste, candidat en 2022 puis en 2027.",
+  s: {
+    nuc: ["Le nucléaire, avantage compétitif", "Il estime que l’électricité nucléaire donne à la France un avantage compétitif considérable et défend la filière, dans une logique de service public."],
+    ret: ["La retraite à 60 ans", "Il veut abroger la réforme de 2023 et revenir à un départ à 60 ans."],
+    eco: ["Taxer les plus hauts patrimoines", "Le groupe communiste défend, avec le reste de la gauche, la taxe Zucman : 2 % minimum sur les patrimoines de plus de 100 millions d’euros."]
+  } },
+{ id: "zemmour", nom: "Éric Zemmour", role: "Fondateur de Reconquête", an: "candidat 2027", era: "a", pt: "rec", pl: "Reconquête", tag: "Le polémiste devenu candidat",
+  bio: "Essayiste et polémiste, fondateur de Reconquête, candidat en 2022 (7 %) puis en 2027.",
+  s: {
+    imm: ["« Immigration zéro »", "Il défend une politique d’« immigration zéro », la suppression du regroupement familial et un ministère de la Remigration (programme de 2022)."],
+    nuc: ["Au moins 14 EPR2 d’ici 2050", "Il veut lancer la construction d’au moins 14 nouveaux réacteurs EPR2 d’ici 2050 (programme de 2022)."],
+    ret: ["Relever l’âge à 64, voire 65 ans", "Il veut relever progressivement l’âge de départ à 64 voire 65 ans d’ici 2030, en se démarquant du RN."],
+    eur: ["Le droit national avant le droit européen", "Il veut que la loi française prime sur le droit européen."]
+  } },
+{ id: "villepin", nom: "Dominique de Villepin", role: "Président d’honneur de La France humaniste", an: "candidat 2027", era: "a", pt: "fh", pl: "La France humaniste", tag: "L’homme du discours de l’ONU",
+  bio: "Ancien Premier ministre (2005-2007) et ministre des Affaires étrangères (2002-2004), candidat à la présidentielle.",
+  s: {
+    def: ["Dire non à la guerre en Irak", "Le 14 février 2003, au Conseil de sécurité de l’ONU, il plaide pour le désarmement par les inspections plutôt que par la guerre."],
+    nuc: ["Un pacte productif avec six EPR2", "Il veut poursuivre le programme EPR2 dans le cadre d’un « pacte productif » pour la réindustrialisation."],
+    eco: ["Le CPE", "En 2006, son gouvernement crée le contrat première embauche pour les jeunes. Face aux manifestations, il est retiré."],
+    sec: ["Décréter l’état d’urgence (2005)", "En novembre 2005, face aux violences urbaines, le gouvernement qu’il dirige décrète l’état d’urgence, en s’appuyant sur la loi de 1955, puis le prolonge de trois mois."]
+  } },
+{ id: "faure", nom: "Olivier Faure", role: "Premier secrétaire du PS", an: "depuis 2018", era: "a", pt: "ps", pl: "Parti socialiste", tag: "Le premier secrétaire",
+  bio: "Député de Seine-et-Marne, premier secrétaire du PS, candidat à la primaire de la gauche de 2026.",
+  s: {
+    nuc: ["Le nucléaire autant que nécessaire, les renouvelables autant que possible", "Il défend un mix qui garde le nucléaire existant et construit de nouveaux réacteurs EPR2, tout en développant les renouvelables."],
+    ret: ["Abroger la réforme de 2023", "Le PS réclame l’abrogation de la réforme de 2023 et une nouvelle discussion sur la pénibilité."],
+    eco: ["Taxer les ultra-riches", "Le PS défend, avec le reste de la gauche, la taxe Zucman et le rétablissement d’une fiscalité sur le patrimoine."]
+  } },
+{ id: "darmanin", nom: "Gérald Darmanin", role: "Ancien ministre de l’Intérieur", an: "2020-2024", era: "a", pt: "ren", pl: "Renaissance", tag: "Le ministre sécuritaire",
+  bio: "Ministre de l’Intérieur de 2020 à 2024, puis garde des Sceaux, figure de la droite de la majorité présidentielle.",
+  s: {
+    imm: ["Durcir tout en régularisant les métiers en tension", "Il porte la loi immigration de janvier 2024 : durcissement du séjour et du regroupement familial, expulsions facilitées, mais régularisation possible dans les métiers en tension."],
+    sec: ["Isoler les chefs du narcotrafic", "Garde des Sceaux, il fait de la lutte contre le narcotrafic une priorité : loi de 2025 et quartiers de haute sécurité pour isoler les plus gros trafiquants."],
+    soc: ["La loi contre les séparatismes", "Ministre de l’Intérieur, il défend la loi d’août 2021 : contrôle des associations, lutte contre les discours de haine, charte de la laïcité."]
+  } }
+];
+
+/* ============ AJOUTS V2 : nouveaux partis, personnalités, débats de société ============ */
+Object.assign(PARTIES, {
+  ne:  { nom: "Nouvelle Énergie", c1: "#e08a00", c2: "#8f4a00", em: "bolt" },
+  npa: { nom: "Nouveau parti anticapitaliste", c1: "#3a3a3f", c2: "#0d0d10", em: "star" }
+});
+function addStance(id, k, t, d) {
+  const c = CANDS.find(x => x.id === id);
+  if (!c) throw new Error("Personnalité inconnue : " + id);
+  c.s[k] = [t, d];
+}
+CANDS.push(
+{ id: "lisnard", nom: "David Lisnard", role: "Maire de Cannes · président de Nouvelle Énergie", an: "candidat 2027", era: "a", pt: "ne", pl: "Nouvelle Énergie", tag: "Le maire libéral",
+  bio: "Maire de Cannes depuis 2014, président de l’Association des maires de France depuis 2021. Il a quitté Les Républicains le 31 mars 2026 pour se déclarer candidat avec son mouvement.",
+  s: {
+    eco: ["Moins d’impôts, moins de dépense publique", "Il veut supprimer les taxes sur la fortune et les successions, ramener les impôts de production de 2 % à 1 % du PIB et la dépense publique vers 50 % du PIB en dix ans, avec une règle d’or contre les déficits de fonctionnement."],
+    ret: ["La retraite à 65 ans, avec de la capitalisation", "Il défend un âge de départ à 65 ans, complété par une retraite par capitalisation."],
+    alg: ["Revenir sur l’accord franco-algérien de 1968", "La remise en cause de l’accord de 1968 sur le séjour des Algériens en France figure parmi ses mesures phares."],
+    imm: ["Mettre fin à l’automaticité du droit du sol", "Il propose de mettre fin à l’acquisition automatique de la nationalité par la naissance en France et de réduire fortement la délivrance de titres de séjour."],
+    sec: ["Des peines planchers automatiques", "Il propose d’instaurer des peines planchers automatiques pour les récidivistes."],
+    soc: ["Le libre choix de l’école", "Il défend un droit réel au libre choix de l’école : selon lui, l’enseignement privé n’est pas le problème, mais souvent une réponse aux difficultés de l’école publique."],
+    ins: ["Décentraliser et débureaucratiser", "Président de l’Association des maires de France, il veut transférer des compétences de l’État vers les communes, recentrer l’État sur ses missions régaliennes et débureaucratiser radicalement."]
+  } },
+{ id: "hidalgo", nom: "Anne Hidalgo", role: "Ancienne maire de Paris", an: "2014-2026", era: "a", pt: "ps", pl: "Parti socialiste", tag: "La maire du vélo et des JO",
+  bio: "Première femme maire de Paris (2014-2026), candidate socialiste à la présidentielle de 2022. Elle n’a pas brigué de troisième mandat : Emmanuel Grégoire lui a succédé en mars 2026.",
+  s: {
+    ins: ["Un budget participatif pour les habitants", "Dès 2014, Paris consacre une part de son budget d’investissement à des projets choisis par les habitants, par vote : le budget participatif."]
+  } },
+{ id: "poutou", nom: "Philippe Poutou", role: "Ouvrier, militant du NPA", an: "candidat 2012-2022", era: "a", pt: "npa", pl: "Nouveau parti anticapitaliste", tag: "L’ouvrier candidat",
+  bio: "Ouvrier chez Ford près de Bordeaux, candidat du NPA à la présidentielle en 2012, 2017 et 2022 (0,77 %). Il a marqué le débat télévisé du 4 avril 2017 en rappelant que les ouvriers, eux, n’ont pas d’immunité.",
+  s: {
+    eco: ["Interdire les licenciements, travailler moins", "Il veut interdire les licenciements et instaurer la semaine de quatre jours (32 heures), puis à terme 28 heures (programme de 2022)."],
+    ret: ["Retraite à 60 ans, 55 ans pour les métiers pénibles", "Dans son programme de 2022, il propose le retour de la retraite à 60 ans et un départ à 55 ans pour les travaux pénibles."],
+    imm: ["Régulariser tous les sans-papiers", "Le NPA demande la régularisation de tous les sans-papiers et la liberté de circulation et d’installation."],
+    nuc: ["Sortir du nucléaire", "Le NPA défend la sortie du nucléaire."]
+  } },
+{ id: "royal", nom: "Ségolène Royal", role: "Ancienne ministre de l’Écologie", an: "2014-2017", era: "h", pt: "ps", pl: "Parti socialiste", tag: "La candidate de 2007",
+  bio: "Candidate socialiste à la présidentielle de 2007 (46,9 % au second tour), présidente de la région Poitou-Charentes (2004-2014), puis ministre de l’Écologie de 2014 à 2017.",
+  s: {
+    nuc: ["Plafonner le nucléaire à 50 % de l’électricité", "Ministre de l’Écologie, elle porte la loi de transition énergétique du 17 août 2015 : part du nucléaire plafonnée à 50 % (objectif repoussé depuis) et consommation d’énergie divisée par deux en 2050 par rapport à 2012."],
+    eco: ["Le SMIC à 1 500 euros", "Candidate en 2007, elle promet de porter le SMIC à 1 500 euros bruts par mois pendant le quinquennat."],
+    ins: ["La démocratie participative et les jurys citoyens", "En 2007, elle défend la « démocratie participative » et propose des jurys citoyens pour contrôler l’action des élus."],
+    sec: ["Un encadrement militaire pour les jeunes délinquants", "En 2006-2007, elle propose de confier les jeunes délinquants multirécidivistes à un encadrement de type militaire, dans le cadre de son « ordre juste »."]
+  } }
+);
+
+/* Débat de société n°1 : réseaux sociaux */
+Object.assign(THEMES, {
+  res: { cat: "soc", ico: "📱", nom: "Réseaux sociaux & ados",
+    tagline: "TikTok, Instagram… interdits avant 15 ans ?",
+    q: "Faut-il interdire les réseaux sociaux aux moins de 15 ans ?",
+    ctx: "Fin 2025, l’Australie est devenue le premier pays à interdire les réseaux sociaux aux moins de 16 ans. En France, la loi portée par la députée Laure Miller, soutenue par Emmanuel Macron, est adoptée le 21 juillet 2026. Le 14 août, le Conseil constitutionnel censure l’article qui interdisait l’accès (atteinte disproportionnée à la liberté d’expression) ; l’interdiction du portable au lycée n’a pas été examinée. Le gouvernement prépare un nouveau texte et plaide pour une règle européenne.",
+    pour: ["Des études et des alertes de santé publique lient l’usage intensif aux troubles du sommeil, à l’anxiété et au harcèlement.", "Les plateformes ne vérifient pas vraiment l’âge : seule une loi les y oblige.", "Les parents ne peuvent pas lutter seuls contre des algorithmes conçus pour retenir l’attention."],
+    contre: ["L’interdiction est facile à contourner (faux âge, VPN) et peut pousser les ados vers des espaces moins surveillés.", "Vérifier l’âge oblige tout le monde, adultes compris, à prouver son identité : risque pour la vie privée.", "Elle prive aussi les jeunes d’un espace d’expression, d’information et de lien social ; mieux vaut éduquer et responsabiliser les plateformes."],
+    relances: ["À quel âge as-tu eu ton premier compte, et qu’en penses-tu aujourd’hui ?", "Qui doit être responsable : les parents, l’État ou les plateformes ?", "Si l’Australie et la France interdisent, est-ce à l’Europe de décider ?"],
+    chrono: [["2018", "La loi française fixe déjà à 15 ans l’âge du « consentement numérique » pour s’inscrire seul sur un réseau (règlement européen RGPD, transposé en 2018)."], ["Fin 2025", "L’Australie devient le premier pays à interdire les réseaux sociaux aux moins de 16 ans."], ["26 janv. 2026", "L’Assemblée nationale adopte la proposition de loi de Laure Miller (Renaissance), qui prévoit aussi l’interdiction du portable au lycée."], ["21 juil. 2026", "Le Parlement adopte définitivement le texte."], ["14 août 2026", "Le Conseil constitutionnel censure l’article 1er : l’interdiction porte une atteinte disproportionnée à la liberté d’expression et de communication."], ["14 sept. 2026", "Le gouvernement notifie à la Commission européenne une nouvelle version du texte."]],
+    fait: "En Australie, une étude publiée par le British Medical Journal a observé peu de changement d’usage chez les 12-13 ans après l’interdiction, selon les médias qui l’ont relayée." }
+});
+addStance("macron", "res", "Interdire les réseaux sociaux avant 15 ans", "Il porte l’interdiction comme mesure phare de la fin de son mandat. Après la censure du 14 août 2026, il demande au gouvernement une version « juridiquement robuste » et écrit à la Commission européenne pour défendre un texte européen.");
+addStance("lecornu", "res", "Retravailler la loi pour qu’elle tienne juridiquement", "Après la censure du Conseil constitutionnel, l’Élysée charge Sébastien Lecornu de rédiger une version du texte compatible avec la décision et avec le droit européen ; le gouvernement la notifie à Bruxelles le 14 septembre 2026.");
+addStance("melenchon", "res", "Non à l’interdiction : une mesure de communication", "Le groupe LFI s’est opposé à l’interdiction, qu’il juge liberticide, facile à contourner et défavorable à la protection des données. Ses députés ont saisi le Conseil constitutionnel, qui a censuré l’article en août 2026.");
+
+/* ============ AJOUTS V2 (suite) : enrichissement des 10 grands sujets ============ */
+function patchTheme(k, o) { Object.assign(THEMES[k], o); }
+function setRep(id, rep) { const c = CANDS.find(x => x.id === id); if (!c) throw new Error("rep : " + id); c.rep = rep; }
+
+patchTheme("nuc", { cat: "grand", tagline: "L’atome : pour ou contre ?",
+  relances: ["Accepterais-tu une centrale près de chez toi ?", "Faut-il choisir entre nucléaire et renouvelables, ou les deux ?", "Qui doit payer : l’État, l’usager, l’Europe ?"],
+  chrono: [["1960", "Premier essai nucléaire français (Gerboise bleue), au Sahara."], ["1974", "Le plan Messmer lance le grand programme de centrales."], ["1997", "Arrêt définitif de Superphénix."], ["2015", "Loi de transition énergétique : le nucléaire plafonné à 50 % de l’électricité (objectif repoussé depuis)."], ["2020", "Fermeture de la centrale de Fessenheim."], ["2022", "À Belfort, Emmanuel Macron annonce six nouveaux EPR2."], ["2 mars 2026", "Discours de l’Île Longue : la « dissuasion avancée » européenne."]] });
+patchTheme("alg", { cat: "grand", tagline: "Mémoire, séjours, diplomatie",
+  relances: ["Faut-il des excuses officielles de la France ?", "Et l’Algérie, que doit-elle faire de son côté ?", "Peut-on séparer la question de la mémoire et celle de l’immigration ?"],
+  chrono: [["1954", "Début de la guerre d’Algérie (1er novembre)."], ["1962", "Accords d’Évian (18 mars), puis indépendance de l’Algérie (5 juillet)."], ["1968", "Accord franco-algérien du 27 décembre sur le séjour des Algériens."], ["1999", "La loi reconnaît officiellement l’expression « guerre d’Algérie »."], ["2012", "François Hollande reconnaît la répression du 17 octobre 1961."], ["2017", "Emmanuel Macron qualifie la colonisation de crime contre l’humanité."], ["Oct. 2025", "L’Assemblée adopte, à une voix près, la résolution du RN demandant de dénoncer l’accord de 1968."]] });
+patchTheme("imm", { cat: "grand", tagline: "Frontières, nationalité, intégration",
+  relances: ["Qu’est-ce qui fait un Français : le sol, le sang ou le choix ?", "Faut-il des quotas votés par le Parlement ?", "Comment réussir l’intégration, concrètement ?"],
+  chrono: [["1974", "Suspension de l’immigration de travail."], ["1976", "Décret sur le regroupement familial."], ["1981-82", "Régularisation exceptionnelle d’environ 130 000 sans-papiers."], ["1986 et 1993", "Lois Pasqua sur l’entrée et le séjour des étrangers."], ["1993", "Réforme Méhaignerie du Code de la nationalité (condition supprimée en 1998)."], ["1998", "Loi Chevènement : asile territorial, titre de séjour pour liens personnels et familiaux."], ["2006", "Loi Sarkozy sur l’immigration « choisie »."], ["Janv. 2024", "Loi immigration (Darmanin), partiellement censurée par le Conseil constitutionnel."]] });
+patchTheme("ret", { cat: "grand", tagline: "60, 62, 64 ans… où s’arrêter ?",
+  relances: ["Jusqu’à quel âge es-tu prêt à travailler ?", "Un ouvrier et un cadre doivent-ils partir au même âge ?", "Faut-il ajouter une part de capitalisation ?"],
+  chrono: [["1982", "Retraite à 60 ans (Mitterrand, Mauroy)."], ["1993", "Réforme Balladur : 40 ans de cotisation dans le privé."], ["1995", "Plan Juppé : trois semaines de grèves ; le volet régimes spéciaux est retiré."], ["2003", "Réforme Fillon : le public aligné sur 40 ans de cotisation."], ["2010", "Réforme Sarkozy : l’âge légal passe à 62 ans."], ["2014", "Réforme Touraine : allongement progressif à 43 ans de cotisation."], ["2023", "Réforme Borne : 64 ans, adoptée par l’article 49.3."], ["Oct. 2025", "Sébastien Lecornu annonce la suspension de la réforme de 2023."]] });
+patchTheme("eur", { cat: "grand", tagline: "Plus d’Europe ou plus de nation ?",
+  relances: ["Euro, Schengen, PAC : qu’est-ce qui compte le plus pour toi ?", "Aurais-tu voté oui ou non en 1992 et en 2005 ?", "Une armée européenne : un rêve ou une menace ?"],
+  chrono: [["1958", "Le traité de Rome entre en vigueur : naissance de la CEE."], ["1963", "Traité de l’Élysée ; de Gaulle oppose son veto à l’entrée britannique."], ["1965", "La « chaise vide »."], ["1979", "Première élection du Parlement européen au suffrage universel ; Simone Veil le préside."], ["1992", "Référendum de Maastricht : environ 51 % de oui."], ["2005", "Référendum sur le traité constitutionnel : 54,7 % de non."], ["2008", "Le traité de Lisbonne est ratifié par le Parlement."]] });
+patchTheme("sec", { cat: "grand", tagline: "Fermeté, prévention, libertés",
+  relances: ["Qu’est-ce qui te protège le mieux : plus de police ou plus de prévention ?", "Faut-il des peines minimales automatiques ?", "Jusqu’où limiter les libertés au nom de la sécurité ?"],
+  chrono: [["1981", "Abolition de la peine de mort ; loi Sécurité et liberté (en partie abrogée ensuite)."], ["1986", "Loi antiterroriste du 9 septembre."], ["1997", "Colloque de Villepinte : la sécurité, priorité de la gauche."], ["2005", "État d’urgence lors des violences urbaines de novembre."], ["2007", "Peines planchers (supprimées en 2014)."], ["2015", "État d’urgence après les attentats du 13 novembre."], ["2025", "Loi contre le narcotrafic."]] });
+patchTheme("eco", { cat: "grand", tagline: "Impôts, dette, services publics",
+  relances: ["Quel impôt te paraît le plus injuste ?", "Faut-il taxer davantage les très hauts patrimoines ?", "Où couperais-tu en premier dans les dépenses publiques ?"],
+  chrono: [["1982", "Nationalisations ; création de l’impôt sur les grandes fortunes."], ["1983", "Tournant de la rigueur."], ["1986", "Vague de privatisations ; suppression de l’impôt sur les grandes fortunes."], ["1988", "Création du RMI ; rétablissement d’un impôt sur la fortune (ISF)."], ["2000", "Les 35 heures."], ["2007", "Loi TEPA : heures supplémentaires défiscalisées, bouclier fiscal."], ["2018", "L’ISF devient l’impôt sur la fortune immobilière ; flat tax sur le capital."], ["2025-2026", "Débat sur la taxe Zucman."]] });
+patchTheme("def", { cat: "grand", tagline: "Indépendance, OTAN, Europe",
+  relances: ["La France doit-elle garder seule son arme nucléaire ?", "Faut-il aider l’Ukraine jusqu’au bout ?", "Armée européenne : oui ou non ?"],
+  chrono: [["1960", "Premier essai nucléaire français."], ["1966", "Sortie du commandement intégré de l’OTAN."], ["1983", "Discours de Mitterrand au Bundestag sur les Euromissiles."], ["1991", "Guerre du Golfe : Jean-Pierre Chevènement démissionne."], ["2003", "Refus de la guerre en Irak (Chirac, Villepin)."], ["2009", "Retour dans le commandement intégré de l’OTAN."], ["2013", "Opération Serval au Mali."], ["2 mars 2026", "La « dissuasion avancée » d’Emmanuel Macron."]] });
+patchTheme("soc", { cat: "grand", tagline: "Laïcité, droits, école",
+  relances: ["Où s’arrête la liberté de porter ce que l’on veut ?", "La loi doit-elle suivre la société ou la précéder ?", "Que doit transmettre l’école ?"],
+  chrono: [["1905", "Loi de séparation des Églises et de l’État."], ["1975", "Loi Veil sur l’IVG."], ["1982", "Fin de la discrimination pénale de l’homosexualité."], ["1999", "Le PACS."], ["2004", "Loi sur les signes religieux à l’école."], ["2010", "Interdiction de se dissimuler le visage dans l’espace public."], ["2013", "Mariage pour tous."], ["2021", "Loi contre les séparatismes."], ["2023", "Interdiction de l’abaya à l’école."]] });
+patchTheme("ins", { cat: "grand", tagline: "49.3, proportionnelle, VIe République",
+  relances: ["Faut-il un président aussi puissant ?", "La proportionnelle rendrait-elle le pays plus gouvernable ou moins ?", "Aimerais-tu pouvoir déclencher un référendum par pétition ?"],
+  chrono: [["1958", "Constitution de la Ve République."], ["1962", "Élection du président au suffrage universel direct."], ["1974", "Saisine du Conseil constitutionnel ouverte à 60 parlementaires."], ["1986", "Première cohabitation (Mitterrand - Chirac)."], ["2000", "Le quinquennat."], ["2008", "Grande révision constitutionnelle (question prioritaire de constitutionnalité)."], ["2024", "Dissolution de l’Assemblée et absence de majorité."], ["2025", "Sébastien Lecornu renonce au 49.3."]] });
+// On marque aussi « res » comme débat de société et on lui ajoute un fait du quotidien
+patchTheme("res", { acc: true });
+
+/* ============ DÉBATS DE SOCIÉTÉ ACCESSIBLES ============ */
+Object.assign(THEMES, {
+  vie: { cat: "soc", acc: true, ico: "🤍", nom: "Fin de vie", tagline: "Doit-on pouvoir choisir sa fin ?",
+    q: "Faut-il autoriser l’aide active à mourir pour les malades incurables ?",
+    ctx: "Depuis les lois Leonetti (2005) et Claeys-Leonetti (2016), la France autorise l’arrêt des traitements et la sédation profonde, mais pas l’aide active à mourir. Après des années de débats, la loi relative au droit à l’aide à mourir est promulguée le 18 août 2026 (loi n° 2026-794), malgré le rejet du texte par le Sénat à plusieurs reprises et après un examen du Conseil constitutionnel.",
+    pour: ["Chacun devrait pouvoir décider de sa propre fin quand la maladie est incurable et la souffrance insupportable.", "Les lois actuelles laissent des situations sans issue : certains partent à l’étranger ou souffrent jusqu’au bout.", "Une convention citoyenne a répondu « oui » à 75 % à l’ouverture de l’aide active à mourir (2023)."],
+    contre: ["Il existe un risque de pressions sur les personnes vulnérables, âgées ou isolées, qui pourraient se sentir « de trop ».", "Il faut d’abord garantir l’accès aux soins palliatifs partout : l’offre est inégale selon les territoires.", "Le rôle des soignants est de soulager et d’accompagner, non de donner la mort : la frontière est éthiquement lourde."],
+    relances: ["Si c’était un de tes proches, changerais-tu d’avis ?", "Faut-il une clause de conscience pour les soignants ?", "Qui doit décider : le malade seul, un médecin, une commission ?"],
+    chrono: [["2005", "Loi Leonetti : fin de l’acharnement thérapeutique, droit de refuser un traitement."], ["2012", "François Hollande propose une « assistance médicale pour terminer sa vie dans la dignité »."], ["2016", "Loi Claeys-Leonetti : sédation profonde et continue jusqu’au décès pour certains patients."], ["2023", "Une convention citoyenne se prononce à 75 % pour une ouverture de l’aide active à mourir."], ["2025-2026", "Le texte fait la navette entre l’Assemblée nationale et le Sénat, qui le rejette à plusieurs reprises."], ["18 août 2026", "Promulgation de la loi n° 2026-794 relative au droit à l’aide à mourir."]],
+    fait: "Plusieurs pays de l’Union européenne (Pays-Bas, Belgique, Luxembourg, Espagne) ont déjà ouvert une forme d’aide active à mourir." },
+  mil: { cat: "soc", acc: true, ico: "🪖", nom: "Service national", tagline: "Faut-il rétablir le service militaire ?",
+    q: "Faut-il rétablir un service militaire pour tous les jeunes ?",
+    ctx: "La conscription est suspendue depuis la réforme de 1997 (Chirac, gouvernement Jospin). Le Service national universel (SNU, 2019) n’a jamais été généralisé et a été supprimé. Emmanuel Macron a annoncé le 27 novembre 2025 un nouveau service militaire volontaire de dix mois ; une première cohorte de 3 000 jeunes de 18 à 25 ans l’a commencé le 31 août 2026. Plusieurs pays européens (Croatie, Grèce, Estonie…) ont rétabli un service obligatoire.",
+    pour: ["Il crée du lien entre jeunes de tous milieux et renforce la cohésion nationale.", "Face aux menaces en Europe, la France disposerait d’un vivier de personnes formées en cas de crise.", "Il offre une première expérience, une formation et une rémunération (800 euros minimum par mois pour les volontaires actuels)."],
+    contre: ["Une armée moderne a besoin de professionnels, pas de conscrits : le dispositif actuel est évalué à environ un milliard d’euros d’ici 2030.", "Obliger les jeunes pose la question de la liberté individuelle ; le SNU n’est jamais devenu obligatoire.", "L’argent public serait mieux employé à équiper et recruter des militaires, ou à renforcer le service civique."],
+    relances: ["Aurais-tu fait ton service, et qu’en retirerais-tu ?", "Faut-il y inclure les filles, avec un service civil possible comme alternative ?", "Volontaire ou obligatoire : où placer la limite ?"],
+    chrono: [["1996-1997", "Jacques Chirac annonce la professionnalisation des armées ; la conscription est suspendue par la loi de 1997."], ["2001", "Les derniers appelés quittent l’armée : fin effective du service militaire obligatoire."], ["2019", "Création du Service national universel (SNU) pour les 15-17 ans."], ["27 nov. 2025", "Emmanuel Macron annonce, à Varces, un service national militaire volontaire de dix mois et l’abandon du SNU."], ["31 août 2026", "Une première cohorte de 3 000 volontaires commence ce nouveau service."]],
+    fait: "Selon un sondage Elabe pour BFMTV publié fin novembre 2025, près de trois Français sur quatre se disaient favorables à la création d’un service militaire volontaire." },
+  can: { cat: "soc", acc: true, ico: "🌿", nom: "Cannabis", tagline: "Légaliser, dépénaliser ou interdire ?",
+    q: "Faut-il légaliser le cannabis ?",
+    ctx: "Le cannabis est classé comme stupéfiant par la loi du 31 décembre 1970 : son usage est un délit, même si l’amende forfaitaire est devenue la réponse courante depuis 2020. Le Canada (2018) et plusieurs États américains l’ont légalisé, l’Allemagne partiellement en 2024. En France, la légalisation a été proposée à plusieurs présidentielles mais n’a jamais été appliquée.",
+    pour: ["L’interdiction n’empêche pas la consommation : une vente encadrée priverait les trafics d’un marché et permettrait de contrôler la qualité.", "La répression mobilise beaucoup de moyens de police et de justice pour un résultat jugé faible.", "Une vente légale pourrait financer la prévention."],
+    contre: ["Santé publique : risques pour les plus jeunes (attention, mémoire, dépendance) ; légaliser banaliserait l’usage.", "Les expériences étrangères sont mitigées : en Uruguay, selon un rapport de l’Observatoire uruguayen des drogues, seul un tiers des consommateurs s’approvisionnait par le circuit légal six ans après.", "Le trafic ne disparaît pas pour autant : il peut se tourner vers d’autres produits."],
+    relances: ["Faut-il traiter le cannabis comme l’alcool et le tabac ?", "Que faire des petits revendeurs de quartier ?", "Le cannabis thérapeutique : vraie avancée ou porte d’entrée ?"],
+    chrono: [["1970", "La loi du 31 décembre 1970 classe le cannabis parmi les stupéfiants et punit son usage."], ["2012", "Eva Joly propose la légalisation à la présidentielle."], ["2017", "Benoît Hamon et Jean-Luc Mélenchon proposent la légalisation."], ["2019", "Une mission parlementaire s’ouvre sur le cannabis ; Emmanuel Macron se dit opposé à la légalisation."], ["2020", "L’amende forfaitaire délictuelle (200 euros) est généralisée pour l’usage de stupéfiants."], ["2022", "Yannick Jadot et Jean-Luc Mélenchon proposent à nouveau la légalisation."]],
+    fait: "Dans un sondage Ipsos de 2016, 84 % des Français jugeaient l’interdiction actuelle inefficace, tout en restant partagés sur la légalisation." },
+  zfe: { cat: "soc", acc: true, ico: "🚗", nom: "Voiture & ville", tagline: "ZFE, 30 km/h, vélos : trop de contraintes ?",
+    q: "Faut-il supprimer les zones à faibles émissions (ZFE) ?",
+    ctx: "Créées en 2019 et étendues en 2021, les zones à faibles émissions interdisent l’accès des centres-villes aux véhicules les plus polluants ; elles sont obligatoires depuis 2025 dans 43 agglomérations. L’Assemblée a voté leur suppression, mais le Conseil constitutionnel l’a censurée le 21 mai 2026 pour un motif de procédure (cavalier législatif) : le débat n’est pas tranché sur le fond.",
+    pour: ["Elles pénalisent les ménages modestes et les travailleurs qui n’ont pas les moyens de changer de voiture.", "Dans les zones périurbaines et rurales, la voiture reste indispensable faute d’alternatives de transport.", "La dépollution passe mieux par des aides et des incitations que par des interdictions."],
+    contre: ["La pollution de l’air provoque des dizaines de milliers de décès prématurés par an en France, selon Santé publique France.", "Réduire le trafic polluant améliore la qualité de l’air là où les villes ont agi.", "Des aides (prime à la conversion, leasing social) peuvent accompagner les ménages modestes."],
+    relances: ["Prends-tu ta voiture en ville ? Pourrais-tu t’en passer ?", "Faut-il interdire ou aider financièrement ?", "Ville et campagne : les mêmes règles pour tous ?"],
+    chrono: [["2010", "Nicolas Sarkozy lance au Salon de l’agriculture que l’environnement, « ça commence à bien faire »."], ["2014", "Ségolène Royal enterre l’écotaxe sur les poids lourds après les manifestations des Bonnets rouges."], ["2016", "Les voies sur berges de la rive droite de Paris sont fermées aux voitures."], ["Juil. 2018", "La vitesse passe à 80 km/h sur les routes secondaires (assouplie en 2020)."], ["2019-2021", "Création des ZFE (2019), extension par la loi Climat et Résilience (2021) ; Paris passe à 30 km/h (août 2021)."], ["2025", "Les ZFE deviennent obligatoires dans 43 agglomérations ; l’Assemblée vote leur suppression le 17 juin."], ["21 mai 2026", "Le Conseil constitutionnel censure la suppression des ZFE (cavalier législatif)."]],
+    fait: "Le périphérique parisien est passé à 50 km/h en octobre 2024 ; Paris avait généralisé le 30 km/h en août 2021." },
+  etr: { cat: "soc", acc: true, ico: "🗳️", nom: "Vote des étrangers", tagline: "Voter aux municipales sans être français ?",
+    q: "Faut-il donner le droit de vote aux étrangers aux élections locales ?",
+    ctx: "Depuis le traité de Maastricht, les citoyens de l’Union européenne qui résident en France peuvent voter aux municipales. Les étrangers hors Union, eux, ne votent pas : leur ouvrir ce droit exigerait de réviser la Constitution. Promise par François Mitterrand en 1981 (proposition n° 80) puis par François Hollande en 2012, la mesure n’a jamais abouti.",
+    pour: ["Ceux qui vivent, travaillent et paient des impôts dans une commune devraient pouvoir décider de la vie locale.", "Ce droit favoriserait l’intégration et la participation démocratique.", "Plusieurs pays européens l’ont déjà ouvert pour les élections locales (Irlande, Pays-Bas, pays nordiques…)."],
+    contre: ["Voter est lié à la nationalité : c’est participer à la souveraineté nationale.", "Il faudrait réviser la Constitution, ce qui ouvrirait la porte à d’autres revendications.", "La voie normale de participation reste la naturalisation."],
+    relances: ["Où doit s’arrêter le lien entre vote et nationalité ?", "Cinq ans de résidence dans une commune suffisent-ils ?", "Cela changerait-il quelque chose pour l’intégration ?"],
+    chrono: [["1981", "François Mitterrand inscrit le droit de vote des immigrés aux élections locales dans ses « 110 propositions »."], ["1992", "Le traité de Maastricht ouvre aux citoyens européens le droit de voter aux municipales dans leur pays de résidence."], ["1998", "La France met en œuvre ce droit pour les citoyens de l’Union."], ["2012", "François Hollande promet ce droit aux étrangers non européens résidant en France depuis cinq ans ; la réforme n’aboutit pas."]],
+    fait: "Les citoyens de l’Union européenne résidant en France peuvent voter aux municipales ; les autres étrangers, non." },
+  mor: { cat: "soc", acc: true, ico: "🕯️", nom: "Peine de mort", tagline: "Abolie en 1981 : et si on la rétablissait ?",
+    q: "Faut-il rétablir la peine de mort ?",
+    ctx: "La France a aboli la peine de mort par la loi du 9 octobre 1981, portée par Robert Badinter ; la dernière exécution datait de septembre 1977. L’interdiction est inscrite dans la Constitution depuis 2007 (article 66-1). En 1981, une majorité de Français y restait pourtant favorable.",
+    pour: ["Pour des crimes d’une extrême gravité, c’est pour certains la seule peine proportionnée et un signe de protection envers les victimes.", "Elle garantirait que le condamné ne puisse jamais récidiver.", "Plusieurs démocraties, comme les États-Unis ou le Japon, l’appliquent encore."],
+    contre: ["Le risque d’erreur judiciaire est irréversible : on ne peut pas réparer l’exécution d’un innocent.", "Il n’est pas démontré qu’elle dissuade davantage que la perpétuité.", "Un État de droit ne doit pas tuer : c’est le principe défendu par Robert Badinter en 1981."],
+    relances: ["Y a-t-il un crime pour lequel tu changerais d’avis ?", "Faut-il organiser un référendum sur ce sujet ?", "Perpétuité réelle ou peine de mort : laquelle est la plus dure ?"],
+    chrono: [["10 sept. 1977", "Dernière exécution en France : Hamida Djandoubi, guillotiné à Marseille."], ["17 sept. 1981", "Robert Badinter plaide pour l’abolition devant l’Assemblée nationale."], ["9 oct. 1981", "Promulgation de la loi d’abolition."], ["2007", "L’interdiction de la peine de mort est inscrite dans la Constitution, à l’initiative de Jacques Chirac."]],
+    fait: "Depuis 1981, plus aucune exécution n’a eu lieu en France ; la dernière guillotine avait servi à Marseille le 10 septembre 1977." },
+  tv: { cat: "soc", acc: true, ico: "📺", nom: "Audiovisuel public", tagline: "Faut-il privatiser France Télévisions ?",
+    q: "Faut-il privatiser une partie de l’audiovisuel public ?",
+    ctx: "France Télévisions, Radio France ou l’INA sont financés par l’État. La redevance télé, supprimée en 2022, a été remplacée par une part de TVA. En 2022, Marine Le Pen proposait de privatiser France Télévisions et Radio France (en préservant l’audiovisuel d’outre-mer et France Médias Monde), tandis qu’Emmanuel Macron défendait l’indépendance du service public. Une réforme créant une holding « France Médias » a été examinée au Parlement à partir de 2025.",
+    pour: ["Dans l’offre actuelle, il est de plus en plus difficile de distinguer la spécificité du public et du privé.", "Cela consoliderait un secteur privé confronté à la concurrence des grandes plateformes.", "L’argent public serait orienté vers d’autres priorités."],
+    contre: ["Un service public financé durablement garantit l’indépendance de l’information face aux pouvoirs politique et économique.", "Il assure des missions que le marché finance mal : culture, documentaires, information locale, outre-mer.", "La privatisation fragiliserait le pluralisme face à la concentration des médias privés."],
+    relances: ["Regardes-tu encore la télé ou la radio publiques ? Pourquoi ?", "Qui doit financer l’information : l’impôt, la publicité, l’abonnement ?", "Un média public peut-il être vraiment indépendant du pouvoir ?"],
+    chrono: [["1974", "L’ORTF est éclaté en plusieurs sociétés publiques."], ["1982", "La loi sur la communication audiovisuelle met fin au monopole d’État et légalise les radios libres."], ["1987", "TF1 est privatisée."], ["2009", "La publicité est supprimée en soirée sur les chaînes publiques ; le président de France Télévisions est nommé par le chef de l’État."], ["2013", "Le CSA retrouve le pouvoir de nommer le président de France Télévisions."], ["2022", "La redevance télé est supprimée et remplacée par une part de TVA."], ["2025", "La réforme créant la holding France Médias est examinée au Parlement."]],
+    fait: "Avant sa suppression en 2022, la redevance coûtait 138 euros par an aux foyers de métropole." }
+});
+
+/* Positions documentées (débats de société) */
+addStance("hollande", "vie", "Une assistance médicale pour mourir dans la dignité", "Candidat en 2012, il propose qu’un malade incurable en phase avancée puisse demander une assistance médicale pour terminer sa vie dans la dignité. Son quinquennat aboutit à la loi Claeys-Leonetti de 2016 (sédation profonde et continue), sans aller jusqu’à l’aide active à mourir.");
+addStance("chirac", "vie", "La loi Leonetti : ni acharnement, ni euthanasie", "Sous sa présidence, la loi du 22 avril 2005 interdit l’obstination déraisonnable et permet de limiter ou d’arrêter les traitements, sans autoriser l’euthanasie.");
+addStance("macron", "vie", "Ouvrir le débat, puis promulguer la loi", "Candidat en 2022, il s’engage à ouvrir le débat : convention citoyenne en 2022-2023, puis projet de loi. Il promulgue la loi sur le droit à l’aide à mourir le 18 août 2026.");
+addStance("chirac", "mil", "Suspendre la conscription et professionnaliser l’armée", "En février 1996, il annonce la professionnalisation des armées et la fin du service militaire obligatoire ; la loi de 1997 suspend la conscription.");
+addStance("jospin", "mil", "Remplacer la conscription par une journée d’appel", "Son gouvernement fait voter en 1997 la suspension de la conscription, remplacée par une journée d’appel de préparation à la défense.");
+addStance("macron", "mil", "Un service militaire volontaire de dix mois", "Le 27 novembre 2025, il annonce un service « volontaire et purement militaire » de dix mois pour les 18-25 ans, rémunéré 800 euros minimum par mois, qui remplace le SNU. Le Parlement pourra le rendre obligatoire en cas de crise majeure.");
+addStance("bardella", "mil", "Rétablir un service militaire, d’abord pour les volontaires", "En novembre 2025, il se dit favorable au rétablissement d’un service sous les drapeaux, en commençant par un service militaire ouvert aux volontaires.");
+addStance("melenchon", "can", "Légaliser le cannabis", "Candidat en 2017 puis en 2022, il propose la légalisation du cannabis et juge hypocrite de l’interdire.");
+addStance("glucksmann", "can", "Légaliser au nom du pragmatisme", "En 2019, il cosigne avec plus de 70 personnalités, dont Yannick Jadot, une tribune appelant les pouvoirs publics à légaliser le cannabis au nom du pragmatisme.");
+addStance("macron", "can", "Non à la légalisation, oui au cannabis thérapeutique", "En 2019, il déclare ne pas être favorable à la légalisation du cannabis ou des usages non encadrés, faute d’études robustes sur ses effets sur la vigilance des plus jeunes ; il reconnaît des vertus au cannabis thérapeutique dans certains traitements.");
+addStance("attal", "can", "Ouvrir le débat sans légaliser", "En 2019, alors secrétaire d’État à la Jeunesse, il se dit favorable à l’ouverture d’un débat sur la légalisation, au lendemain du lancement d’une mission parlementaire.");
+addStance("mlepen", "can", "Lutter contre le cannabis plutôt que le légaliser", "Elle s’est opposée à la légalisation du cannabis lors de la présidentielle de 2017 et privilégie la lutte contre le trafic et la consommation.");
+addStance("hidalgo", "zfe", "Moins de voitures, plus de vélos et de piétons", "Maire de Paris, elle fait fermer les voies sur berges de la rive droite aux voitures (2016), multiplier les pistes cyclables, limiter la ville à 30 km/h (2021) et le périphérique à 50 km/h (2024).");
+addStance("royal", "zfe", "Pas d’écologie punitive : l’abandon de l’écotaxe", "Le 9 octobre 2014, après les manifestations des Bonnets rouges en Bretagne, elle enterre l’écotaxe sur les poids lourds, qu’elle juge punitive. Elle défend une écologie positive : aides à la voiture électrique, crédit d’impôt pour la transition énergétique, interdiction des sacs plastiques jetables.");
+addStance("sarkozy", "zfe", "« L’environnement, ça commence à bien faire »", "En mars 2010, au Salon de l’agriculture, il lâche que l’environnement, « ça commence à bien faire », après avoir lancé le Grenelle de l’environnement en 2007.");
+addStance("philippe", "zfe", "Limiter la vitesse à 80 km/h", "Premier ministre, il fait abaisser la vitesse maximale à 80 km/h sur les routes à double sens sans séparateur central en juillet 2018, pour réduire la mortalité routière. La mesure est assouplie en 2020 : les départements peuvent revenir à 90 km/h.");
+addStance("macron", "zfe", "Les ZFE, marqueur de son premier quinquennat", "Créées en 2019 et étendues en 2021, les zones à faibles émissions sont un marqueur de son premier mandat. En 2026, le gouvernement s’oppose à leur suppression et 70 députés de la majorité saisissent le Conseil constitutionnel, qui la censure.");
+addStance("mlepen", "zfe", "Supprimer les ZFE", "Les députés RN ont voté avec LR la suppression des zones à faibles émissions et ont dénoncé la censure du Conseil constitutionnel comme une décision injuste contre les Français.");
+addStance("retailleau", "zfe", "Supprimer les ZFE", "Son parti, Les Républicains, a voté avec le RN la suppression des zones à faibles émissions à l’Assemblée nationale ; le président du groupe LR, Laurent Wauquiez, a dénoncé la censure du Conseil constitutionnel.");
+addStance("tondelier", "zfe", "Garder les ZFE", "Les députés écologistes, avec les socialistes, ont saisi le Conseil constitutionnel contre la suppression des zones à faibles émissions.");
+addStance("faure", "zfe", "Garder les ZFE", "Les députés socialistes ont saisi, avec les écologistes, le Conseil constitutionnel contre la suppression des zones à faibles émissions.");
+addStance("mitterrand", "etr", "Le droit de vote des immigrés aux élections locales", "En 1981, la proposition 80 de ses « 110 propositions » promet ce droit. Il ne la fera jamais aboutir.");
+addStance("hollande", "etr", "Voter après cinq ans de résidence", "En 2012, il promet le droit de vote aux élections locales pour les étrangers non européens résidant en France depuis cinq ans. Cela exigeait de réviser la Constitution : la réforme n’aboutit pas.");
+addStance("melenchon", "etr", "Le droit de vote aux élections locales", "LFI propose d’ouvrir le droit de vote aux élections locales aux étrangers résidant en France.");
+addStance("poutou", "etr", "Le droit de vote pour tous les résidents", "Le NPA défend le droit de vote et d’éligibilité des étrangers qui vivent en France.");
+addStance("badinter", "mor", "Abolir : une justice qui ne tue pas", "Garde des Sceaux, il plaide le 17 septembre 1981 devant l’Assemblée pour l’abolition : l’État de droit ne doit pas donner la mort.");
+addStance("mitterrand", "mor", "Abolir, malgré l’opinion", "Candidat en 1981, il se déclare contre la peine de mort alors qu’une majorité de Français y est encore favorable ; la loi d’abolition est votée quelques mois après son élection.");
+addStance("jmlepen", "mor", "Rétablir la peine de mort", "Il réclame le rétablissement de la peine de mort, abolie en 1981.");
+addStance("chirac", "mor", "Inscrire l’abolition dans la Constitution", "En 2007, il fait adopter par le Parlement réuni en Congrès l’interdiction de la peine de mort dans la Constitution (article 66-1).");
+addStance("mlepen", "tv", "Privatiser France Télévisions et Radio France", "Candidate en 2022, elle veut supprimer la redevance et privatiser France Télévisions et Radio France, en préservant l’audiovisuel d’outre-mer et France Médias Monde.");
+addStance("macron", "tv", "Supprimer la redevance, protéger l’indépendance", "Candidat en 2022, il s’engage à supprimer la redevance (138 euros par an), tout en affirmant son attachement à l’audiovisuel public et en proposant un budget pluriannuel pour garantir son indépendance. La redevance est supprimée en 2022.");
+addStance("zemmour", "tv", "Supprimer la redevance, privatiser en partie", "Candidat en 2022, il annonce vouloir supprimer la redevance et privatiser une partie du service public audiovisuel.");
+addStance("hidalgo", "tv", "Défendre la redevance pour l’indépendance du public", "En 2022, elle juge que supprimer la redevance, c’est affaiblir l’indépendance de l’audiovisuel public face aux concentrations médiatiques privées.");
+addStance("giscard", "tv", "Éclater l’ORTF", "En 1974, l’ORTF est démantelé en plusieurs sociétés (TF1, Antenne 2, FR3, Radio France, TDF, SFP, INA) pour introduire de la concurrence entre chaînes publiques.");
+addStance("mitterrand", "tv", "Mettre fin au monopole d’État", "En 1982, la loi sur la communication audiovisuelle consacre la liberté de communication, légalise les radios libres et crée une autorité de régulation.");
+addStance("chirac", "tv", "Privatiser TF1", "Premier ministre de cohabitation, il fait privatiser TF1 en 1987.");
+addStance("sarkozy", "tv", "Supprimer la pub le soir, nommer les patrons du public", "En 2009, il fait supprimer la publicité en soirée sur France Télévisions et confie au chef de l’État la nomination de son président.");
+addStance("hollande", "tv", "Rendre la nomination des patrons du public au CSA", "En 2013, une loi supprime la nomination du président de France Télévisions par le chef de l’État et la confie au CSA, pour garantir l’indépendance du service public.");
+
+/* ============ REPÈRES BIOGRAPHIQUES (galerie) ============ */
+setRep("degaulle", [["1940", "Appel du 18 juin, depuis Londres."], ["1958", "Revient au pouvoir ; Constitution de la Ve République, approuvée par référendum."], ["1962", "Accords d’Évian ; élection du président au suffrage universel."], ["1969", "Démissionne après l’échec du référendum du 27 avril."]]);
+setRep("pompidou", [["1962", "Devient Premier ministre (jusqu’en 1968)."], ["1969", "Élu président de la République."], ["1973", "Premier choc pétrolier ; la CEE passe à neuf membres."], ["1974", "Meurt en fonction, le 2 avril."]]);
+setRep("giscard", [["1974", "Élu président à 48 ans, face à François Mitterrand."], ["1975", "Loi Veil ; divorce par consentement mutuel."], ["1979", "Création du Système monétaire européen."], ["1981", "Battu par François Mitterrand."]]);
+setRep("mitterrand", [["1971", "Prend la tête du Parti socialiste (congrès d’Épinay)."], ["1981", "Élu président le 10 mai ; abolition de la peine de mort."], ["1988", "Réélu face à Jacques Chirac."], ["1995", "Quitte l’Élysée après quatorze ans."]]);
+setRep("chirac", [["1977", "Premier maire de Paris (jusqu’en 1995)."], ["1995", "Élu président de la République."], ["2002", "Réélu avec plus de 82 % face à Jean-Marie Le Pen."], ["2007", "Quitte l’Élysée."]]);
+setRep("sarkozy", [["2002", "Ministre de l’Intérieur."], ["2007", "Élu président de la République."], ["2011", "Intervention militaire en Libye."], ["2012", "Battu par François Hollande."]]);
+setRep("hollande", [["2012", "Élu président en battant Nicolas Sarkozy."], ["2013", "Mariage pour tous."], ["2015", "Attentats de janvier et de novembre ; accord de Paris sur le climat."], ["2016", "Renonce à se représenter (1er décembre)."]]);
+setRep("rocard", [["1988", "Premier ministre ; accords de Matignon, RMI."], ["1990", "Création de la CSG."], ["1991", "Quitte Matignon."], ["1993", "Premier secrétaire du PS, pour un an."]]);
+setRep("jospin", [["1997", "Premier ministre après la dissolution décidée par Jacques Chirac."], ["1998", "Première loi sur les 35 heures."], ["1999", "Création du PACS."], ["2002", "Éliminé au premier tour de la présidentielle."]]);
+setRep("veil", [["1944", "Déportée à Auschwitz, à 16 ans."], ["1975", "Loi sur l’interruption volontaire de grossesse."], ["1979", "Première présidente du Parlement européen élu."], ["2018", "Entre au Panthéon avec son mari, Antoine Veil (1er juillet)."]]);
+setRep("badinter", [["1981", "Garde des Sceaux ; abolition de la peine de mort."], ["1986", "Président du Conseil constitutionnel (jusqu’en 1995)."], ["1995", "Sénateur des Hauts-de-Seine (jusqu’en 2011)."]]);
+setRep("debre", [["1958", "Garde des Sceaux ; rédige la Constitution."], ["1959", "Premier ministre ; loi Debré sur l’école privée."], ["1962", "Quitte Matignon en avril."], ["1966", "Ministre de l’Économie et des Finances (jusqu’en 1968)."]]);
+setRep("marchais", [["1972", "Secrétaire général du PCF ; signature du Programme commun de la gauche."], ["1981", "Candidat à la présidentielle : environ 15 %."], ["1994", "Quitte la direction du PCF."]]);
+setRep("jmlepen", [["1972", "Fonde le Front national."], ["1984", "Percée du FN aux élections européennes (environ 11 %)."], ["1986", "35 députés FN, grâce à la proportionnelle."], ["2002", "Qualifié pour le second tour de la présidentielle."]]);
+setRep("balladur", [["1986", "Ministre de l’Économie ; privatisations."], ["1993", "Premier ministre de cohabitation."], ["1995", "Candidat à la présidentielle, éliminé au premier tour."]]);
+setRep("seguin", [["1986", "Ministre des Affaires sociales et de l’Emploi (jusqu’en 1988)."], ["1992", "Discours contre le traité de Maastricht."], ["1993", "Président de l’Assemblée nationale."], ["2004", "Premier président de la Cour des comptes issu de la politique (jusqu’en 2010)."]]);
+setRep("pasqua", [["1986", "Ministre de l’Intérieur."], ["1993", "Ministre de l’Intérieur et de l’Aménagement du territoire."], ["1999", "Fonde le Rassemblement pour la France."]]);
+setRep("chevenement", [["1984", "Ministre de l’Éducation nationale."], ["1991", "Démissionne du ministère de la Défense pendant la guerre du Golfe."], ["1997", "Ministre de l’Intérieur (jusqu’en 2000)."], ["2002", "Candidat à la présidentielle : environ 5 %."]]);
+setRep("mauroy", [["1973", "Maire de Lille (jusqu’en 2001)."], ["1981", "Premier ministre."], ["1984", "Quitte Matignon."], ["1988", "Premier secrétaire du PS (jusqu’en 1992)."]]);
+setRep("royal", [["2004", "Présidente de la région Poitou-Charentes."], ["2007", "Candidate à la présidentielle : 46,9 % au second tour."], ["2014", "Ministre de l’Écologie."], ["2017", "Quitte le gouvernement."]]);
+setRep("macron", [["2012", "Secrétaire général adjoint de l’Élysée."], ["2014", "Ministre de l’Économie."], ["2016", "Fonde En Marche."], ["2017", "Élu président à 39 ans."]]);
+setRep("lecornu", [["2017", "Entre au gouvernement comme secrétaire d’État."], ["2022", "Ministre des Armées."], ["Sept. 2025", "Nommé Premier ministre."], ["Oct. 2025", "Renonce au 49.3 et annonce la suspension de la réforme des retraites."]]);
+setRep("mlepen", [["2011", "Présidente du Front national."], ["2017", "Qualifiée au second tour de la présidentielle (33,9 %)."], ["2018", "Le Front national devient Rassemblement national."], ["2022", "Second tour de la présidentielle (41,5 %)."]]);
+setRep("bardella", [["2019", "Tête de liste RN aux européennes (23,3 %)."], ["2022", "Élu président du RN."], ["2024", "Tête de liste aux européennes (31,4 %)."]]);
+setRep("melenchon", [["2008", "Fonde le Parti de gauche."], ["2016", "Lance La France insoumise."], ["2017", "Présidentielle : 19,6 %."], ["2022", "Présidentielle : 21,95 %, à environ un point du second tour."]]);
+setRep("glucksmann", [["2019", "Tête de liste Place publique - PS aux européennes (6,2 %)."], ["2024", "Liste PS - Place publique aux européennes : 13,8 %."], ["11 oct. 2026", "Remporte la primaire de la gauche."]]);
+setRep("retailleau", [["2014", "Président du groupe UMP puis LR au Sénat."], ["2024", "Ministre de l’Intérieur."], ["2025", "Élu président des Républicains (mai)."]]);
+setRep("philippe", [["2010", "Maire du Havre."], ["2017", "Premier ministre."], ["2020", "Quitte Matignon et retrouve la mairie du Havre."], ["2021", "Fonde Horizons."]]);
+setRep("attal", [["2023", "Ministre de l’Éducation nationale."], ["Janv. 2024", "Premier ministre à 34 ans."], ["Déc. 2024", "Prend la tête de Renaissance."]]);
+setRep("tondelier", [["2014", "Élue municipale à Hénin-Beaumont."], ["2022", "Secrétaire nationale des Écologistes."], ["2024", "Participe à la création du Nouveau Front populaire."]]);
+setRep("roussel", [["2017", "Député du Nord."], ["2018", "Secrétaire national du PCF."], ["2022", "Candidat à la présidentielle : 2,3 %."]]);
+setRep("zemmour", [["2014", "Publie « Le Suicide français »."], ["2021", "Fonde Reconquête."], ["2022", "Présidentielle : environ 7 %."]]);
+setRep("villepin", [["2002", "Ministre des Affaires étrangères."], ["2003", "Discours à l’ONU contre la guerre en Irak (14 février)."], ["2005", "Premier ministre."], ["2006", "Retrait du CPE."]]);
+setRep("faure", [["2012", "Député de Seine-et-Marne."], ["2018", "Premier secrétaire du PS."], ["2026", "Candidat à la primaire de la gauche."]]);
+setRep("darmanin", [["2014", "Maire de Tourcoing (jusqu’en 2020)."], ["2020", "Ministre de l’Intérieur."], ["Janv. 2024", "Loi immigration."], ["Déc. 2024", "Garde des Sceaux."]]);
+setRep("lisnard", [["2014", "Maire de Cannes."], ["2021", "Président de l’Association des maires de France."], ["Mars 2026", "Réélu maire de Cannes dès le premier tour."], ["31 mars 2026", "Quitte Les Républicains et annonce sa candidature à la présidentielle."]]);
+setRep("hidalgo", [["2014", "Première femme maire de Paris."], ["2016", "Les voies sur berges de la rive droite sont fermées aux voitures."], ["2022", "Candidate à la présidentielle (1,75 %)."], ["2024", "Les Jeux olympiques et paralympiques se tiennent à Paris."]]);
+setRep("poutou", [["2012", "Candidat du NPA à la présidentielle (1,15 %)."], ["2017", "Débat télévisé du 4 avril : il renvoie Marine Le Pen et François Fillon à leurs affaires et à leur immunité."], ["2017", "Présidentielle : 1,09 %."], ["2022", "Présidentielle : 0,77 %."]]);
+
+/* Les 10 sujets historiques n’ont pas de « acc » : seuls les débats de société sont « accessibles » */
+Object.keys(THEMES).forEach(k => { if (!THEMES[k].cat) THEMES[k].cat = "grand"; });
+
+/* ============ OUTILS ============ */
+const $ = s => document.querySelector(s);
+const NB = "\u00a0";
+const fr = s => String(s).replace(/« /g, "«" + NB).replace(/ »/g, NB + "»").replace(/ ([:;?!])/g, NB + "$1");
+const esc = s => fr(String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"));
+const attr = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+const rand = a => a[Math.floor(Math.random() * a.length)];
+const shuffle = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const byId = id => CANDS.find(c => c.id === id);
+const initials = n => {
+  const w = String(n).trim().split(/\s+/).filter(x => /^[A-ZÀ-ÖØ-Þ]/.test(x));
+  if (!w.length) return "?";
+  const f = w[0][0], l = w.length > 1 ? w[w.length - 1][0] : "";
+  return (f + l).toUpperCase();
+};
+const fmt = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+/* ============ ÉMBLÈMES (dessins stylisés) ============ */
+function starPts(cx, cy, R, r) {
+  let p = [];
+  for (let i = 0; i < 10; i++) {
+    const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r : R;
+    p.push((cx + rr * Math.cos(a)).toFixed(1) + "," + (cy + rr * Math.sin(a)).toFixed(1));
+  }
+  return p.join(" ");
+}
+function emblem(kind, fg, bg) {
+  fg = fg || "#fff"; bg = bg || "#000";
+  let g = "";
+  switch (kind) {
+    case "lorraine":
+      g = `<g stroke="${fg}" stroke-width="5.5" stroke-linecap="round" fill="none"><path d="M32 7V57M23 18H41M15 34H49"/></g>`; break;
+    case "lr":
+      g = `<text x="32" y="40" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="29" fill="${fg}">LR</text><rect x="12" y="46" width="13" height="4" fill="#8fb2ff"/><rect x="25.5" y="46" width="13" height="4" fill="#fff"/><rect x="39" y="46" width="13" height="4" fill="#ff6b78"/>`; break;
+    case "sun": {
+      let rays = "";
+      for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; rays += `<line x1="${(32 + 16 * Math.cos(a)).toFixed(1)}" y1="${(32 + 16 * Math.sin(a)).toFixed(1)}" x2="${(32 + 24 * Math.cos(a)).toFixed(1)}" y2="${(32 + 24 * Math.sin(a)).toFixed(1)}"/>`; }
+      g = `<circle cx="32" cy="32" r="11" fill="${fg}"/><g stroke="${fg}" stroke-width="3.5" stroke-linecap="round">${rays}</g>`; break;
+    }
+    case "rose":
+      g = `<circle cx="32" cy="25" r="15" fill="${fg}"/><path d="M32 25m-9 0a9 9 0 1 1 9 9" fill="none" stroke="${bg}" stroke-width="3.2" stroke-linecap="round"/><path d="M32 40v18" stroke="${fg}" stroke-width="4" stroke-linecap="round"/><path d="M32 52c-9-1-12-5-13-10 8 0 12 4 13 10z" fill="${fg}"/>`; break;
+    case "star":
+      g = `<circle cx="32" cy="32" r="25" fill="none" stroke="${fg}" stroke-width="3"/><polygon points="${starPts(32, 33, 17, 7)}" fill="${fg}"/>`; break;
+    case "phi":
+      g = `<circle cx="32" cy="32" r="26" fill="none" stroke="${fg}" stroke-width="3"/><text x="32" y="45" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-weight="700" font-size="38" fill="${fg}">φ</text>`; break;
+    case "flame":
+      g = `<path d="M32 5C30 18 17 24 17 39c0 11 8 19 18 19 10 0 16-8 14-18-2-8-9-10-9-18-4 4-6-4-8-17z" fill="#fff"/><path d="M33 22c-1 9-9 12-9 21 0 6 4 10 10 10 7 0 10-5 9-11-1-6-7-8-7-14-3 2-3-2-3-6z" fill="#3a62d8"/><path d="M34 37c-1 4-4 5-4 9 0 4 3 6 6 6s5-3 4-6c-1-3-5-5-6-9z" fill="#e1000f"/>`; break;
+    case "arrow":
+      g = `<path d="M9 40L32 10l23 30H43L32 25 21 40z" fill="${fg}"/><rect x="20" y="46" width="24" height="6" rx="3" fill="${fg}"/>`; break;
+    case "horizon":
+      g = `<path d="M15 34a17 17 0 0 1 34 0z" fill="${fg}"/><g stroke="${fg}" stroke-width="3.2" stroke-linecap="round"><path d="M8 40h48M14 47h36M21 54h22"/></g>`; break;
+    case "leaf":
+      g = `<path d="M12 49C10 26 27 11 53 11c0 27-14 41-37 40z" fill="${fg}"/><path d="M15 48C26 36 36 27 47 19" stroke="${bg}" stroke-width="3" fill="none" stroke-linecap="round"/>`; break;
+    case "bolt":
+      g = `<path d="M37 5L15 37h14l-4 22 24-34H34z" fill="${fg}"/>`; break;
+    case "pp":
+      g = `<circle cx="24" cy="32" r="15" fill="none" stroke="${fg}" stroke-width="5"/><circle cx="40" cy="32" r="15" fill="none" stroke="${fg}" stroke-width="5"/>`; break;
+    case "shield":
+      g = `<path d="M32 6l21 8v17c0 14-9 22-21 27C20 53 11 45 11 31V14z" fill="${fg}"/><text x="32" y="43" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="32" fill="${bg}">R</text>`; break;
+    case "laurel":
+      g = `<circle cx="32" cy="32" r="25" fill="none" stroke="${fg}" stroke-width="3.5"/><text x="32" y="43" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="31" fill="${fg}">H</text>`; break;
+    default:
+      g = `<circle cx="32" cy="32" r="20" fill="${fg}"/>`;
+  }
+  return `<svg class="emb" viewBox="0 0 64 64" aria-hidden="true">${g}</svg>`;
+}
+
+/* ============ ÉTAT ============ */
+const MINUTES = [5, 10, 15];
+const GENERIC_RELANCES = [
+  "Qu’est-ce qui pourrait vraiment te faire changer d’avis ?",
+  "Donne un exemple concret : qu’est-ce que cela changerait dans la vie de quelqu’un ?",
+  "Quel serait le meilleur argument contre ta propre position ?",
+  "Peux-tu trouver un point d’accord avec la personne à ta droite ?"
+];
+const S = {
+  screen: "home", n: 5, rounds: 1, minutes: 10, mode: "random", picked: [], names: [],
+  players: [], cur: 0, duel: null, taken: new Set(), focus: null,
+  round: 0, usedThemes: [], theme: null, hands: [], deb: null,
+  vote: null, results: [], galTab: "cands", galEra: "all", galTheme: "all", modal: null, fan: null, setupErr: ""
+};
+
+/* ============ CARTES ============ */
+function cardHTML(c, o) {
+  o = o || {};
+  const p = PARTIES[c.pt];
+  const first = Object.values(c.s)[0];
+  const era = c.era === "a" ? "Aujourd’hui" : "Histoire";
+  const tag = o.tag || "article";
+  return `<${tag} class="pc ${o.cls || ""}" style="--c1:${p.c1};--c2:${p.c2}" ${o.attrs || ""}>
+    <div class="pc-top">${emblem(p.em, "#fff", p.c1)}<div class="pc-party">${esc(c.pl || p.nom)}</div><span class="era">${era}</span></div>
+    <div class="pc-body">
+      <div class="mono">${initials(c.nom)}</div>
+      <h3>${esc(c.nom)}</h3>
+      <div class="role">${esc(c.role)} · ${esc(c.an)}</div>
+      <div class="tag">${esc(c.tag)}</div>
+      ${o.bio ? `<p class="bio">${esc(c.bio)}</p>` : ""}
+      <div class="sig"><b>Idée phare</b>${esc(first[0])}</div>
+    </div></${tag}>`;
+}
+
+/* ============ LOGIQUE : DUELS ============ */
+const hasFocus = c => !!(S.focus && c.s[S.focus]);
+function pickOpp(p, w) {
+  const pool = CANDS.filter(c => !S.taken.has(c.id) && !p.seen.includes(c.id));
+  const samePt = (a, b) => a.pt === b.pt || (a.pt === "rn" && b.pt === "fn") || (a.pt === "fn" && b.pt === "rn");
+  const pref = pool.filter(c => !samePt(c, w));
+  const cross = pref.filter(c => c.era !== w.era);
+  let list = (Math.random() < 0.65 && cross.length) ? cross : (pref.length ? pref : pool);
+  if (S.focus && Math.random() < 0.7) {
+    const f = list.filter(hasFocus);
+    if (f.length) list = f; else { const f2 = pool.filter(hasFocus); if (f2.length) list = f2; }
+  }
+  return rand(list);
+}
+const curP = () => S.dp || S.players[S.cur];
+function startDuels(p) {
+  p.seen = [];
+  const pool = CANDS.filter(c => !S.taken.has(c.id));
+  const fp = pool.filter(hasFocus);
+  const a = (S.focus && fp.length && Math.random() < 0.7) ? rand(fp) : rand(pool);
+  p.seen.push(a.id);
+  const b = pickOpp(p, a);
+  p.seen.push(b.id);
+  S.duel = Math.random() < 0.5 ? { n: 1, a: a.id, b: b.id, picked: null } : { n: 1, a: b.id, b: a.id, picked: null };
+}
+function pick(side) {
+  const d = S.duel; if (!d || d.picked) return;
+  d.picked = side;
+  const w = byId(side === "a" ? d.a : d.b);
+  document.querySelectorAll(".duel .pc").forEach(el => {
+    el.classList.remove("won", "lost");
+    el.classList.add(el.dataset.side === side ? "won" : "lost");
+  });
+  setTimeout(() => {
+    const p = curP();
+    if (d.n >= 10) {
+      if (S.onFinal) { S.lastLoser = side === "a" ? d.b : d.a; S.onFinal(w); }
+      else { p.cand = w.id; S.taken.add(w.id); go("card"); }
+    } else {
+      const o = pickOpp(p, w); p.seen.push(o.id);
+      S.duel = Math.random() < 0.5 ? { n: d.n + 1, a: w.id, b: o.id, picked: null } : { n: d.n + 1, a: o.id, b: w.id, picked: null };
+      render();
+    }
+  }, 620);
+}
+
+/* ============ LOGIQUE : MANCHES ============ */
+function jokerText(c, k) {
+  const t = THEMES[k], first = Object.values(c.s)[0];
+  if (t && t.cat === "soc") return `Pas de position documentée de ${c.nom} sur ce sujet. Choisis le camp (le oui ou le non) qui te paraît le plus proche de ses valeurs, défends-le avec tes propres convictions, et dis clairement que tu extrapoles.`;
+  return `Pas de position précise de ${c.nom} sur ce sujet dans notre base. Imagine ce qu’il défendrait d’après son parcours (par exemple : « ${first[0]} ») et dis clairement que tu extrapoles.`;
+}
+const modeNow = () => S.online ? (O.s.settings.mode || "random") : S.mode;
+const themesNow = () => S.online ? (O.s.settings.themes || []) : S.picked;
+function planRound(idx) {
+  const live = S.players.filter(p => p.cand);
+  if (modeNow() === "theme") { const l = themesNow(); return { theme: l[Math.min(idx, l.length - 1)] }; }
+  const used = S.online ? (O.s.used || []) : S.usedThemes;
+  const cs = live.map(p => byId(p.cand));
+  const avail = Object.keys(THEMES).filter(k => THEMES[k].cat === "grand" && !used.includes(k));
+  const sc = avail.map(k => {
+    const have = cs.filter(c => c.s[k]);
+    return { k, cov: have.length, mix: new Set(have.map(c => c.era)).size > 1 ? 1 : 0, r: Math.random() };
+  }).sort((a, b) => b.cov - a.cov || b.mix - a.mix || b.r - a.r);
+  return { theme: sc[0].k };
+}
+function makeHands() {
+  return S.players.map(p => { const c = byId(p.cand); const st = c ? (c.s[S.theme] || null) : null; return { cand: p.cand, st, joker: (c && !st) ? jokerText(c, S.theme) : null }; });
+}
+function setupRound() {
+  const r = planRound(S.round);
+  S.theme = r.theme; S.usedThemes.push(S.theme);
+  S.hands = makeHands();
+  S.deb = newDeb(S.players.map(p => p.id), S.minutes * 60);
+}
+
+/* ============ DÉBAT : TEMPS DE PAROLE (comme à la télé) ============ */
+const T = { ctx: null, beeped: null };
+const stopTimer = () => { };
+const nowS = () => Date.now() + ((S.online && O.s) ? O.off : 0);
+const curDeb = () => S.online ? (O.s && O.s.deb) : S.deb;
+function newDeb(ids, sec) {
+  const banks = {}; ids.forEach(id => banks[id] = sec);
+  return { banks, total: sec, floor: null, running: false, at: Date.now(), prompt: null };
+}
+function debLeft(D, id, now) { let b = D.banks[id] || 0; if (D.running && D.floor === id) b -= (now - D.at) / 1000; return Math.max(0, b); }
+function debSettle(D, now) { if (D.running && D.floor != null) D.banks[D.floor] = debLeft(D, D.floor, now); D.at = now; }
+function debSpeak(D, id, now) { debSettle(D, now); D.floor = id; D.running = (D.banks[id] || 0) > 0; D.at = now; }
+function debPause(D, now) { debSettle(D, now); D.running = false; }
+function debResume(D, now) { debSettle(D, now); D.running = D.floor != null && (D.banks[D.floor] || 0) > 0; D.at = now; }
+function relancePool() { const t = THEMES[S.theme] || {}; return (t.relances || []).concat(GENERIC_RELANCES); }
+function beep() {
+  try {
+    T.ctx = T.ctx || new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.22, 0.44].forEach(d => {
+      const o = T.ctx.createOscillator(), g = T.ctx.createGain();
+      o.frequency.value = 880; o.connect(g); g.connect(T.ctx.destination);
+      g.gain.setValueAtTime(0.0001, T.ctx.currentTime + d);
+      g.gain.exponentialRampToValueAtTime(0.25, T.ctx.currentTime + d + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, T.ctx.currentTime + d + 0.18);
+      o.start(T.ctx.currentTime + d); o.stop(T.ctx.currentTime + d + 0.2);
+    });
+  } catch (e) { }
+  try { if (navigator.vibrate) navigator.vibrate([180, 80, 180]); } catch (e) { }
+}
+function paintDeb() {
+  if (S.screen !== "debate") return;
+  const D = curDeb(); if (!D) return;
+  const now = nowS();
+  let anyLeft = false;
+  S.players.forEach(p => {
+    const left = debLeft(D, p.id, now);
+    if (left > 0) anyLeft = true;
+    const t = document.getElementById("bk-" + p.id); if (t) t.textContent = fmt(left);
+    const bar = document.getElementById("bb-" + p.id); if (bar) bar.style.width = (100 * left / (D.total || 1)).toFixed(1) + "%";
+    const chip = document.getElementById("ch-" + p.id);
+    if (chip) { chip.classList.toggle("zero", left <= 0); chip.classList.toggle("live", D.floor === p.id); chip.classList.toggle("run", D.floor === p.id && D.running); }
+  });
+  const fl = D.floor, left = fl ? debLeft(D, fl, now) : 0;
+  const num = $("#dnum"); if (!num) return;
+  num.textContent = fl ? fmt(left) : "—";
+  $("#dring").style.strokeDashoffset = (326.7 * (1 - (fl ? left / (D.total || 1) : 0))).toFixed(1);
+  const dock = $("#dock");
+  dock.classList.toggle("run", !!(fl && D.running && left > 0));
+  dock.classList.toggle("done", !!(fl && left <= 0));
+  $("#dlabel").textContent = !fl ? "Libre" : (left <= 0 ? "Épuisé" : (D.running ? "En cours" : "Pause"));
+  const ad = $("#alldone"); if (ad) ad.hidden = anyLeft;
+  const key = fl + ":" + D.at;
+  if (fl && D.running && left <= 0 && T.beeped !== key) { T.beeped = key; beep(); }
+}
+setInterval(paintDeb, 250);
+function debAct(kind, id) {
+  if (S.online) {
+    if (kind === "speak") osend({ t: "speak" });
+    else if (kind === "give") osend({ t: "give", pid: id });
+    else if (kind === "pause") osend({ t: "pause" });
+    else if (kind === "resume") osend({ t: "resume" });
+    else if (kind === "relance") osend({ t: "relance", i: Math.floor(Math.random() * relancePool().length) });
+    return;
+  }
+  const D = S.deb, now = Date.now();
+  if (kind === "give") debSpeak(D, id, now);
+  else if (kind === "pause") debPause(D, now);
+  else if (kind === "resume") debResume(D, now);
+  else if (kind === "relance") D.prompt = { i: Math.floor(Math.random() * relancePool().length), n: ((D.prompt && D.prompt.n) || 0) + 1 };
+  render(true);
+}
+
+/* ============ VUES ============ */
+function viewHome() {
+  if (!S.fan) { const a = shuffle(CANDS.filter(c => c.era === "a")), h = shuffle(CANDS.filter(c => c.era === "h")); S.fan = [h[0], a[0], h[1]].map(c => c.id); }
+  const fan = S.fan.map(id => cardHTML(byId(id), { cls: "mini" })).join("");
+  return `<section class="scr">
+  <div class="hero">
+    <div class="stack">
+      <div class="kicker">Le jeu de la Ve République</div>
+      <h1>Le Grand <em>Débat</em></h1>
+      <p class="lead">Dix duels « Tu préfères… » pour choisir ton candidat, parmi les figures d’aujourd’hui et celles d’hier. Puis un vrai débat présidentiel entre 4 à 8 joueurs : chacun défend l’idée que son candidat a réellement portée. À la fin, on vote pour le meilleur débatteur.</p>
+      ${(typeof ONLINE_OK !== "undefined" && ONLINE_OK)
+        ? `<div class="row"><button class="btn primary big" data-act="oMenu">Chacun son téléphone</button><button class="btn big" data-act="new">Un seul téléphone</button></div><div class="row"><button class="btn" data-act="gallery">Galerie des cartes</button><button class="btn ghost" data-act="how">Comment jouer ?</button></div>`
+        : `<div class="row"><button class="btn primary big" data-act="new">Nouvelle partie</button><button class="btn" data-act="gallery">Galerie des cartes</button><button class="btn ghost" data-act="how">Comment jouer ?</button></div>`}
+      <p class="fine">${CANDS.length} personnalités · ${Object.keys(THEMES).length} sujets de débat · des faits publics, vérifiés en octobre 2026.</p>
+    </div>
+    <div class="fan">${fan}</div>
+  </div>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Dix duels</h3><p>Le vainqueur d’un duel affronte un nouveau personnage. Le dernier gagnant devient ton candidat.</p></div>
+    <div class="step"><b>2</b><h3>Ta carte</h3><p>Un portrait, une famille politique et les idées que ton candidat a vraiment défendues.</p></div>
+    <div class="step"><b>3</b><h3>Le débat</h3><p>Sujet au hasard ou choisi (réseaux sociaux, fin de vie, nucléaire…). Temps de parole comme à la télé, avec pause.</p></div>
+    <div class="step"><b>4</b><h3>Le vote</h3><p>Chacun vote en secret pour le gagnant du débat. Interdit de voter pour soi-même.</p></div>
+  </div></section>`;
+}
+
+function viewGallery() {
+  const tabs = `<div class="tabs"><button class="${S.galTab === "cands" ? "on" : ""}" data-act="setTab" data-v="cands">👤 Personnalités</button><button class="${S.galTab === "dossiers" ? "on" : ""}" data-act="setTab" data-v="dossiers">📚 Dossiers</button></div>`;
+  let body = "";
+  if (S.galTab === "cands") {
+    const eras = [["all", "Tous"], ["a", "Aujourd’hui"], ["h", "Histoire"]];
+    const list = CANDS.filter(c => (S.galEra === "all" || c.era === S.galEra) && (S.galTheme === "all" || c.s[S.galTheme]));
+    body = `<p class="muted">Touche une carte : parcours, repères datés et toutes les positions documentées.</p>
+    <div class="filters">${eras.map(([k, l]) => `<button class="${S.galEra === k ? "on" : ""}" data-act="setEra" data-v="${k}">${l}</button>`).join("")}</div>
+    <div class="filters"><button class="${S.galTheme === "all" ? "on" : ""}" data-act="setGalTheme" data-v="all">Tous les sujets</button>${Object.entries(THEMES).map(([k, t]) => `<button class="${S.galTheme === k ? "on" : ""}" data-act="setGalTheme" data-v="${k}">${t.ico} ${esc(t.nom)}</button>`).join("")}</div>
+    <p class="hint">${list.length} personnalité${list.length > 1 ? "s" : ""}</p>
+    <div class="grid">${list.map(c => cardHTML(c, { tag: "div", cls: "mini click", attrs: `role="button" tabindex="0" data-act="openCand" data-id="${c.id}"` })).join("")}</div>`;
+  } else {
+    const grp = (cat, label) => `<h3 class="gh">${label}</h3><div class="grid dgrid">${Object.entries(THEMES).filter(([k, t]) => t.cat === cat).map(([k, t]) => {
+      const n = CANDS.filter(c => c.s[k]).length;
+      return `<div class="dossier click" role="button" tabindex="0" data-act="openDossier" data-id="${k}"><div class="dico">${t.ico}</div><div><b>${esc(t.nom)}</b><small>${esc(t.tagline)}</small><em>${t.chrono.length} dates · ${n} position${n > 1 ? "s" : ""} documentée${n > 1 ? "s" : ""}</em></div></div>`;
+    }).join("")}</div>`;
+    body = `<p class="muted">Un dossier par sujet : la question, le contexte, la chronologie et ceux qui ont pris position.</p>${grp("soc", "Débats de société")}${grp("grand", "Grands sujets de la Ve République")}`;
+  }
+  return `<section class="scr">
+  <div class="kicker">Galerie</div><h2 style="font-size:clamp(2rem,6vw,3rem)">Se cultiver en jouant</h2>
+  ${tabs}${body}
+  <p class="fine">Faits publics (lois, discours, programmes) vérifiés à la date d’octobre 2026. Les positions des candidats à la présidentielle peuvent évoluer. Les emblèmes sont des dessins stylisés, pas les logos officiels des partis.</p>
+  </section>`;
+}
+
+function themePickerHTML(selected, act) {
+  const groups = [["soc", "Débats de société · accessibles à tous"], ["grand", "Grands sujets de la Ve République"]];
+  return groups.map(([cat, label]) => `<div class="tp-group"><h4>${label}</h4><div class="tp-grid">${Object.entries(THEMES).filter(([k, t]) => t.cat === cat).map(([k, t]) => {
+    const i = selected.indexOf(k), docs = CANDS.filter(c => c.s[k]).length;
+    return `<button class="tp ${i >= 0 ? "on" : ""}" data-act="${act}" data-k="${k}"><span class="tp-ico">${t.ico}</span><span class="tp-t"><b>${esc(t.nom)}</b><small>${esc(t.tagline)}</small><em>${docs} position${docs > 1 ? "s" : ""} documentée${docs > 1 ? "s" : ""}</em></span>${i >= 0 ? `<span class="tp-n">${i + 1}</span>` : ""}</button>`;
+  }).join("")}</div></div>`).join("");
+}
+const segHTML = (items, cur, act, k) => `<div class="seg">${items.map(([v, l]) => `<button class="${String(cur) === String(v) ? "on" : ""}" data-act="${act}" ${k ? `data-k="${k}"` : ""} data-v="${v}">${l}</button>`).join("")}</div>`;
+
+function viewSetup() {
+  return `<section class="scr"><div class="panel">
+    <div class="kicker">Nouvelle partie</div><h2>Qui joue ?</h2>
+    <p class="muted">Un seul téléphone qui passe de main en main : chacun fait ses duels, puis le débat se joue à voix haute autour de la table.</p>
+    <span class="lbl">Nombre de joueurs</span>${segHTML([4, 5, 6, 7, 8].map(n => [n, n]), S.n, "setN")}
+    <span class="lbl">Prénoms</span>
+    <div class="names">${Array.from({ length: S.n }, (_, i) => `<label class="field"><span>${i + 1}</span><input data-name="${i}" value="${attr(S.names[i] || "")}" placeholder="Joueur ${i + 1}" maxlength="14" autocomplete="off" autocapitalize="words"></label>`).join("")}</div>
+    <span class="lbl">Sujet du débat</span>${segHTML([["random", "🎲 Au hasard"], ["theme", "🎯 Je choisis"]], S.mode, "setMode")}
+    ${S.mode === "random"
+      ? `<span class="lbl">Nombre de manches</span>${segHTML([[1, "1 manche"], [2, "2 manches"], [3, "3 manches"]], S.rounds, "setRounds")}`
+      : `<p class="hint">Choisis 1 à 3 sujets : un par manche, dans l’ordre où tu les touches. Les débats de société ne demandent aucune connaissance particulière.</p>${themePickerHTML(S.picked, "togglePick")}`}
+    <span class="lbl">Temps de parole par joueur</span>${segHTML(MINUTES.map(m => [m, m + " min"]), S.minutes, "setMinutes")}
+    <p class="hint">Comme à la télé : chaque joueur dispose de ${S.minutes} minutes de parole <b>en tout</b>, qu’il utilise quand il veut. Le chrono se met en pause et reprend.</p>
+    ${S.setupErr ? `<p class="err">${esc(S.setupErr)}</p>` : ""}
+    <div class="row mt"><button class="btn primary big" data-act="start">Lancer la partie →</button><button class="btn ghost" data-act="home">Retour</button></div>
+  </div></section>`;
+}
+
+function viewPass(kind) {
+  const isVote = kind === "vote";
+  const p = S.players[isVote ? S.vote.i : S.cur];
+  return `<section class="scr pass"><div class="box">
+    <div class="bubble">${isVote ? "🗳️" : "📱"}</div>
+    <div class="kicker">${isVote ? "Le vote" : "Les duels"}</div>
+    <h2>Passe le téléphone à <em>${esc(p.name)}</em></h2>
+    <p class="lead" style="margin:0 auto 22px">${isVote ? "Ton vote est secret. Tu désignes le meilleur débatteur, mais pas toi-même." : "Dix duels t’attendent. Le vainqueur de chaque duel reste en piste : le dernier devient ton candidat."}</p>
+    <button class="btn primary big" data-act="${isVote ? "voteReady" : "ready"}">${isVote ? "Je vote" : "Je suis prêt·e"}</button>
+  </div></section>`;
+}
+
+function viewDuel() {
+  const p = curP(), d = S.duel;
+  const pips = Array.from({ length: 10 }, (_, i) => `<i class="${i < d.n - 1 ? "d" : (i === d.n - 1 ? "n" : "")}"></i>`).join("");
+  const mk = (id, side) => {
+    const c = byId(id);
+    return cardHTML(c, { tag: "div", bio: true, cls: "big-click", attrs: `role="button" tabindex="0" data-act="pick" data-side="${side}" aria-label="Choisir ${attr(c.nom)}"` });
+  };
+  return `<section class="scr">
+    <div class="dhead"><div><div class="kicker">${esc(p.name)} · duel ${d.n} sur 10</div><h2>Tu préfères…</h2></div><span class="pill">${d.n === 10 ? "Duel final" : "Le vainqueur reste en piste"}</span></div>
+    <div class="pips">${pips}</div>
+    ${S.online ? `<p class="hint" id="oprog" style="margin:-8px 0 12px"></p>` : ""}
+    ${S.tiebreak ? `<div class="fact" style="margin:0 0 14px"><b>Duel de départage</b>Un autre joueur a déjà choisi ce candidat. Dernier duel pour trouver le tien !</div>` : ""}
+    <div class="duel">${mk(d.a, "a")}<div class="vs">VS</div>${mk(d.b, "b")}</div>
+    <p class="choose">Touche la carte que tu préfères.</p>
+  </section>`;
+}
+
+function viewCard() {
+  const p = S.players[S.cur], c = byId(p.cand);
+  const ideas = Object.entries(c.s).map(([k, v]) => `<div class="idea"><div class="ic">${THEMES[k].ico}</div><div><b>${esc(v[0])}</b><span>${esc(THEMES[k].nom)}</span></div></div>`).join("");
+  const last = S.cur === S.players.length - 1;
+  return `<section class="scr">
+    <div class="dhead"><div><div class="kicker">${esc(p.name)} · ta carte</div><h2>Voici ton candidat</h2></div></div>
+    <div class="reveal">${cardHTML(c, { cls: "big", bio: true })}
+      <div>
+        <p class="lead">Pendant le débat, tu parleras à la place de ${esc(c.nom)}.</p>
+        <h3 style="margin:20px 0 4px">Ses grandes idées</h3>
+        <p class="muted">Selon le sujet du débat, tu défendras l’une d’elles${Object.keys(c.s).length < 4 ? ". Si le sujet n’est pas documenté pour lui, tu recevras une carte Joker" : ""}.</p>
+        <div class="ideas">${ideas}</div>
+        <div class="row mt"><button class="btn primary big" data-act="cardNext">${last ? "Découvrir le sujet du débat →" : "Joueur suivant →"}</button></div>
+      </div>
+    </div></section>`;
+}
+
+function campsHTML(t) {
+  return `<div class="camps2"><div><h4>👍 Pour</h4><ul>${t.pour.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div><div><h4>👎 Contre</h4><ul>${t.contre.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>`;
+}
+function viewTheme() {
+  const t = THEMES[S.theme], soc = t.cat === "soc";
+  const doc = S.hands.filter(h => h.st).length;
+  const rows = S.players.map((p, i) => {
+    const c = byId(S.hands[i].cand), pt = PARTIES[c.pt];
+    return `<div class="vopt" style="--c1:${pt.c1};--c2:${pt.c2};cursor:default"><div class="mono">${initials(p.name)}</div><div><b>${esc(p.name)}</b><span>${esc(c.nom)} · ${esc(c.pl || pt.nom)}</span></div></div>`;
+  }).join("");
+  return `<section class="scr">
+    <div class="dhead"><div class="kicker">Manche ${S.round + 1} sur ${S.rounds}</div></div>
+    <div class="theme-hero"><div class="ico">${t.ico}</div><div class="kicker" style="color:#ff9aa3">Sujet du débat</div><h2>${esc(t.q)}</h2><p>${esc(t.ctx)}</p>
+      ${soc ? `<div class="chips"><span class="chip">Aucune connaissance particulière requise</span><span class="chip">Débat de convictions</span></div>${campsHTML(t)}` : `<div class="chips">${t.axes.map(a => `<span class="chip">${esc(a)}</span>`).join("")}</div>`}</div>
+    <div class="panel mt"><h2>Les ${S.players.length} débatteurs</h2>
+      <p class="muted">${doc === 0 ? "Aucun candidat n’a de position documentée dans notre base sur ce sujet : tout le monde reçoit une carte Joker et choisit son camp." : doc + " candidat" + (doc > 1 ? "s ont" : " a") + " une position documentée sur ce sujet" + (doc < S.players.length ? " ; les autres reçoivent une carte Joker et choisissent leur camp" : "") + "."} Chaque joueur dispose de ${Math.round(((curDeb() && curDeb().total) || S.minutes * 60) / 60)} minutes de parole en tout.</p>
+      <div class="vlist">${rows}</div></div>
+    ${(!S.online || isHost()) ? `<div class="row mt"><button class="btn primary big" data-act="beginRound">Distribuer les idées →</button></div>` : `<p class="muted mt">⏳ L’hôte va distribuer les idées…</p>`}
+  </section>`;
+}
+
+function dcHTML(h, i, D) {
+  const c = byId(h.cand), p = PARTIES[c.pt], pl = S.players[i], t = THEMES[S.theme];
+  const sp = D && D.floor === pl.id;
+  const mine = S.online && i === S.me;
+  const extra = t.cat === "soc"
+    ? `<div class="pc2"><span class="pcy">Pour</span>${esc(t.pour[0])}</div><div class="pc2"><span class="pcn">Contre</span>${esc(t.contre[0])}</div>`
+    : `<div class="axes">${t.axes.slice(0, 3).map(a => `<span>${esc(a)}</span>`).join("")}</div>`;
+  const body = h.st
+    ? `<h4>${esc(h.st[0])}</h4><p>${esc(h.st[1])}</p>`
+    : `<span class="joker">Carte Joker</span><h4>Défends l’esprit de ${esc(c.nom)}</h4><p>${esc(h.joker)}</p>${extra}`;
+  return `<article class="dc ${sp ? "speaking" : ""} ${mine ? "mine" : ""}" style="--c1:${p.c1};--c2:${p.c2}">
+    <div class="dc-top">${emblem(p.em, "#fff", p.c1)}<div><b>${esc(c.nom)}</b><small>${esc(c.pl || p.nom)}</small></div><span class="dc-who">${esc(pl.name)}${mine ? " (toi)" : ""}</span></div>
+    <div class="dc-body">${body}${sp ? '<span class="tg">À toi de parler</span>' : ""}</div>
+  </article>`;
+}
+
+function viewDebate() {
+  const t = THEMES[S.theme], D = curDeb(), host = !S.online || isHost();
+  const myId = S.online ? O.pid : null, now = nowS();
+  const fl = D.floor, flIdx = S.players.findIndex(p => p.id === fl);
+  const flLeft = fl ? debLeft(D, fl, now) : 0;
+  const order = S.hands.map((_, i) => i).sort((a, b) => (b === S.me ? 1 : 0) - (a === S.me ? 1 : 0));
+  const chips = S.players.map((p, i) => {
+    const c = byId(S.hands[i].cand), pt = PARTIES[c.pt], mine = S.online && p.id === myId;
+    const tappable = !S.online || mine || host;
+    return `<div class="chip2 ${mine ? "mine" : ""}" id="ch-${p.id}" style="--c1:${pt.c1};--c2:${pt.c2}" ${tappable ? `role="button" tabindex="0" data-act="dGive" data-id="${p.id}"` : ""}><div class="mono">${initials(p.name)}</div><div class="ct"><b>${esc(p.name)}${mine ? " (toi)" : ""}</b><span id="bk-${p.id}">0:00</span><div class="bar2"><i id="bb-${p.id}"></i></div></div></div>`;
+  }).join("");
+  const pool = relancePool();
+  const prompt = D.prompt ? pool[D.prompt.i % pool.length] : null;
+  let st, who, hint;
+  if (fl == null) { st = "Débat libre"; who = "Qui prend la parole ?"; hint = S.online ? "Appuie sur « Je prends la parole » quand tu veux intervenir." : "Touche le nom d’un joueur pour lancer son chrono."; }
+  else { st = flLeft <= 0 ? "Temps épuisé" : (D.running ? "Il parle" : "En pause"); who = `${esc(S.players[flIdx].name)} · ${esc(byId(S.hands[flIdx].cand).nom)}`; hint = flLeft <= 0 ? "Son temps de parole est écoulé : à quelqu’un d’autre !" : (D.running ? "Son chrono tourne." : "Le chrono est en pause."); }
+  let btns = "";
+  if (S.online) {
+    const meSpeaking = fl === myId && D.running;
+    btns = meSpeaking ? `<button class="btn primary" data-act="dPause">✋ Rendre la parole</button>` : `<button class="btn primary" data-act="dSpeak">🎤 Je prends la parole</button>`;
+    if (host) btns += `${fl && !meSpeaking ? `<button class="btn" data-act="dToggle">${D.running ? "⏸ Pause" : "▶ Reprendre"}</button>` : ""}<button class="btn" data-act="dRelance" aria-label="Lancer une relance">💬</button><button class="btn" data-act="dEnd">Vote →</button>`;
+  } else {
+    btns = `<button class="btn primary" data-act="dToggle" ${fl ? "" : "disabled"}>${D.running ? "⏸ Pause" : "▶ Reprendre"}</button><button class="btn" data-act="dRelance">💬 Relance</button><button class="btn" data-act="dEnd">Vote →</button>`;
+  }
+  return `<section class="scr">
+    <div class="kicker">Manche ${S.round + 1} sur ${S.rounds} · ${t.ico} ${esc(t.nom)}</div>
+    <h2 style="font-size:clamp(1.4rem,4vw,2.1rem);margin-top:4px">${esc(t.q)}</h2>
+    <details class="camps"><summary>${t.cat === "soc" ? "Les arguments des deux camps" : "Le contexte du sujet"}</summary>${t.cat === "soc" ? campsHTML(t) : `<p class="muted" style="margin-top:8px">${esc(t.ctx)}</p>`}</details>
+    <div class="timebank"><div class="tb-h"><b>⏱ Temps de parole</b><span>${Math.round(D.total / 60)} min chacun · ${S.online ? (host ? "touche un joueur pour lui donner la parole" : "touche ton nom pour parler") : "touche un joueur pour lancer son chrono"}</span></div><div class="chips2">${chips}</div></div>
+    ${prompt ? `<div class="relance"><b>💬 Relance</b>${esc(prompt)}</div>` : ""}
+    <div class="alldone" id="alldone" hidden>⏱ Le temps de parole de tous les joueurs est écoulé : passez au vote.</div>
+    <div class="board">${order.map(i => dcHTML(S.hands[i], i, D)).join("")}</div>
+    <div class="dock" id="dock"><div class="dock-in">
+      <div class="ring">
+        <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52" fill="none" stroke-width="9"/><circle class="fg" id="dring" cx="60" cy="60" r="52" fill="none" stroke-width="9" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg>
+        <div class="num"><div><span id="dnum">—</span><small id="dlabel">Libre</small></div></div>
+      </div>
+      <div class="dock-txt"><div class="st">${st}</div><div class="who">${who}</div><div class="h">${hint}</div></div>
+      <div class="row">${btns}</div>
+    </div></div>
+  </section>`;
+}
+
+function viewVote() {
+  const i = S.vote.i, sel = S.vote.sel;
+  const opts = S.players.map((_, j) => j).filter(j => j !== i).map(j => {
+    const q = S.players[j], c = byId(S.hands[j].cand), pt = PARTIES[c.pt];
+    return `<button class="vopt ${sel === j ? "on" : ""}" style="--c1:${pt.c1};--c2:${pt.c2}" data-act="selVote" data-j="${j}">
+      <div class="mono">${initials(q.name)}</div>
+      <div><b>${esc(q.name)}</b><span>${esc(c.nom)} · ${esc(S.hands[j].st ? S.hands[j].st[0] : "Carte Joker")}</span></div>
+      <div class="ck">${sel === j ? "✓" : ""}</div></button>`;
+  }).join("");
+  return `<section class="scr">
+    <div class="kicker">${S.online ? "Manche " + (S.round + 1) + " sur " + S.rounds + " · ton vote" : esc(S.players[i].name) + " · vote " + (i + 1) + " sur " + S.players.length}</div>
+    <h2 style="font-size:clamp(1.8rem,5vw,2.6rem)">Qui a gagné le débat ?</h2>
+    <p class="muted">Vote pour le débatteur le plus convaincant, pas pour le candidat que tu préfères. Tu ne peux pas voter pour toi-même.</p>
+    <div class="vlist">${opts}</div>
+    <div class="row mt"><button class="btn primary big" data-act="confirmVote" ${sel == null ? "disabled" : ""}>Valider mon vote</button></div>
+  </section>`;
+}
+
+function rankRows(counts, maxV) {
+  const order = S.players.map((p, i) => ({ p, i, c: counts[i] })).sort((a, b) => b.c - a.c || a.p.name.localeCompare(b.p.name));
+  let rk = 0, prev = null;
+  return order.map((o, idx) => {
+    if (o.c !== prev) { rk = idx + 1; prev = o.c; }
+    const top = order[0].c;
+    const win = o.c === top && top > 0;
+    const c = byId(S.hands[o.i] ? S.hands[o.i].cand : o.p.cand), pt = PARTIES[c.pt];
+    const w = maxV ? Math.max(4, Math.round(100 * o.c / maxV)) : 4;
+    return `<div class="prow ${win ? "win" : ""}" style="--c1:${pt.c1};--c2:${pt.c2}">
+      ${win ? '<span class="crown">👑</span>' : ""}
+      <div class="rank">${rk}</div>
+      <div><div class="nm">${esc(o.p.name)}</div><div class="cn">${esc(c.nom)}</div><div class="bar"><i style="width:${w}%"></i></div></div>
+      <div class="sc">${o.c}<small>vote${o.c > 1 ? "s" : ""}</small></div></div>`;
+  }).join("");
+}
+
+function viewResults() {
+  const r = S.results[S.round], t = THEMES[S.theme], lastR = S.round === S.rounds - 1;
+  const top = Math.max.apply(null, r.counts);
+  const wins = S.players.filter((_, i) => r.counts[i] === top).map(p => p.name);
+  const title = wins.length === 1 ? `${esc(wins[0])} remporte le débat !` : `Égalité entre ${wins.map(esc).join(" et ")} !`;
+  return `<section class="scr">
+    <div class="kicker">Manche ${S.round + 1} sur ${S.rounds} · résultats</div>
+    <h2 style="font-size:clamp(1.9rem,5.5vw,3rem)">${title}</h2>
+    <p class="muted">${t.ico} ${esc(t.q)}</p>
+    <div class="podium">${rankRows(r.counts, S.players.length - 1)}</div>
+    <div class="fact"><b>Le saviez-vous ?</b>${esc(t.fait)}</div>
+    ${(S.online && !isHost()) ? `<p class="muted mt">⏳ L’hôte lance la suite…</p>` : `<div class="row mt">${lastR
+      ? (S.rounds > 1 ? `<button class="btn primary big" data-act="final">Classement final →</button>` : `<button class="btn primary big" data-act="rematch">Rejouer avec les mêmes joueurs</button><button class="btn" data-act="home">Menu</button>`)
+      : `<button class="btn primary big" data-act="nextRound">Manche suivante →</button>`}</div>`}
+  </section>`;
+}
+
+function viewFinal() {
+  const tot = S.players.map(p => p.total);
+  const maxV = Math.max.apply(null, tot) || 1;
+  const top = Math.max.apply(null, tot);
+  const wins = S.players.filter(p => p.total === top).map(p => p.name);
+  return `<section class="scr">
+    <div class="kicker">Classement final · ${S.rounds} manches</div>
+    <h2 style="font-size:clamp(1.9rem,5.5vw,3rem)">${wins.length === 1 ? `${esc(wins[0])} est élu·e président·e du débat !` : `Égalité au sommet : ${wins.map(esc).join(" et ")}`}</h2>
+    <div class="podium">${rankRows(tot, maxV)}</div>
+    ${(S.online && !isHost()) ? `<p class="muted mt">⏳ L’hôte peut lancer une revanche.</p><div class="row mt"><button class="btn" data-act="home">Quitter la salle</button></div>` : `<div class="row mt"><button class="btn primary big" data-act="rematch">Revanche</button><button class="btn" data-act="home">${S.online ? "Quitter la salle" : "Menu"}</button></div>`}
+  </section>`;
+}
+
+/* ============ MODALES ============ */
+const tlHTML = rows => `<ol class="tl">${rows.map(([y, f]) => `<li><b>${esc(y)}</b><span>${esc(f)}</span></li>`).join("")}</ol>`;
+function modalHTML() {
+  const m = S.modal; if (!m) return "";
+  const X = `<button class="iconbtn x" data-act="closeModal" aria-label="Fermer">✕</button>`;
+  let inner = "";
+  if (m.type === "how") {
+    inner = `${X}<h2>Comment jouer</h2>
+    <ol>
+      <li><b>De 4 à 8 joueurs</b>, sur un seul téléphone ou chacun sur le sien (créez une salle et partagez le lien).</li>
+      <li><b>Dix duels</b> « Tu préfères… » par joueur. Le vainqueur d’un duel affronte un nouveau personnage ; le dernier gagnant devient ton candidat. Deux joueurs n’ont jamais le même.</li>
+      <li><b>Le sujet</b> est tiré au hasard parmi les grands sujets de la Ve République, ou <b>choisi par vous</b> (nucléaire, réseaux sociaux, fin de vie, cannabis…). Chacun reçoit l’idée que son candidat a réellement défendue, ou une carte Joker : dans ce cas, tu choisis ton camp et tu le dis clairement.</li>
+      <li><b>Le débat est libre, comme à la télé</b> : chaque joueur dispose de 5, 10 ou 15 minutes de parole en tout. Son chrono tourne quand il parle, et on peut mettre en pause et reprendre. Une relance peut vous aider à dialoguer.</li>
+      <li><b>Chacun vote en secret</b> pour le meilleur débatteur, pas pour lui-même.</li>
+    </ol>
+    <p class="muted" style="font-size:.88rem">Les idées s’appuient sur des faits publics : lois, discours, programmes, vérifiés à la date d’octobre 2026. Les positions des candidats de 2027 peuvent évoluer ; en cas de doute, consultez leurs programmes officiels. Les emblèmes sont des dessins stylisés, pas des logos officiels.</p>
+    <div class="row mt"><button class="btn primary" data-act="closeModal">Compris</button></div>`;
+  } else if (m.type === "quit") {
+    inner = `<h2>Quitter la partie ?</h2><p class="muted">Les duels et le débat en cours seront perdus.</p><div class="row mt"><button class="btn primary" data-act="confirmQuit">Quitter</button><button class="btn" data-act="closeModal">Continuer</button></div>`;
+  } else if (m.type === "cand") {
+    const c = byId(m.id);
+    const lines = Object.entries(c.s).map(([k, v]) => `<div class="dline"><div class="ic">${THEMES[k].ico}</div><div><div class="tn">${esc(THEMES[k].nom)}</div><b>${esc(v[0])}</b><p>${esc(v[1])}</p></div></div>`).join("");
+    inner = `${X}${cardHTML(c, { cls: "mini", bio: true })}
+      ${c.rep ? `<h3 style="margin:18px 0 6px">Repères</h3>${tlHTML(c.rep)}` : ""}
+      <h3 style="margin:18px 0 0">Ses positions documentées (${Object.keys(c.s).length})</h3>${lines}`;
+  } else if (m.type === "dossier") {
+    const k = m.id, t = THEMES[k];
+    const who = CANDS.filter(c => c.s[k]);
+    const rows = who.map(c => { const pt = PARTIES[c.pt]; return `<div class="vopt click" style="--c1:${pt.c1};--c2:${pt.c2}" role="button" tabindex="0" data-act="openCand" data-id="${c.id}"><div class="mono">${initials(c.nom)}</div><div><b>${esc(c.nom)}</b><span>${esc(c.s[k][0])}</span></div></div>`; }).join("");
+    inner = `${X}<div class="kicker">${t.cat === "soc" ? "Débat de société" : "Grand sujet"}</div><h2>${t.ico} ${esc(t.nom)}</h2>
+      <p style="font-family:var(--serif);font-size:1.15rem;font-weight:700;margin:6px 0">${esc(t.q)}</p>
+      <h3 style="margin:14px 0 4px">Le contexte</h3><p class="muted">${esc(t.ctx)}</p>
+      ${t.cat === "soc" ? `<h3 style="margin:14px 0 4px">Les deux camps</h3>${campsHTML(t)}` : ""}
+      <h3 style="margin:16px 0 6px">Chronologie</h3>${tlHTML(t.chrono)}
+      <div class="fact"><b>Le saviez-vous ?</b>${esc(t.fait)}</div>
+      <h3 style="margin:16px 0 0">Qui a pris position (${who.length})</h3><div class="vlist">${rows}</div>`;
+  }
+  return `<div class="modal" data-act="closeModalBg"><div class="sheet" role="dialog" aria-modal="true">${inner}</div></div>`;
+}
+
+/* ============ RENDU ============ */
+const INGAME = ["passDuel", "duel", "card", "theme", "debate", "passVote", "vote", "results", "final"];
+function render(noAnim) {
+  let v = "";
+  switch (S.screen) {
+    case "home": v = viewHome(); break;
+    case "gallery": v = viewGallery(); break;
+    case "setup": v = viewSetup(); break;
+    case "passDuel": v = viewPass("duel"); break;
+    case "duel": v = viewDuel(); break;
+    case "card": v = viewCard(); break;
+    case "theme": v = viewTheme(); break;
+    case "debate": v = viewDebate(); break;
+    case "passVote": v = viewPass("vote"); break;
+    case "vote": v = viewVote(); break;
+    case "results": v = viewResults(); break;
+    case "final": v = viewFinal(); break;
+    case "o-menu": v = viewOMenu(); break;
+    case "o-connecting": v = viewOConnecting(); break;
+    case "o-lobby": v = viewOLobby(); break;
+    case "o-duelintro": v = viewODuelIntro(); break;
+    case "o-pickwait": v = viewOConnecting("Validation de ton choix…"); break;
+    case "o-card": v = viewOCard(); break;
+    case "o-vote": v = viewVote(); break;
+    case "o-votewait": v = viewOVoteWait(); break;
+  }
+  $("#app").innerHTML = v;
+  $("#modal").innerHTML = modalHTML();
+  const ing = INGAME.includes(S.screen) || (S.online && S.screen.indexOf("o-") === 0);
+  $("#hdr-right").innerHTML = ing
+    ? `<span class="pill">${S.online ? "Salle " + O.code : (S.screen === "debate" || S.screen === "theme" || S.screen === "passVote" || S.screen === "vote" || S.screen === "results" ? "Manche " + (S.round + 1) + "/" + S.rounds : "Duels")}</span><button class="iconbtn" data-act="quit">Quitter</button>`
+    : (S.screen === "home" ? `<button class="iconbtn" data-act="gallery">Galerie</button>` : `<button class="iconbtn" data-act="home">Accueil</button>`);
+  if (noAnim) { const sc = $("#app .scr"); if (sc) sc.style.animation = "none"; }
+  if (S.screen === "debate") paintDeb();
+  if (!noAnim && (S.screen === "results" || S.screen === "final")) confetti();
+}
+function go(s) { S.screen = s; window.scrollTo(0, 0); render(); }
+function confetti() {
+  const old = $("#confetti"); if (old) old.remove();
+  const box = document.createElement("div"); box.className = "confetti"; box.id = "confetti";
+  const cols = ["#0b2a6f", "#ffffff", "#d6202f", "#4a7be0", "#f3c64a"];
+  for (let i = 0; i < 70; i++) {
+    const e = document.createElement("i");
+    e.style.left = Math.random() * 100 + "%";
+    e.style.background = cols[i % cols.length];
+    e.style.animationDuration = (2.4 + Math.random() * 2.2) + "s";
+    e.style.animationDelay = (Math.random() * 0.9) + "s";
+    e.style.boxShadow = "0 0 0 1px rgba(0,0,0,.12)";
+    box.appendChild(e);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => { box.remove(); }, 6000);
+}
+
+/* ============ ACTIONS ============ */
+function resetPlayers() {
+  S.players = S.players.map(p => ({ id: p.id, name: p.name, cand: null, seen: [], total: 0 }));
+  S.taken = new Set(); S.cur = 0; S.round = 0; S.usedThemes = []; S.results = [];
+}
+const A = {
+  brand() { if (INGAME.includes(S.screen)) A.quit(); else A.home(); },
+  home() { stopTimer(); S.modal = null; if (S.online) { onlineLeave(); return; } go("home"); },
+  gallery() { go("gallery"); },
+  how() { S.modal = { type: "how" }; render(); },
+  closeModal() { S.modal = null; render(); },
+  closeModalBg(d, el, e) { if (e.target === el) { S.modal = null; render(); } },
+  quit() { S.modal = { type: "quit" }; render(); },
+  confirmQuit() { stopTimer(); S.modal = null; if (S.online) { onlineLeave(); return; } go("home"); },
+  openCand(d) { S.modal = { type: "cand", id: d.id }; render(); },
+  setTab(d) { S.galTab = d.v; render(true); },
+  openDossier(d) { S.modal = { type: "dossier", id: d.id }; render(); },
+  setEra(d) { S.galEra = d.v; render(true); },
+  setGalTheme(d) { S.galTheme = d.v; render(true); },
+  new() { S.online = false; S.onFinal = null; S.dp = null; S.tiebreak = false; go("setup"); },
+  setN(d) { S.n = +d.v; render(true); },
+  setRounds(d) { S.rounds = +d.v; render(true); },
+  setMinutes(d) { S.minutes = +d.v; render(true); },
+  setMode(d) { S.mode = d.v; S.setupErr = ""; render(true); },
+  togglePick(d) {
+    const i = S.picked.indexOf(d.k);
+    if (i >= 0) S.picked.splice(i, 1); else if (S.picked.length < 3) S.picked.push(d.k);
+    S.setupErr = ""; render(true);
+  },
+  start() {
+    if (S.mode === "theme" && !S.picked.length) { S.setupErr = "Choisis au moins un sujet de débat."; render(true); return; }
+    S.setupErr = "";
+    const seen = new Set();
+    const names = [];
+    for (let i = 0; i < S.n; i++) {
+      let nm = (S.names[i] || "").trim() || ("Joueur " + (i + 1));
+      let base = nm, k = 2;
+      while (seen.has(nm.toLowerCase())) nm = base + " " + (k++);
+      seen.add(nm.toLowerCase()); names.push(nm);
+    }
+    S.names = names;
+    S.players = names.map((n, i) => ({ id: "p" + i, name: n, cand: null, seen: [], total: 0 }));
+    S.taken = new Set(); S.cur = 0; S.round = 0; S.usedThemes = []; S.results = [];
+    if (S.mode === "theme") S.rounds = S.picked.length;
+    S.focus = S.mode === "theme" ? S.picked[0] : null;
+    go("passDuel");
+  },
+  ready() { startDuels(S.players[S.cur]); go("duel"); },
+  pick(d) { pick(d.side); },
+  cardNext() {
+    if (S.cur < S.players.length - 1) { S.cur++; go("passDuel"); }
+    else { S.round = 0; setupRound(); go("theme"); }
+  },
+  beginRound() { if (S.online) { osend({ t: "beginDebate" }); return; } if (S.deb) S.deb.at = Date.now(); go("debate"); },
+  dGive(d) {
+    if (S.online) { if (d.id === O.pid) debAct("speak"); else if (isHost()) debAct("give", d.id); return; }
+    debAct("give", d.id);
+  },
+  dSpeak() { debAct("speak"); },
+  dPause() { debAct("pause"); },
+  dToggle() { const D = curDeb(); debAct(D.running ? "pause" : "resume"); },
+  dRelance() { debAct("relance"); },
+  dEnd() {
+    if (S.online) { osend({ t: "toVote" }); return; }
+    debPause(S.deb, Date.now());
+    S.vote = { i: 0, sel: null, picks: [] }; go("passVote");
+  },
+  voteReady() { go("vote"); },
+  selVote(d) { S.vote.sel = +d.j; render(true); },
+  confirmVote() {
+    if (S.online) { if (S.vote.sel == null) return; const tg = S.players[S.vote.sel]; S.vote.sel = null; osend({ t: "vote", target: tg.id }); return; }
+    const v = S.vote; if (v.sel == null) return;
+    v.picks[v.i] = v.sel; v.sel = null;
+    if (v.i < S.players.length - 1) { v.i++; go("passVote"); }
+    else {
+      const counts = S.players.map(() => 0);
+      v.picks.forEach(j => counts[j]++);
+      S.results[S.round] = { counts };
+      S.players.forEach((p, i) => p.total += counts[i]);
+      go("results");
+    }
+  },
+  nextRound() { if (S.online) { onlineStartRound(); return; } S.round++; setupRound(); go("theme"); },
+  final() { if (S.online) { osend({ t: "final" }); return; } go("final"); },
+  rematch() { if (S.online) { osend({ t: "rematch" }); return; } resetPlayers(); go("passDuel"); }
+};
+
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]");
+  if (!el) return;
+  const f = A[el.dataset.act];
+  if (f) f(el.dataset, el, e);
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && S.modal) { S.modal = null; render(); return; }
+  if ((e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches('[role="button"][data-act]')) { e.preventDefault(); e.target.click(); }
+});
+document.addEventListener("input", e => {
+  const i = e.target.dataset && e.target.dataset.name;
+  if (i != null) S.names[+i] = e.target.value;
+});
+
+/* Thème : suit le système par défaut */
+
+/* ============ MODE EN LIGNE (chacun son téléphone) ============ */
+const O = { ws: null, code: null, pid: null, token: null, s: null, off: 0, name: "", codeIn: "", err: "", busy: false, retry: 0, beeped: null };
+const SKEY = "grandDebat.session";
+const PAL = ["#2147a6", "#d62f4c", "#33a853", "#f08a24", "#7a49c4", "#1c93c9", "#e8457e", "#139287"];
+const palOf = i => { const c = PAL[i % PAL.length]; return `--c1:${c};--c2:${c}`; };
+
+function saveSession() { try { sessionStorage.setItem(SKEY, JSON.stringify({ code: O.code, pid: O.pid, token: O.token, name: O.name })); } catch (e) { } }
+function loadSession() { try { return JSON.parse(sessionStorage.getItem(SKEY) || "null"); } catch (e) { return null; } }
+function clearSession() { try { sessionStorage.removeItem(SKEY); } catch (e) { } }
+function wsURL() { return (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws"; }
+function osend(m) { if (O.ws && O.ws.readyState === 1) { O.ws.send(JSON.stringify(m)); return true; } return false; }
+const isHost = () => !!(O.s && O.s.host === O.pid);
+
+function toast(msg) {
+  const t = $("#toast"); if (!t) return;
+  t.textContent = msg; t.classList.add("on");
+  clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("on"), 3500);
+}
+function setConn(ok) { const c = $("#conn"); if (c) c.classList.toggle("on", !ok); }
+
+function oconnect() {
+  return new Promise((resolve, reject) => {
+    let ws; try { ws = new WebSocket(wsURL()); } catch (e) { reject(e); return; }
+    O.ws = ws; let opened = false;
+    ws.onopen = () => { opened = true; O.retry = 0; setConn(true); resolve(); };
+    ws.onmessage = ev => { let m; try { m = JSON.parse(ev.data); } catch (e) { return; } onMsg(m); };
+    ws.onclose = () => {
+      if (O.ws !== ws) return;
+      if (!opened) { reject(new Error("close")); return; }
+      if (O.pid) { setConn(false); oreconnect(); }
+    };
+    ws.onerror = () => { };
+  });
+}
+function oreconnect() {
+  if (!O.pid) return;
+  const d = Math.min(8000, 700 * Math.pow(1.6, O.retry++));
+  setTimeout(() => {
+    if (!O.pid) return;
+    oconnect().then(() => osend({ t: "rejoin", code: O.code, pid: O.pid, token: O.token })).catch(() => oreconnect());
+  }, d);
+}
+function resetOnline() {
+  O.pid = null; O.code = null; O.token = null; O.s = null; O.busy = false;
+  S.online = false; S.onFinal = null; S.dp = null; S.tiebreak = false; S.me = -1;
+  stopTimer();
+}
+function onlineLeave() {
+  osend({ t: "leave" }); clearSession();
+  const ws = O.ws; resetOnline();
+  try { if (ws) ws.close(); } catch (e) { }
+  go("home");
+}
+
+function onMsg(m) {
+  if (m.t === "joined") {
+    O.code = m.code; O.pid = m.pid; O.token = m.token; O.busy = false; O.err = ""; saveSession(); S.online = true;
+  } else if (m.t === "state") {
+    onState(m.s);
+  } else if (m.t === "error") {
+    O.busy = false;
+    if (m.fatal) { clearSession(); resetOnline(); O.err = m.msg; go("o-menu"); }
+    else { O.err = m.msg; if (S.screen === "o-menu") render(true); else toast(m.msg); }
+  } else if (m.t === "conflict") {
+    onConflict(m.taken);
+  }
+}
+
+/* ----- miroir de l’état serveur dans S (pour réutiliser les vues existantes) ----- */
+function mirror() {
+  const s = O.s; if (!s) return;
+  S.me = s.players.findIndex(p => p.id === O.pid);
+  S.rounds = s.settings.rounds; S.minutes = s.settings.minutes; S.mode = s.settings.mode; S.picked = s.settings.themes || [];
+  S.focus = s.settings.mode === "theme" ? (s.settings.themes || [])[0] || null : null;
+  S.round = s.round;
+  S.players = s.players.map(p => ({ id: p.id, name: p.name, cand: p.cand, total: s.totals[p.id] || 0 }));
+  S.taken = new Set(s.taken);
+  S.theme = s.theme;
+  S.hands = (s.theme && THEMES[s.theme]) ? makeHands() : [];
+  S.results = s.results.map(r => ({ counts: s.players.map(p => r.counts[p.id] || 0) }));
+}
+
+function onState(s) {
+  O.s = s; O.off = s.now - Date.now();
+  mirror(); route();
+}
+function route() {
+  const s = O.s, me = s.players.find(p => p.id === O.pid);
+  if (!me) { resetOnline(); O.err = "Tu n’es plus dans cette salle."; go("o-menu"); return; }
+  let t = "o-lobby";
+  switch (s.phase) {
+    case "lobby": t = "o-lobby"; break;
+    case "duels": t = me.cand ? "o-card" : (["duel", "o-duelintro", "o-pickwait"].includes(S.screen) ? S.screen : "o-duelintro"); break;
+    case "theme": t = "theme"; break;
+    case "debate": t = "debate"; break;
+    case "vote": t = s.voted.includes(O.pid) ? "o-votewait" : "o-vote"; break;
+    case "results": t = "results"; break;
+    case "final": t = "final"; break;
+  }
+  if (t === "o-vote" && S.screen !== "o-vote") S.vote = { i: S.me, sel: null, picks: [] };
+  if (t === "o-card") S.tiebreak = false;
+  if (t !== S.screen) { S.screen = t; window.scrollTo(0, 0); render(); }
+  else if (t === "duel" || t === "o-duelintro" || t === "o-pickwait") paintProg();
+  else render(true);
+  if (t === "o-duelintro") paintProg();
+}
+function paintProg() {
+  const el = $("#oprog"); if (!el || !O.s) return;
+  const done = O.s.players.filter(p => p.cand).length, n = O.s.players.length;
+  el.textContent = done + " joueur" + (done > 1 ? "s" : "") + " sur " + n + " ont terminé leurs duels";
+}
+
+/* ----- duels en ligne ----- */
+function onlineFinal(w) {
+  S.screen = "o-pickwait"; render(true);
+  osend({ t: "pick", cand: w.id });
+}
+function onConflict(taken) {
+  S.taken = new Set(taken); S.tiebreak = true;
+  const pool = CANDS.filter(c => !S.taken.has(c.id));
+  const a = (S.lastLoser && !S.taken.has(S.lastLoser)) ? byId(S.lastLoser) : rand(pool);
+  const b = rand(pool.filter(c => c.id !== a.id));
+  S.duel = { n: 10, a: a.id, b: b.id, picked: null };
+  S.screen = "duel"; window.scrollTo(0, 0); render();
+}
+function onlineStartRound() {
+  const idx = O.s.phase === "results" ? O.s.round + 1 : 0;
+  const r = planRound(idx);
+  osend({ t: "startRound", theme: r.theme });
+}
+
+/* ----- vues ----- */
+function viewOConnecting(msg) {
+  return `<section class="scr pass"><div class="box"><div class="bubble">📡</div><h2>${esc(msg || "Connexion à la salle…")}</h2><p class="lead">Si le serveur dormait, il peut falloir jusqu’à une minute pour le réveiller.</p></div></section>`;
+}
+function viewOMenu() {
+  return `<section class="scr"><div class="panel stack">
+    <div><div class="kicker">Chacun son téléphone</div><h2>Créer ou rejoindre une salle</h2>
+    <p class="muted">Chacun fait ses duels sur son propre téléphone, puis le débat se déroule en direct, ensemble.</p></div>
+    <div><span class="lbl" style="margin-top:0">Ton prénom</span><label class="field"><span>👤</span><input data-o="name" value="${attr(O.name)}" placeholder="Ton prénom" maxlength="14" autocomplete="off" autocapitalize="words"></label></div>
+    <div class="row"><button class="btn primary big" data-act="oCreate" ${O.busy ? "disabled" : ""}>${O.busy ? "Connexion…" : "Créer une salle"}</button></div>
+    <div class="or"><i></i><span>ou rejoins tes amis</span><i></i></div>
+    <div class="row"><label class="field codefield"><input data-o="code" value="${attr(O.codeIn)}" placeholder="CODE" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text"></label><button class="btn" data-act="oJoin" ${O.busy ? "disabled" : ""}>Rejoindre</button></div>
+    ${O.busy ? `<p class="hint">Connexion au serveur… s’il dormait, ça peut prendre jusqu’à une minute.</p>` : ""}
+    ${O.err ? `<p class="err">${esc(O.err)}</p>` : ""}
+  </div></section>`;
+}
+function viewOLobby() {
+  const s = O.s, host = isHost(), n = s.players.length, set = s.settings;
+  const url = location.origin + location.pathname + "?salle=" + s.code;
+  const rows = s.players.map((p, i) => `<div class="vopt" style="${palOf(i)};cursor:default"><div class="mono">${initials(p.name)}</div><div><b>${esc(p.name)}${p.id === O.pid ? " (toi)" : ""}</b><span>${p.id === s.host ? "Hôte" : "Joueur"}${p.on ? "" : " · hors ligne"}</span></div><div class="dot ${p.on ? "on" : ""}"></div></div>`).join("");
+  const needThemes = set.mode === "theme" && !(set.themes && set.themes.length);
+  const hostSet = `<span class="lbl">Sujet du débat</span>${segHTML([["random", "🎲 Au hasard"], ["theme", "🎯 Je choisis"]], set.mode, "oSettings", "mode")}
+    ${set.mode === "random"
+      ? `<span class="lbl">Nombre de manches</span>${segHTML([[1, "1 manche"], [2, "2 manches"], [3, "3 manches"]], set.rounds, "oSettings", "rounds")}`
+      : `<p class="hint">Choisis 1 à 3 sujets : un par manche, dans l’ordre où tu les touches. Les débats de société ne demandent aucune connaissance particulière.</p>${themePickerHTML(set.themes || [], "oPick")}`}
+    <span class="lbl">Temps de parole par joueur</span>${segHTML(MINUTES.map(m => [m, m + " min"]), set.minutes, "oSettings", "minutes")}`;
+  const guestSet = `<p class="muted">${set.mode === "theme" && set.themes.length ? "Sujets choisis : " + set.themes.map(k => THEMES[k] ? THEMES[k].ico + " " + esc(THEMES[k].nom) : "").join(", ") : set.rounds + " manche" + (set.rounds > 1 ? "s" : "") + ", sujet tiré au hasard"} · ${set.minutes} minutes de parole chacun. Les réglages sont choisis par l’hôte.</p>`;
+  return `<section class="scr">
+    <div class="kicker">Salle d’attente</div>
+    <div class="codebig" aria-label="Code de la salle">${esc(s.code)}</div>
+    <p class="muted">Tes amis ouvrent le lien et entrent ce code. ${n}/${s.max} joueur${n > 1 ? "s" : ""} dans la salle.</p>
+    <div class="row" style="margin:10px 0 4px"><button class="btn primary" data-act="oShare">Inviter mes amis</button></div>
+    <p class="hint" style="word-break:break-all">${esc(url)}</p>
+    <div class="panel mt"><h2 style="font-size:1.3rem">Joueurs</h2><div class="vlist">${rows}</div></div>
+    <div class="panel mt">
+      <h2 style="font-size:1.3rem">Réglages</h2>
+      ${host ? hostSet : guestSet}
+    </div>
+    <div class="row mt">${host
+      ? `<button class="btn primary big" data-act="oStart" ${(n < s.min || needThemes) ? "disabled" : ""}>Lancer les duels →</button>${n < s.min ? `<span class="muted">Il faut au moins ${s.min} joueurs.</span>` : (needThemes ? `<span class="muted">Choisis au moins un sujet.</span>` : "")}`
+      : `<p class="muted">⏳ L’hôte lance la partie quand tout le monde est là…</p>`}</div>
+  </section>`;
+}
+function viewODuelIntro() {
+  const me = O.s.players.find(p => p.id === O.pid);
+  return `<section class="scr pass"><div class="box">
+    <div class="bubble">⚔️</div>
+    <div class="kicker">Salle ${esc(O.code)}</div>
+    <h2>À toi de jouer, <em>${esc(me.name)}</em></h2>
+    <p class="lead" style="margin:0 auto 22px">Dix duels, sur ton téléphone, en même temps que les autres. Le vainqueur de chaque duel reste en piste : le dernier devient ton candidat.</p>
+    <button class="btn primary big" data-act="oReady">C’est parti</button>
+    <p class="hint" id="oprog" style="margin-top:14px"></p>
+  </div></section>`;
+}
+function viewOCard() {
+  const s = O.s, host = isHost();
+  const me = s.players.find(p => p.id === O.pid), c = byId(me.cand);
+  const ideas = Object.entries(c.s).map(([k, v]) => `<div class="idea"><div class="ic">${THEMES[k].ico}</div><div><b>${esc(v[0])}</b><span>${esc(THEMES[k].nom)}</span></div></div>`).join("");
+  const live = s.players.filter(p => p.on), done = s.players.filter(p => p.cand).length;
+  const ready = live.every(p => p.cand) && done >= 2;
+  const rows = s.players.map((p, i) => `<div class="vopt" style="${palOf(i)};cursor:default"><div class="mono">${initials(p.name)}</div><div><b>${esc(p.name)}${p.id === O.pid ? " (toi)" : ""}</b><span>${p.cand ? "✓ a choisi son candidat" : (p.on ? "encore en duel…" : "hors ligne")}</span></div></div>`).join("");
+  return `<section class="scr">
+    <div class="dhead"><div><div class="kicker">${esc(me.name)} · ta carte</div><h2>Voici ton candidat</h2></div></div>
+    <div class="reveal">${cardHTML(c, { cls: "big", bio: true })}
+      <div>
+        <p class="lead">Pendant le débat, tu parleras à la place de ${esc(c.nom)}.</p>
+        <h3 style="margin:18px 0 4px">Ses grandes idées</h3>
+        <div class="ideas">${ideas}</div>
+        <div class="panel mt"><h2 style="font-size:1.2rem">${done} sur ${s.players.length} ont fini leurs duels</h2><div class="vlist">${rows}</div></div>
+        <div class="row mt">${host
+      ? `<button class="btn primary big" data-act="oStartRound" ${ready ? "" : "disabled"}>Lancer le débat →</button>${ready ? "" : `<span class="muted">En attendant les autres…</span>`}`
+      : `<p class="muted">⏳ L’hôte lancera le débat quand tout le monde aura fini.</p>`}</div>
+      </div>
+    </div></section>`;
+}
+function viewOVoteWait() {
+  const s = O.s, host = isHost();
+  const live = s.players.filter(p => p.on).length, v = s.voted.length;
+  return `<section class="scr pass"><div class="box">
+    <div class="bubble">🗳️</div>
+    <div class="kicker">Manche ${s.round + 1} sur ${s.settings.rounds}</div>
+    <h2>Vote enregistré</h2>
+    <p class="lead" style="margin:0 auto 18px">${v} joueur${v > 1 ? "s ont" : " a"} voté sur ${live}. Les résultats apparaissent dès que tout le monde a voté.</p>
+    ${host && v >= 1 && v < live ? `<button class="btn" data-act="oFinishVote">Afficher les résultats maintenant</button>` : ""}
+  </div></section>`;
+}
+
+/* ----- actions en ligne ----- */
+Object.assign(A, {
+  oMenu() { S.online = false; O.err = ""; if (!O.name) { const ses = loadSession(); if (ses && ses.name) O.name = ses.name; } go("o-menu"); },
+  async oCreate() {
+    const name = (O.name || "").trim();
+    if (!name) { O.err = "Entre ton prénom pour commencer."; render(true); return; }
+    O.err = ""; O.busy = true; render(true);
+    try { await oconnect(); osend({ t: "create", name }); }
+    catch (e) { O.busy = false; O.err = "Impossible de joindre le serveur. Réessaie dans un instant."; render(true); }
+  },
+  async oJoin() {
+    const name = (O.name || "").trim(), code = (O.codeIn || "").trim().toUpperCase();
+    if (!name) { O.err = "Entre ton prénom pour commencer."; render(true); return; }
+    if (code.length !== 4) { O.err = "Le code de la salle fait 4 lettres."; render(true); return; }
+    O.err = ""; O.busy = true; render(true);
+    try { await oconnect(); osend({ t: "join", code, name }); }
+    catch (e) { O.busy = false; O.err = "Impossible de joindre le serveur. Réessaie dans un instant."; render(true); }
+  },
+  oShare() {
+    const url = location.origin + location.pathname + "?salle=" + O.code;
+    if (navigator.share) { navigator.share({ title: "Le Grand Débat", text: "Rejoins ma salle : " + O.code, url }).catch(() => { }); }
+    else if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(url).then(() => toast("Lien copié !")).catch(() => toast(url)); }
+    else toast(url);
+  },
+  oSettings(d) {
+    const set = O.s.settings;
+    osend({ t: "settings", rounds: d.k === "rounds" ? +d.v : set.rounds, minutes: d.k === "minutes" ? +d.v : set.minutes, mode: d.k === "mode" ? d.v : set.mode, themes: set.themes });
+  },
+  oPick(d) {
+    const set = O.s.settings, l = (set.themes || []).slice(), i = l.indexOf(d.k);
+    if (i >= 0) l.splice(i, 1); else if (l.length < 3) l.push(d.k);
+    osend({ t: "settings", rounds: set.rounds, minutes: set.minutes, mode: "theme", themes: l });
+  },
+  oStart() { osend({ t: "start" }); },
+  oReady() {
+    const me = O.s.players.find(p => p.id === O.pid);
+    S.dp = { name: me.name, seen: [] }; S.taken = new Set(O.s.taken);
+    S.onFinal = onlineFinal; S.tiebreak = false; S.lastLoser = null;
+    startDuels(S.dp); go("duel"); paintProg();
+  },
+  oStartRound() { onlineStartRound(); },
+  oFinishVote() { osend({ t: "finishVote" }); }
+});
+
+document.addEventListener("input", e => {
+  const k = e.target.dataset && e.target.dataset.o;
+  if (!k) return;
+  if (k === "name") O.name = e.target.value;
+  if (k === "code") { const v = e.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4); e.target.value = v; O.codeIn = v; }
+});
+document.addEventListener("click", () => { try { T.ctx = T.ctx || new (window.AudioContext || window.webkitAudioContext)(); if (T.ctx.state === "suspended") T.ctx.resume(); } catch (e) { } }, { once: true });
+
+function onlineBoot() {
+  const q = new URLSearchParams(location.search);
+  const c = (q.get("salle") || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 4);
+  if (c) O.codeIn = c;
+  const ses = loadSession();
+  if (ses && ses.code && ses.pid && ses.token) {
+    O.code = ses.code; O.pid = ses.pid; O.token = ses.token; O.name = ses.name || "";
+    S.screen = "o-connecting"; render();
+    oconnect().then(() => osend({ t: "rejoin", code: O.code, pid: O.pid, token: O.token }))
+      .catch(() => { clearSession(); resetOnline(); go("home"); });
+  } else if (c) { A.oMenu(); }
+}
+
+render();
+onlineBoot();
+</script>
+</body>
+</html>
